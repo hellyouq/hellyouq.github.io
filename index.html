@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hell_Pak - Official Bio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #080011;
+            font-family: 'Poppins', sans-serif;
+            color: #e0d4ff;
+            overflow: hidden;
+            min-height: 100vh;
+            position: relative;
+        }
+
+        .video-background {
+            position: fixed;
+            inset: 0;
+            z-index: -2;
+            overflow: hidden;
+        }
+
+        .video-background video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: brightness(30%) blur(3px) saturate(140%) hue-rotate(250deg);
+        }
+
+        .video-overlay {
+            position: fixed;
+            inset: 0;
+            background: radial-gradient(circle at center, rgba(80,0,130,0.2), rgba(0,0,0,0.9));
+            z-index: -1;
+        }
+
+        .music-choice-container {
+            position: fixed;
+            inset: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: rgba(10, 5, 20, 0.95);
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+            animation: fadeIn 1s ease;
+        }
+
+        .music-choice-box {
+            background: rgba(25, 10, 45, 0.95);
+            padding: 50px;
+            border-radius: 20px;
+            border: 2px solid #a855f7;
+            box-shadow: 0 0 40px rgba(168, 85, 247, 0.5);
+            text-align: center;
+            animation: fadeUp 1s ease;
+        }
+
+        .music-title {
+            font-size: 2.2em;
+            color: #c084fc;
+            text-shadow: 0 0 20px rgba(168, 85, 247, 0.5);
+            margin-bottom: 10px;
+        }
+
+        .music-subtitle {
+            font-size: 1.1em;
+            color: #e9d5ff;
+            margin-bottom: 40px;
+        }
+
+        .choice-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            flex-wrap: wrap;
+        }
+
+        .choice-btn {
+            padding: 20px 40px;
+            font-size: 1.2em;
+            border-radius: 15px;
+            cursor: pointer;
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+            font-weight: 600;
+        }
+
+        .yes-btn {
+            background: linear-gradient(135deg, #a855f7, #6b21a8);
+            color: #fff;
+            box-shadow: 0 0 20px rgba(168, 85, 247, 0.4);
+        }
+
+        .yes-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 30px rgba(168, 85, 247, 0.8);
+        }
+
+        .no-btn {
+            background: rgba(40, 30, 60, 0.9);
+            color: #c084fc;
+            border: 2px solid #6b21a8;
+        }
+
+        .no-btn:hover {
+            transform: scale(1.05);
+            background: rgba(60, 40, 90, 0.9);
+            box-shadow: 0 0 25px rgba(168, 85, 247, 0.4);
+        }
+
+        .main-content {
+            display: none;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            animation: fadeIn 1.5s ease forwards;
+        }
+
+        .volume-controls {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            background: rgba(20, 10, 30, 0.9);
+            border: 1px solid rgba(168, 85, 247, 0.3);
+            padding: 15px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            box-shadow: 0 0 20px rgba(168, 85, 247, 0.3);
+            backdrop-filter: blur(10px);
+            z-index: 100;
+            animation: fadeIn 1s ease;
+        }
+
+        .volume-icon {
+            font-size: 22px;
+            cursor: pointer;
+            color: #d8b4fe;
+            transition: transform 0.3s ease;
+        }
+
+        .volume-icon:hover {
+            transform: rotate(10deg) scale(1.1);
+            color: #a855f7;
+        }
+
+        .volume-slider {
+            width: 100px;
+            accent-color: #a855f7;
+        }
+
+        .enable-music-btn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: linear-gradient(135deg, #a855f7, #6b21a8);
+            color: #fff;
+            border: none;
+            padding: 15px 25px;
+            border-radius: 15px;
+            cursor: pointer;
+            font-size: 1em;
+            font-weight: 600;
+            box-shadow: 0 0 25px rgba(168, 85, 247, 0.4);
+            transition: all 0.3s ease;
+            z-index: 100;
+            backdrop-filter: blur(10px);
+            display: none;
+        }
+
+        .enable-music-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 35px rgba(168, 85, 247, 0.7);
+        }
+
+        .avatar {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 3px solid #a855f7;
+            box-shadow: 0 0 25px rgba(168, 85, 247, 0.5);
+            animation: float 4s ease-in-out infinite;
+        }
+
+        .avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+        }
+
+        .nickname-frame {
+            margin-top: 30px;
+            padding: 30px 60px;
+            border: 2px solid rgba(168, 85, 247, 0.5);
+            border-radius: 20px;
+            background: rgba(15, 5, 30, 0.85);
+            backdrop-filter: blur(15px);
+            text-align: center;
+            box-shadow: 0 0 30px rgba(168, 85, 247, 0.3);
+            animation: fadeUp 1s ease forwards;
+        }
+
+        .nickname {
+            font-size: 3.2em;
+            font-weight: bold;
+            color: #a855f7;
+            text-shadow: 0 0 25px rgba(168, 85, 247, 0.8);
+            letter-spacing: 2px;
+        }
+
+        .discord {
+            animation: fadeInUp 1.2s ease-out;
+            opacity: 0.9;
+            transition: opacity 0.4s ease, transform 0.4s ease;
+            color: #d8b4fe;
+            font-size: 1.3em;
+            margin-top: 10px;
+            text-shadow: 0 0 15px rgba(192, 132, 252, 0.4);
+        }
+
+        .social-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            margin-top: 40px;
+        }
+
+        .social-btn {
+            width: 80px;
+            height: 80px;
+            border-radius: 20px;
+            background: rgba(30, 10, 50, 0.8);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.4s ease;
+            box-shadow: 0 0 20px rgba(168, 85, 247, 0.2);
+            border: 1px solid rgba(168, 85, 247, 0.3);
+        }
+
+        .social-btn img {
+            width: 50px;
+            height: 50px;
+            object-fit: contain;
+            transition: transform 0.4s ease, filter 0.4s ease;
+        }
+
+        .social-btn:hover {
+            transform: translateY(-6px) scale(1.05);
+            box-shadow: 0 0 30px rgba(168, 85, 247, 0.6);
+            background: rgba(60, 20, 90, 0.9);
+        }
+
+        .social-btn:hover img {
+            transform: scale(1.15);
+            filter: drop-shadow(0 0 10px #a855f7);
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+    </style>
+</head>
+<body>
+    <div class="video-background">
+        <video loop muted autoplay>
+            <source src="assets/videos/background.mp4" type="video/mp4">
+        </video>
+    </div>
+
+    <div class="video-overlay"></div>
+
+    <div class="music-choice-container" id="musicChoiceContainer">
+        <div class="music-choice-box">
+            <div class="music-title">🎵 Включить музыку?</div>
+            <div class="music-subtitle">Хотите слушать фоновую мелодию на сайте?</div>
+            <div class="choice-buttons">
+                <button class="choice-btn yes-btn" id="yesMusicBtn">Да, включить</button>
+                <button class="choice-btn no-btn" id="noMusicBtn">Нет, без музыки</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-content" id="mainContent">
+        <div class="volume-controls" id="volumeControls">
+            <div class="volume-icon" onclick="toggleMusic()">🔊</div>
+            <input type="range" min="0" max="100" value="50" class="volume-slider" id="volumeSlider">
+        </div>
+
+        <button class="enable-music-btn" id="enableMusicBtn">🎵 Включить музыку</button>
+
+        <div class="avatar">
+            <img src="assets/images/avatar.jpg" alt="Hell_Pak Avatar">
+        </div>
+
+        <div class="nickname-frame">
+            <div class="nickname">Hell_Pak</div>
+            <div class="discord">
+                discord:
+                <span style="color:#b3b3b3; font-weight:400; text-shadow:0 0 10px rgba(255,255,255,0.15);">
+                    .hellpaq
+                </span>
+            </div>
+        </div>
+
+        <div class="social-buttons">
+            <a href="https://discord.gg/TFB9FmWhVH" target="_blank" class="social-btn">
+                <img src="https://avatars.mds.yandex.net/i?id=06a4fbd1a05b4c1765708766a514760f502ffe3f-4233236-images-thumbs&n=13" alt="Discord">
+            </a>
+            <a href="https://www.youtube.com/@Hell_youq" target="_blank" class="social-btn">
+                <img src="https://files.kick.com/images/channel-links/1795797/image/1bb70bf1-c523-4503-9660-f6e4290745c2" alt="YouTube">
+            </a>
+            <a href="https://funpay.com/users/16870681/" target="_blank" class="social-btn">
+                <img src="https://s3-eu-west-1.amazonaws.com/tpd/logos/61c241ad7e4160be1454a768/0x0.png" alt="FunPay">
+            </a>
+        </div>
+
+        <audio id="backgroundMusic" loop>
+            <source src="assets/music/music.mp3" type="audio/mpeg">
+        </audio>
+    </div>
+
+    <script>
+        const musicChoiceContainer = document.getElementById('musicChoiceContainer');
+        const mainContent = document.getElementById('mainContent');
+        const yesMusicBtn = document.getElementById('yesMusicBtn');
+        const noMusicBtn = document.getElementById('noMusicBtn');
+        const volumeControls = document.getElementById('volumeControls');
+        const enableMusicBtn = document.getElementById('enableMusicBtn');
+        const music = document.getElementById('backgroundMusic');
+        const volumeSlider = document.getElementById('volumeSlider');
+        const volumeIcon = document.querySelector('.volume-icon');
+
+        let musicEnabled = false;
+        let musicStarted = false;
+
+        function startMusic() {
+            if (!musicStarted && musicEnabled) {
+                music.volume = volumeSlider.value / 100;
+                music.play().then(() => musicStarted = true).catch(() => {});
+            }
+        }
+
+        function toggleMusic() {
+            if (music.paused) {
+                music.play();
+            } else {
+                music.pause();
+            }
+        }
+
+        function enableMusic() {
+            musicEnabled = true;
+            musicStarted = false;
+            enableMusicBtn.style.display = 'none';
+            volumeControls.style.display = 'flex';
+            startMusic();
+        }
+
+        yesMusicBtn.onclick = () => {
+            musicEnabled = true;
+            musicChoiceContainer.style.display = 'none';
+            mainContent.style.display = 'flex';
+            volumeControls.style.display = 'flex';
+            enableMusicBtn.style.display = 'none';
+            startMusic();
+        };
+
+        noMusicBtn.onclick = () => {
+            musicEnabled = false;
+            musicChoiceContainer.style.display = 'none';
+            mainContent.style.display = 'flex';
+            volumeControls.style.display = 'none';
+            enableMusicBtn.style.display = 'block';
+        };
+
+        enableMusicBtn.onclick = enableMusic;
+
+        volumeSlider.oninput = () => {
+            music.volume = volumeSlider.value / 100;
+        };
+
+        document.onclick = () => {
+            if (musicEnabled && !musicStarted) {
+                startMusic();
+            }
+        };
+    </script>
+</body>
+</html>
