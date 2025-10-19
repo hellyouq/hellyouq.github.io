@@ -40,7 +40,7 @@
             left: 50%;
             transform: translate(-50%, -50%);
             object-fit: cover;
-            filter: grayscale(100%) contrast(120%) brightness(40%);
+            filter: grayscale(100%) brightness(40%) sepia(100%) hue-rotate(240deg) saturate(300%);
         }
 
         .video-overlay {
@@ -49,177 +49,8 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(5, 5, 5, 0.8);
+            background: rgba(10, 5, 20, 0.8);
             z-index: -1;
-        }
-
-        .captcha-container {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background: rgba(0, 0, 0, 0.95);
-            z-index: 1000;
-        }
-
-        .captcha-box {
-            text-align: center;
-            background: rgba(15, 15, 15, 0.98);
-            padding: 40px;
-            border-radius: 15px;
-            border: 2px solid #404040;
-            box-shadow: 0 0 30px rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            max-width: 400px;
-            width: 90%;
-        }
-
-        .logo {
-            font-size: 2.5em;
-            color: #ffffff;
-            margin-bottom: 20px;
-            text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
-            font-weight: 300;
-            letter-spacing: 3px;
-        }
-
-        .title {
-            font-size: 1.5em;
-            margin-bottom: 10px;
-            color: #f0f0f0;
-            font-weight: 300;
-        }
-
-        .subtitle {
-            color: #888;
-            margin-bottom: 30px;
-            font-size: 0.9em;
-        }
-
-        .modern-captcha {
-            background: rgba(25, 25, 25, 0.9);
-            padding: 20px;
-            border-radius: 8px;
-            border: 1px solid #333;
-            margin-bottom: 20px;
-        }
-
-        .captcha-checkbox {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            cursor: pointer;
-            padding: 15px;
-            background: rgba(35, 35, 35, 0.8);
-            border-radius: 6px;
-            border: 2px solid #444;
-            transition: all 0.3s ease;
-            user-select: none;
-        }
-
-        .captcha-checkbox:hover {
-            background: rgba(45, 45, 45, 0.9);
-            border-color: #555;
-        }
-
-        .captcha-checkbox.checked {
-            background: rgba(60, 60, 60, 0.9);
-            border-color: #ffffff;
-        }
-
-        .checkbox {
-            width: 20px;
-            height: 20px;
-            border: 2px solid #666;
-            border-radius: 3px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.3s ease;
-            background: #1a1a1a;
-        }
-
-        .checkbox.checked {
-            background: #ffffff;
-            border-color: #ffffff;
-        }
-
-        .checkmark {
-            color: #000000;
-            font-size: 14px;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-            font-weight: bold;
-        }
-
-        .checkbox.checked .checkmark {
-            opacity: 1;
-        }
-
-        .captcha-text {
-            font-size: 1em;
-            color: #ccc;
-        }
-
-        .captcha-info {
-            font-size: 0.8em;
-            color: #666;
-            margin-top: 10px;
-            text-align: left;
-            line-height: 1.4;
-        }
-
-        .verify-btn {
-            width: 100%;
-            padding: 15px;
-            background: #333;
-            color: #666;
-            border: none;
-            border-radius: 8px;
-            font-size: 1.1em;
-            cursor: not-allowed;
-            transition: all 0.3s;
-            font-weight: 500;
-            letter-spacing: 1px;
-        }
-
-        .verify-btn.active {
-            background: #ffffff;
-            color: #000000;
-            cursor: pointer;
-        }
-
-        .verify-btn.active:hover {
-            background: #e0e0e0;
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(255, 255, 255, 0.3);
-        }
-
-        .loading-dots {
-            display: none;
-            gap: 4px;
-            justify-content: center;
-            margin-top: 10px;
-        }
-
-        .dot {
-            width: 6px;
-            height: 6px;
-            background: #ffffff;
-            border-radius: 50%;
-            animation: loading 1.4s infinite ease-in-out;
-        }
-
-        .dot:nth-child(1) { animation-delay: -0.32s; }
-        .dot:nth-child(2) { animation-delay: -0.16s; }
-
-        @keyframes loading {
-            0%, 80%, 100% { transform: scale(0); }
-            40% { transform: scale(1); }
         }
 
         .music-choice-container {
@@ -228,34 +59,35 @@
             left: 0;
             width: 100%;
             height: 100%;
-            display: none;
+            display: flex;
             justify-content: center;
             align-items: center;
-            background: rgba(0, 0, 0, 0.92);
-            z-index: 900;
+            background: rgba(10, 5, 20, 0.95);
+            z-index: 1000;
         }
 
         .music-choice-box {
             text-align: center;
-            background: rgba(10, 10, 10, 0.98);
+            background: rgba(20, 10, 30, 0.95);
             padding: 50px;
             border-radius: 15px;
-            border: 2px solid #404040;
-            box-shadow: 0 0 40px rgba(255, 255, 255, 0.1);
+            border: 2px solid #6b21a8;
+            box-shadow: 0 0 40px rgba(107, 33, 168, 0.4);
+            backdrop-filter: blur(10px);
             max-width: 500px;
             width: 90%;
         }
 
         .music-title {
             font-size: 2em;
-            color: #ffffff;
+            color: #a855f7;
             margin-bottom: 10px;
-            text-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+            text-shadow: 0 0 15px rgba(168, 85, 247, 0.5);
             font-weight: 300;
         }
 
         .music-subtitle {
-            color: #888;
+            color: #c084fc;
             margin-bottom: 40px;
             font-size: 1.1em;
         }
@@ -280,27 +112,27 @@
         }
 
         .yes-btn {
-            background: #ffffff;
-            color: #000000;
-            border: 2px solid #ffffff;
+            background: #a855f7;
+            color: #ffffff;
+            border: 2px solid #a855f7;
         }
 
         .yes-btn:hover {
-            background: #e0e0e0;
+            background: #9333ea;
             transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(255, 255, 255, 0.3);
+            box-shadow: 0 8px 25px rgba(168, 85, 247, 0.4);
         }
 
         .no-btn {
             background: rgba(40, 40, 40, 0.9);
-            color: #ffffff;
-            border: 2px solid #555;
+            color: #c084fc;
+            border: 2px solid #6b21a8;
         }
 
         .no-btn:hover {
             background: rgba(60, 60, 60, 0.9);
             transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(255, 255, 255, 0.1);
+            box-shadow: 0 8px 25px rgba(107, 33, 168, 0.3);
         }
 
         .main-content {
@@ -329,14 +161,14 @@
             width: 140px;
             height: 140px;
             border-radius: 50%;
-            border: 3px solid #ffffff;
+            border: 3px solid #a855f7;
             margin: 0 auto 25px;
-            background: rgba(20, 20, 20, 0.9);
+            background: rgba(20, 10, 30, 0.9);
             display: flex;
             align-items: center;
             justify-content: center;
             overflow: hidden;
-            box-shadow: 0 0 25px rgba(255, 255, 255, 0.3);
+            box-shadow: 0 0 25px rgba(168, 85, 247, 0.4);
             backdrop-filter: blur(10px);
         }
 
@@ -348,30 +180,30 @@
         }
 
         .nickname-frame {
-            border: 2px solid #ffffff;
+            border: 2px solid #a855f7;
             border-radius: 18px;
             padding: 40px 50px;
             margin: 25px auto;
-            background: rgba(10, 10, 10, 0.9);
+            background: rgba(15, 8, 25, 0.9);
             position: relative;
-            box-shadow: 0 0 30px rgba(255, 255, 255, 0.2);
+            box-shadow: 0 0 30px rgba(168, 85, 247, 0.3);
             backdrop-filter: blur(15px);
-            border: 2px solid rgba(255, 255, 255, 0.4);
+            border: 2px solid rgba(168, 85, 247, 0.6);
         }
 
         .nickname {
             font-size: 3.5em;
             font-weight: bold;
-            color: #ffffff;
-            text-shadow: 0 0 15px rgba(255, 255, 255, 0.4);
+            color: #a855f7;
+            text-shadow: 0 0 15px rgba(168, 85, 247, 0.7);
             letter-spacing: 2px;
         }
 
         .discord {
-            color: #888;
+            color: #c084fc;
             font-size: 1.3em;
             margin-top: 15px;
-            text-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+            text-shadow: 0 0 10px rgba(192, 132, 252, 0.3);
         }
 
         .social-buttons {
@@ -383,13 +215,13 @@
         }
 
         .social-btn {
-            background: rgba(40, 40, 40, 0.9);
+            background: rgba(30, 15, 45, 0.9);
             color: white;
             text-decoration: none;
             padding: 20px;
             border-radius: 15px;
             transition: all 0.3s ease;
-            border: 1px solid rgba(255, 255, 255, 0.3);
+            border: 1px solid rgba(168, 85, 247, 0.3);
             font-size: 1.2em;
             backdrop-filter: blur(10px);
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
@@ -401,10 +233,10 @@
         }
 
         .social-btn:hover {
-            background: #ffffff;
+            background: #a855f7;
             transform: translateY(-5px) scale(1.1);
-            box-shadow: 0 10px 30px rgba(255, 255, 255, 0.3);
-            border-color: #ffffff;
+            box-shadow: 0 10px 30px rgba(168, 85, 247, 0.4);
+            border-color: #a855f7;
         }
 
         .social-icon {
@@ -415,7 +247,7 @@
         }
 
         .social-btn:hover .social-icon {
-            filter: brightness(0) invert(0);
+            filter: brightness(0) invert(1);
             transform: scale(1.1);
         }
 
@@ -423,10 +255,10 @@
             position: fixed;
             top: 20px;
             left: 20px;
-            background: rgba(20, 20, 20, 0.95);
+            background: rgba(20, 10, 30, 0.95);
             padding: 15px;
             border-radius: 12px;
-            border: 1px solid rgba(255, 255, 255, 0.3);
+            border: 1px solid rgba(168, 85, 247, 0.3);
             backdrop-filter: blur(10px);
             z-index: 1000;
             display: flex;
@@ -443,11 +275,11 @@
             transition: background 0.3s ease;
             min-width: 30px;
             text-align: center;
-            color: #ffffff;
+            color: #c084fc;
         }
 
         .volume-icon:hover {
-            background: rgba(255, 255, 255, 0.2);
+            background: rgba(168, 85, 247, 0.2);
         }
 
         .volume-slider-container {
@@ -458,7 +290,7 @@
             width: 100%;
             height: 6px;
             border-radius: 3px;
-            background: #333;
+            background: #2d1b4e;
             outline: none;
             -webkit-appearance: none;
             cursor: pointer;
@@ -469,28 +301,28 @@
             width: 16px;
             height: 16px;
             border-radius: 50%;
-            background: #ffffff;
+            background: #a855f7;
             cursor: pointer;
-            border: 2px solid #000000;
-            box-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+            border: 2px solid #ffffff;
+            box-shadow: 0 0 5px rgba(168, 85, 247, 0.5);
         }
 
         .volume-slider::-moz-range-thumb {
             width: 16px;
             height: 16px;
             border-radius: 50%;
-            background: #ffffff;
+            background: #a855f7;
             cursor: pointer;
-            border: 2px solid #000000;
-            box-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+            border: 2px solid #ffffff;
+            box-shadow: 0 0 5px rgba(168, 85, 247, 0.5);
         }
 
         .enable-music-btn {
             position: fixed;
             bottom: 30px;
             right: 30px;
-            background: rgba(255, 255, 255, 0.9);
-            color: #000000;
+            background: rgba(168, 85, 247, 0.9);
+            color: white;
             border: none;
             padding: 15px 25px;
             border-radius: 10px;
@@ -503,9 +335,9 @@
         }
 
         .enable-music-btn:hover {
-            background: rgba(255, 255, 255, 1);
+            background: rgba(168, 85, 247, 1);
             transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(255, 255, 255, 0.3);
+            box-shadow: 0 5px 15px rgba(168, 85, 247, 0.4);
         }
 
         @keyframes fadeInUp {
@@ -533,41 +365,11 @@
     </div>
     <div class="video-overlay"></div>
 
-    <div class="captcha-container" id="captchaContainer">
-        <div class="captcha-box">
-            <div class="logo">HELL_PAK</div>
-            <div class="title">🔒 Проверка безопасности</div>
-            <div class="subtitle">Подтвердите, что вы не бот</div>
-
-            <div class="modern-captcha">
-                <div class="captcha-checkbox" id="captchaCheckbox">
-                    <div class="checkbox" id="checkbox">
-                        <div class="checkmark">✓</div>
-                    </div>
-                    <div class="captcha-text">Я не робот</div>
-                </div>
-                <div class="captcha-info">
-                    • Проверка поведения мыши<br>
-                    • Анализ времени реакции<br>
-                    • Проверка браузера и ОС<br>
-                    • Защита от автоматических скриптов
-                </div>
-                <div class="loading-dots" id="loadingDots">
-                    <div class="dot"></div>
-                    <div class="dot"></div>
-                    <div class="dot"></div>
-                </div>
-            </div>
-
-            <button class="verify-btn" id="verifyBtn">ПРОДОЛЖИТЬ</button>
-        </div>
-    </div>
-
     <div class="music-choice-container" id="musicChoiceContainer">
         <div class="music-choice-box">
             <div class="music-title">🎵 Включить музыку?</div>
             <div class="music-subtitle">Хотите ли вы слушать фоновую музыку на сайте?</div>
-
+            
             <div class="choice-buttons">
                 <button class="choice-btn yes-btn" id="yesMusicBtn">ДА, ВКЛЮЧИТЬ</button>
                 <button class="choice-btn no-btn" id="noMusicBtn">НЕТ, БЕЗ МУЗЫКИ</button>
@@ -614,32 +416,6 @@
     </div>
 
     <script>
-        // Security measures
-        let requestCount = 0;
-        let lastRequestTime = Date.now();
-        const MAX_REQUESTS_PER_MINUTE = 60;
-
-        function checkRateLimit() {
-            const now = Date.now();
-            if (now - lastRequestTime > 60000) {
-                requestCount = 0;
-                lastRequestTime = now;
-            }
-
-            if (requestCount >= MAX_REQUESTS_PER_MINUTE) {
-                throw new Error('Rate limit exceeded');
-            }
-
-            requestCount++;
-            return true;
-        }
-
-        // Elements
-        const captchaContainer = document.getElementById('captchaContainer');
-        const captchaCheckbox = document.getElementById('captchaCheckbox');
-        const checkbox = document.getElementById('checkbox');
-        const verifyBtn = document.getElementById('verifyBtn');
-        const loadingDots = document.getElementById('loadingDots');
         const musicChoiceContainer = document.getElementById('musicChoiceContainer');
         const mainContent = document.getElementById('mainContent');
         const yesMusicBtn = document.getElementById('yesMusicBtn');
@@ -649,50 +425,9 @@
         const music = document.getElementById('backgroundMusic');
         const volumeSlider = document.getElementById('volumeSlider');
         const volumeIcon = document.querySelector('.volume-icon');
-
+        
         let musicStarted = false;
         let musicEnabled = false;
-        let captchaVerified = false;
-        let captchaAttempts = 0;
-        const MAX_CAPTCHA_ATTEMPTS = 5;
-
-        // Captcha handler
-        captchaCheckbox.addEventListener('click', function() {
-            if (captchaAttempts >= MAX_CAPTCHA_ATTEMPTS) {
-                alert('Превышено количество попыток. Пожалуйста, обновите страницу.');
-                return;
-            }
-
-            if (!captchaVerified) {
-                checkbox.classList.add('checked');
-                captchaCheckbox.classList.add('checked');
-                verifyBtn.classList.add('active');
-                loadingDots.style.display = 'flex';
-                captchaAttempts++;
-
-                setTimeout(() => {
-                    try {
-                        checkRateLimit();
-                        captchaVerified = true;
-                        loadingDots.style.display = 'none';
-                        verifyBtn.textContent = 'ПРОВЕРКА ПРОЙДЕНА ✓';
-                    } catch (error) {
-                        checkbox.classList.remove('checked');
-                        captchaCheckbox.classList.remove('checked');
-                        verifyBtn.classList.remove('active');
-                        loadingDots.style.display = 'none';
-                        alert('Ошибка проверки. Пожалуйста, попробуйте снова.');
-                    }
-                }, 2000);
-            }
-        });
-
-        verifyBtn.addEventListener('click', function() {
-            if (captchaVerified) {
-                captchaContainer.style.display = 'none';
-                musicChoiceContainer.style.display = 'flex';
-            }
-        });
 
         function enableMusic() {
             musicEnabled = true;
@@ -703,17 +438,13 @@
 
         function startMusic() {
             if (!musicStarted && musicEnabled) {
-                try {
-                    music.volume = 0.5;
-                    music.play().then(() => {
-                        musicStarted = true;
-                        updateVolumeIcon();
-                    }).catch(e => {
-                        console.log('Ожидаю клик для запуска музыки...');
-                    });
-                } catch (error) {
-                    console.error('Music playback error');
-                }
+                music.volume = 0.5;
+                music.play().then(() => {
+                    musicStarted = true;
+                    updateVolumeIcon();
+                }).catch(e => {
+                    console.log('Ожидаю клик для запуска музыки...');
+                });
             }
         }
 
@@ -768,7 +499,6 @@
             }
         });
 
-        // Initialize
         updateVolumeIcon();
     </script>
 </body>
