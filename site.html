@@ -1,0 +1,865 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hell_Pak - Official Bio</title>
+<style>
+@font-face {
+    font-family: 'Consolas';
+    src: url('assets/fonts/consolas.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Unbounded';
+    src: url('assets/fonts/unbounded.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Radware';
+    src: url('assets/fonts/radware.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+* { margin:0; padding:0; box-sizing:border-box; }
+body {
+    background:#0a0a0a;
+    font-family:'Consolas', monospace;
+    color:#e0f7ff;
+    overflow-x: hidden;
+    min-height:100vh;
+    position:relative;
+    cursor: default;
+}
+
+.music-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(10, 10, 10, 0.95);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10000;
+    backdrop-filter: blur(10px);
+    padding: 20px;
+}
+
+.music-modal-content {
+    background: linear-gradient(145deg, rgba(20,20,30,0.95), rgba(30,30,40,0.9));
+    padding: 30px 20px;
+    border-radius: 15px;
+    text-align: center;
+    border: 2px solid rgba(100,200,255,0.5);
+    box-shadow: 0 0 40px rgba(100,200,255,0.4);
+    max-width: 400px;
+    width: 100%;
+    font-family: 'Consolas', monospace;
+}
+
+.music-modal h2 {
+    color: #64c8ff;
+    font-size: clamp(1.3em, 4vw, 1.6em);
+    margin-bottom: 15px;
+    text-shadow: 0 0 10px rgba(100,200,255,0.6);
+    font-family: 'Consolas', monospace;
+}
+
+.music-modal p {
+    margin-bottom: 25px;
+    font-size: clamp(0.9em, 3vw, 1em);
+    color: #a0dfff;
+    font-family: 'Unbounded', sans-serif;
+}
+
+.music-modal-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.music-modal-btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    font-size: clamp(0.9em, 3vw, 1em);
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    background: linear-gradient(135deg, #64c8ff, #0088cc);
+    color: white;
+    box-shadow: 0 4px 12px rgba(100,200,255,0.3);
+    min-width: 80px;
+    font-family: 'Consolas', monospace;
+}
+
+.music-modal-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(100,200,255,0.4);
+}
+
+.music-modal-btn.no {
+    background: linear-gradient(135deg, #666, #444);
+}
+
+.music-modal-btn.no:hover {
+    box-shadow: 0 6px 16px rgba(100,100,100,0.4);
+}
+
+.video-background {
+    position:fixed;
+    inset:0;
+    z-index:-2;
+    overflow:hidden;
+}
+.video-background video {
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    filter:brightness(40%) contrast(120%) grayscale(100%) blur(2px);
+}
+.video-overlay {
+    position:fixed;
+    inset:0;
+    background:radial-gradient(circle at center, rgba(0,50,80,0.3), rgba(0,0,0,0.9));
+    z-index:-1;
+}
+
+.main-content {
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-direction:column;
+    min-height:100vh;
+    padding: 20px;
+    gap: 20px;
+}
+
+.content-wrapper {
+    transition: transform 0.1s ease;
+}
+
+.main-frame {
+    position:relative;
+    padding: clamp(20px, 5vw, 35px) clamp(25px, 6vw, 45px);
+    border-radius: 15px;
+    background:rgba(20,20,25,0.85);
+    backdrop-filter:blur(15px);
+    border:1px solid rgba(100,200,255,0.3);
+    box-shadow:0 0 30px rgba(100,200,255,0.2), inset 0 1px 0 rgba(255,255,255,0.1);
+    text-align:center;
+    width: 100%;
+    max-width: 500px;
+    margin-bottom: 15px;
+}
+
+.avatar-container {
+    position:relative;
+    width: clamp(80px, 20vw, 100px);
+    height: clamp(80px, 20vw, 100px);
+    margin:0 auto clamp(15px, 4vw, 20px);
+}
+
+.avatar-gif {
+    position:absolute;
+    top:-25px;
+    left:-25px;
+    right:-25px;
+    bottom:-25px;
+    border-radius:50%;
+    overflow:hidden;
+    z-index:1;
+    pointer-events: none;
+}
+
+.avatar-gif img {
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    border-radius:50%;
+    animation: ghostFloat 4s ease-in-out infinite;
+}
+
+@keyframes ghostFloat {
+    0%, 100% { transform: translateY(0px) rotate(0deg); }
+    25% { transform: translateY(-5px) rotate(2deg); }
+    50% { transform: translateY(0px) rotate(0deg); }
+    75% { transform: translateY(5px) rotate(-2deg); }
+}
+
+.avatar {
+    width:100%;
+    height:100%;
+    border-radius:50%;
+    overflow:hidden;
+    border:2px solid transparent;
+    background:linear-gradient(45deg,#64c8ff,#a0dfff) border-box;
+    position:relative;
+    z-index:2;
+    animation:avatarPulse 3s ease-in-out infinite;
+}
+
+@keyframes avatarPulse {
+    0%,100% {
+        box-shadow:0 0 15px rgba(100,200,255,0.4),
+                  inset 0 0 15px rgba(100,200,255,0.2);
+        transform:scale(1);
+    }
+    50% {
+        box-shadow:0 0 25px rgba(100,200,255,0.6),
+                  inset 0 0 20px rgba(100,200,255,0.3);
+        transform:scale(1.02);
+    }
+}
+
+.avatar-image {
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    border-radius:50%;
+    transition:all 0.4s ease;
+    filter:brightness(1.1) contrast(1.1);
+}
+
+.avatar:hover .avatar-image {
+    filter:brightness(1.2) contrast(1.2);
+    transform:scale(1.03);
+}
+
+.energy-orb {
+    position:absolute;
+    width:100%;
+    height:100%;
+    border-radius:50%;
+    background:radial-gradient(circle, transparent 30%, rgba(100,200,255,0.1) 70%);
+    animation:pulseOrb 2s ease-in-out infinite;
+    z-index:3;
+    pointer-events: none;
+}
+
+@keyframes pulseOrb {
+    0%,100% { opacity:0.2; transform:scale(1); }
+    50% { opacity:0.5; transform:scale(1.05); }
+}
+
+.nickname {
+    font-size: clamp(1.5em, 6vw, 2.2em);
+    font-weight:bold;
+    color:#64c8ff;
+    text-shadow:0 0 15px rgba(100,200,255,0.6);
+    letter-spacing:0.5px;
+    margin-bottom:8px;
+    line-height: 1.2;
+    font-family: 'Consolas', monospace;
+}
+.discord {
+    color:#a0dfff;
+    font-size: clamp(0.9em, 3vw, 1.1em);
+    text-shadow:0 0 8px rgba(160,223,255,0.3);
+    margin-bottom: clamp(15px, 4vw, 20px);
+    line-height: 1.3;
+    font-family: 'Unbounded', sans-serif;
+}
+
+.social-buttons {
+    display:flex;
+    justify-content:center;
+    gap: clamp(15px, 4vw, 25px);
+    margin-top: clamp(15px, 4vw, 20px);
+    position:relative;
+    z-index:2;
+    flex-wrap: wrap;
+}
+
+.social-btn {
+    width: clamp(45px, 11vw, 55px);
+    height: clamp(45px, 11vw, 55px);
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    transition:all 0.3s ease;
+    position:relative;
+    cursor: pointer;
+    background: transparent;
+    border: 2px solid rgba(100,200,255,0.3);
+    backdrop-filter: blur(10px);
+}
+
+.social-btn img {
+    width: clamp(22px, 6vw, 28px);
+    height: clamp(22px, 6vw, 28px);
+    object-fit:contain;
+    transition:all 0.3s ease;
+    filter: brightness(0.9);
+}
+
+.social-btn:hover {
+    transform:translateY(-5px) scale(1.1);
+    border: 2px solid rgba(100,200,255,0.8);
+    box-shadow: 0 10px 25px rgba(100,200,255,0.4);
+}
+
+.social-btn:hover img {
+    transform:scale(1.15);
+    filter: brightness(1.2) drop-shadow(0 0 8px #64c8ff);
+}
+
+.social-btn:active {
+    transform: translateY(-2px) scale(1.05);
+}
+
+.tooltip {
+    position:absolute;
+    bottom:-35px;
+    left:50%;
+    transform:translateX(-50%);
+    background:rgba(15,15,20,0.95);
+    color:#a0dfff;
+    padding:6px 12px;
+    border-radius:8px;
+    font-size:0.8em;
+    white-space:nowrap;
+    opacity:0;
+    transition:opacity 0.3s ease, transform 0.3s ease;
+    border:1px solid rgba(100,200,255,0.3);
+    pointer-events: none;
+    font-family: 'Unbounded', sans-serif;
+}
+
+.social-btn:hover .tooltip {
+    opacity:1;
+    transform:translateX(-50%) translateY(-5px);
+}
+
+.soundbar-container {
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:12px;
+    width:100%;
+    max-width:500px;
+    background:rgba(20,20,25,0.85);
+    padding: clamp(12px, 3vw, 16px) clamp(15px, 4vw, 20px);
+    border-radius: 12px;
+    border:1px solid rgba(100,200,255,0.3);
+    box-shadow:0 0 25px rgba(100,200,255,0.2);
+    backdrop-filter:blur(15px);
+}
+
+.soundbar-header {
+    display:flex;
+    align-items:center;
+    gap: clamp(8px, 2vw, 12px);
+    width:100%;
+    margin-bottom:8px;
+}
+
+.album-cover {
+    width: clamp(35px, 9vw, 45px);
+    height: clamp(35px, 9vw, 45px);
+    border-radius:6px;
+    overflow:hidden;
+    border:1px solid #64c8ff;
+    box-shadow:0 0 10px rgba(100,200,255,0.4);
+    flex-shrink: 0;
+}
+
+.album-cover img {
+    width:100%;
+    height:100%;
+    object-fit:cover;
+}
+
+.track-info {
+    flex:1;
+    text-align:left;
+    min-width: 0;
+}
+
+.track-name {
+    color:#fff;
+    font-size: clamp(0.8em, 2.8vw, 0.95em);
+    font-weight:600;
+    margin-bottom:3px;
+    text-shadow:0 0 6px rgba(100,200,255,0.5);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-family: 'Consolas', monospace;
+}
+
+.track-artist {
+    color:#a0dfff;
+    font-size: clamp(0.7em, 2.5vw, 0.8em);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-family: 'Unbounded', sans-serif;
+}
+
+.sound-wave {
+    display:flex;
+    align-items:center;
+    gap:1px;
+    flex-shrink: 0;
+}
+
+.bar {
+    width:1.5px;
+    height: clamp(12px, 3vw, 16px);
+    background:linear-gradient(to top, #64c8ff, #a0dfff);
+    border-radius:1px;
+    animation:soundWave 1.3s ease-in-out infinite;
+    transform-origin:bottom;
+}
+
+.bar:nth-child(2) { animation-delay:0.15s; }
+.bar:nth-child(3) { animation-delay:0.3s; }
+.bar:nth-child(4) { animation-delay:0.45s; }
+.bar:nth-child(5) { animation-delay:0.6s; }
+.bar:nth-child(6) { animation-delay:0.75s; }
+.bar:nth-child(7) { animation-delay:0.9s; }
+
+@keyframes soundWave {
+    0%,100% { transform:scaleY(0.3); }
+    50% { transform:scaleY(1); }
+}
+
+.soundbar-controls {
+    display:flex;
+    align-items:center;
+    gap: clamp(8px, 2vw, 12px);
+    width:100%;
+    flex-wrap: wrap;
+}
+
+.control-buttons {
+    display:flex;
+    align-items:center;
+    gap:4px;
+    flex-shrink: 0;
+}
+
+.control-btn {
+    width: clamp(28px, 7vw, 32px);
+    height: clamp(28px, 7vw, 32px);
+    border-radius:6px;
+    border:none;
+    background:rgba(100,200,255,0.8);
+    color:#0a0a0a;
+    font-size: clamp(0.7em, 2.2vw, 0.8em);
+    cursor:pointer;
+    transition:all 0.2s ease;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-weight: bold;
+    font-family: 'Consolas', monospace;
+}
+
+.control-btn:active {
+    transform: scale(0.92);
+}
+
+.control-btn:hover {
+    transform:scale(1.05);
+    background:rgba(100,200,255,1);
+    box-shadow:0 0 8px rgba(100,200,255,0.6);
+}
+
+.control-btn.play-pause {
+    width: clamp(32px, 8vw, 36px);
+    height: clamp(32px, 8vw, 36px);
+    font-size: clamp(0.8em, 2.5vw, 0.9em);
+}
+
+.progress-container {
+    flex:1;
+    height:4px;
+    background:rgba(50,50,60,0.6);
+    border-radius:2px;
+    cursor:pointer;
+    overflow:hidden;
+    position:relative;
+    min-width: 80px;
+}
+
+.progress {
+    height:100%;
+    background:linear-gradient(135deg, #64c8ff, #a0dfff);
+    width:0%;
+    transition:width 0.1s linear;
+    border-radius:2px;
+    position:relative;
+}
+
+.progress::after {
+    content:'';
+    position:absolute;
+    top:50%;
+    right:0;
+    width:8px;
+    height:8px;
+    background:#fff;
+    border-radius:50%;
+    transform:translate(50%, -50%);
+    box-shadow:0 0 6px #64c8ff;
+}
+
+.volume-controls {
+    display:flex;
+    align-items:center;
+    gap:6px;
+    flex-shrink: 0;
+}
+
+.volume-slider {
+    width: clamp(45px, 12vw, 60px);
+    accent-color:#64c8ff;
+    cursor:pointer;
+}
+
+.time-display {
+    color:#a0dfff;
+    font-size: clamp(0.6em, 2vw, 0.7em);
+    font-family:'Consolas', monospace;
+    min-width: clamp(55px, 14vw, 65px);
+    text-align:center;
+    flex-shrink: 0;
+}
+
+@media (max-width: 480px) {
+    .soundbar-controls {
+        justify-content: center;
+    }
+    .progress-container {
+        order: -1;
+        width: 100%;
+        margin-bottom: 8px;
+    }
+    .control-buttons {
+        order: 1;
+    }
+    .time-display {
+        order: 2;
+    }
+    .volume-controls {
+        order: 3;
+    }
+}
+
+.footer {
+    text-align: center;
+    margin-top: 15px;
+    color: #64c8ff;
+    font-size: 0.8em;
+    font-family: 'Radware', sans-serif;
+    text-shadow: 0 0 8px rgba(100,200,255,0.5);
+}
+</style>
+</head>
+
+<body>
+<div class="music-modal" id="musicModal">
+    <div class="music-modal-content">
+        <h2>Музыка на сайте</h2>
+        <p>Хотите включить фоновую музыку?</p>
+        <div class="music-modal-buttons">
+            <button class="music-modal-btn yes" id="musicYes">Да</button>
+            <button class="music-modal-btn no" id="musicNo">Нет</button>
+        </div>
+    </div>
+</div>
+
+<div class="video-background">
+    <video loop muted autoplay playsinline>
+        <source src="assets/videos/backmenu.mp4" type="video/mp4">
+    </video>
+</div>
+<div class="video-overlay"></div>
+
+<div class="main-content">
+    <div class="content-wrapper" id="contentWrapper">
+        <div class="main-frame">
+            <div class="avatar-container">
+                <!-- GIF с приведениями вокруг аватарки -->
+                <div class="avatar-gif">
+                    <img src="assets/gif/abc.gif" alt="Ghosts flying around avatar">
+                </div>
+                <div class="avatar">
+                    <img class="avatar-image" src="assets/images/avatar.jpg" alt="Hell_Pak Avatar">
+                    <div class="energy-orb"></div>
+                </div>
+            </div>
+
+            <div class="nickname">Hell_Pak</div>
+            <div class="discord">discord: <span style="color:#88ccff;font-weight:400;">.hellpaq</span></div>
+
+            <div class="social-buttons">
+                <a href="https://funpay.com/users/16870681/" target="_blank" class="social-btn">
+                    <img src="https://s3-eu-west-1.amazonaws.com/tpd/logos/61c241ad7e4160be1454a768/0x0.png" alt="FunPay">
+                    <div class="tooltip">FunPay</div>
+                </a>
+                <a href="https://discord.gg/TFB9FmWhVH" target="_blank" class="social-btn">
+                    <img src="https://avatars.mds.yandex.net/i?id=06a4fbd1a05b4c1765708766a514760f502ffe3f-4233236-images-thumbs&n=13" alt="Discord">
+                    <div class="tooltip">Discord Сервер</div>
+                </a>
+                <a href="https://www.youtube.com/@Hell_youq" target="_blank" class="social-btn">
+                    <img src="https://files.kick.com/images/channel-links/1795797/image/1bb70bf1-c523-4503-9660-f6e4290745c2" alt="YouTube">
+                    <div class="tooltip">YouTube</div>
+                </a>
+            </div>
+        </div>
+
+        <div class="soundbar-container">
+            <div class="soundbar-header">
+                <div class="album-cover">
+                    <img id="albumCover" src="https://avatars.mds.yandex.net/i?id=07c473b40b57de03071e49f758a31f7ac47f341b-4080498-images-thumbs&n=13" alt="Album Cover">
+                </div>
+                <div class="track-info">
+                    <div class="track-name" id="trackName">MARTIN ROSE</div>
+                    <div class="track-artist" id="trackArtist">greyrock, madk1d, tewiq</div>
+                </div>
+                <div class="sound-wave" id="soundWave">
+                    <div class="bar"></div>
+                    <div class="bar"></div>
+                    <div class="bar"></div>
+                    <div class="bar"></div>
+                    <div class="bar"></div>
+                    <div class="bar"></div>
+                    <div class="bar"></div>
+                </div>
+            </div>
+
+            <div class="soundbar-controls">
+                <div class="control-buttons">
+                    <button class="control-btn" id="prevBtn">◀◀</button>
+                    <button class="control-btn play-pause" id="playBtn">▶</button>
+                    <button class="control-btn" id="nextBtn">▶▶</button>
+                </div>
+
+                <div class="time-display" id="timeDisplay">0:00 / 0:00</div>
+
+                <div class="progress-container" id="progressContainer">
+                    <div class="progress" id="progress"></div>
+                </div>
+
+                <div class="volume-controls">
+                    <div class="control-btn" id="volumeBtn">🔊</div>
+                    <input type="range" min="0" max="100" value="50" class="volume-slider" id="volumeSlider">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        Сделано DeepSeek
+    </div>
+</div>
+
+<script>
+const musicModal = document.getElementById('musicModal');
+const musicYesBtn = document.getElementById('musicYes');
+const musicNoBtn = document.getElementById('musicNo');
+const playBtn = document.getElementById('playBtn');
+const prevBtn = document.getElementById('prevBtn');
+const nextBtn = document.getElementById('nextBtn');
+const progress = document.getElementById('progress');
+const progressContainer = document.getElementById('progressContainer');
+const volumeSlider = document.getElementById('volumeSlider');
+const volumeBtn = document.getElementById('volumeBtn');
+const trackName = document.getElementById('trackName');
+const trackArtist = document.getElementById('trackArtist');
+const timeDisplay = document.getElementById('timeDisplay');
+const soundWave = document.getElementById('soundWave');
+const albumCover = document.getElementById('albumCover');
+const contentWrapper = document.getElementById('contentWrapper');
+
+// Движение контента за курсором
+let mouseX = 0, mouseY = 0;
+let wrapperX = 0, wrapperY = 0;
+
+document.addEventListener('mousemove', (e) => {
+    mouseX = (e.clientX - window.innerWidth / 2) / 50;
+    mouseY = (e.clientY - window.innerHeight / 2) / 50;
+});
+
+function updateWrapperPosition() {
+    wrapperX += (mouseX - wrapperX) * 0.1;
+    wrapperY += (mouseY - wrapperY) * 0.1;
+    
+    contentWrapper.style.transform = `translate(${wrapperX}px, ${wrapperY}px)`;
+    requestAnimationFrame(updateWrapperPosition);
+}
+updateWrapperPosition();
+
+window.addEventListener('load', () => {
+    musicModal.style.display = 'flex';
+});
+
+musicYesBtn.addEventListener('click', () => {
+    musicModal.style.display = 'none';
+    if (audio.paused) {
+        audio.play().catch(e => console.log('Автовоспроизведение заблокировано:', e));
+        playBtn.textContent = '❚❚';
+        isPlaying = true;
+        soundWave.style.display = 'flex';
+    }
+});
+
+musicNoBtn.addEventListener('click', () => {
+    musicModal.style.display = 'none';
+    if (!audio.paused) {
+        audio.pause();
+        playBtn.textContent = '▶';
+        isPlaying = false;
+        soundWave.style.display = 'none';
+    }
+});
+
+let tracks = [
+    {
+        name:'MARTIN ROSE',
+        artist:'greyrock, madk1d, tewiq',
+        src:'assets/sound/music.mp3',
+        cover:'https://avatars.mds.yandex.net/i?id=07c473b40b57de03071e49f758a31f7ac47f341b-4080498-images-thumbs&n=13'
+    },
+    {
+        name:'Священная война',
+        artist:'remakerr',
+        src:'assets/sound/music1.mp3',
+        cover:'https://avatars.yandex.net/get-music-content/16616584/bdd24c64.a.38514843-1/300x300'
+    },
+    {
+        name:'В клубе', 
+        artist:'Темный Принц',
+        src:'assets/sound/music2.mp3',
+        cover:'https://avatars.yandex.net/get-music-content/15682289/25e5c893.a.36949141-1/300x300'
+    }
+];
+let currentTrack = 0;
+let isPlaying = false;
+
+const audio = new Audio();
+audio.src = tracks[currentTrack].src;
+audio.volume = volumeSlider.value / 100;
+
+audio.setAttribute('playsinline', '');
+audio.setAttribute('webkit-playsinline', '');
+
+function loadTrack(index) {
+    currentTrack = index;
+    audio.src = tracks[currentTrack].src;
+    trackName.textContent = tracks[currentTrack].name;
+    trackArtist.textContent = tracks[currentTrack].artist;
+    albumCover.src = tracks[currentTrack].cover;
+
+    if(isPlaying) {
+        audio.play().catch(e => console.log('Ошибка воспроизведения:', e));
+    }
+}
+
+function formatTime(seconds) {
+    const mins = Math.floor(seconds / 60);
+    const secs = Math.floor(seconds % 60);
+    return `${mins}:${secs < 10 ? '0' : ''}${secs}`;
+}
+
+function updateTimeDisplay() {
+    const current = formatTime(audio.currentTime);
+    const duration = formatTime(audio.duration || 0);
+    timeDisplay.textContent = `${current} / ${duration}`;
+}
+
+playBtn.addEventListener('click', () => {
+    if(audio.paused) {
+        audio.play().catch(e => {
+            console.log('Ошибка воспроизведения:', e);
+            if (e.name === 'NotAllowedError') {
+                alert('Нажмите "Да" в диалоговом окне для включения музыки');
+            }
+        });
+        playBtn.textContent = '❚❚';
+        isPlaying = true;
+        soundWave.style.display = 'flex';
+    } else {
+        audio.pause();
+        playBtn.textContent = '▶';
+        isPlaying = false;
+        soundWave.style.display = 'none';
+    }
+});
+
+prevBtn.addEventListener('click', () => {
+    let newTrack = currentTrack - 1;
+    if(newTrack < 0) newTrack = tracks.length - 1;
+    loadTrack(newTrack);
+});
+
+nextBtn.addEventListener('click', () => {
+    let newTrack = currentTrack + 1;
+    if(newTrack >= tracks.length) newTrack = 0;
+    loadTrack(newTrack);
+});
+
+volumeSlider.addEventListener('input', () => {
+    audio.volume = volumeSlider.value / 100;
+});
+
+volumeBtn.addEventListener('click', () => {
+    if(audio.volume > 0) {
+        audio.volume = 0;
+        volumeSlider.value = 0;
+        volumeBtn.textContent = '🔇';
+    } else {
+        audio.volume = 0.5;
+        volumeSlider.value = 50;
+        volumeBtn.textContent = '🔊';
+    }
+});
+
+audio.addEventListener('timeupdate', () => {
+    if (audio.duration) {
+        const progressPercent = (audio.currentTime / audio.duration) * 100;
+        progress.style.width = progressPercent + '%';
+        updateTimeDisplay();
+    }
+});
+
+progressContainer.addEventListener('click', (e) => {
+    const rect = progressContainer.getBoundingClientRect();
+    const percent = (e.clientX - rect.left) / rect.width;
+    audio.currentTime = percent * audio.duration;
+});
+
+audio.addEventListener('ended', () => {
+    let newTrack = currentTrack + 1;
+    if(newTrack >= tracks.length) newTrack = 0;
+    loadTrack(newTrack);
+});
+
+audio.addEventListener('loadedmetadata', updateTimeDisplay);
+
+loadTrack(0);
+soundWave.style.display = 'none';
+updateTimeDisplay();
+
+audio.addEventListener('play', () => {
+    soundWave.style.display = 'flex';
+});
+
+audio.addEventListener('pause', () => {
+    soundWave.style.display = 'none';
+});
+</script>
+</body>
+</html>
