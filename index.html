@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Hell_Pak - Official Bio</title>
+<title>Bio</title>
 <style>
 @font-face {
     font-family: 'Consolas';
@@ -39,82 +39,41 @@ body {
     -webkit-text-size-adjust: 100%;
 }
 
-.music-modal {
+.click-overlay {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(10, 10, 10, 0.95);
+    background: rgba(10, 10, 10, 0.7);
+    backdrop-filter: blur(15px);
     display: flex;
     justify-content: center;
     align-items: center;
     z-index: 10000;
-    backdrop-filter: blur(10px);
-    padding: 20px;
-}
-
-.music-modal-content {
-    background: linear-gradient(145deg, rgba(20,20,30,0.95), rgba(30,30,40,0.9));
-    padding: 30px 20px;
-    border-radius: 15px;
-    text-align: center;
-    border: 2px solid rgba(100,200,255,0.5);
-    box-shadow: 0 0 40px rgba(100,200,255,0.4);
-    max-width: 400px;
-    width: 100%;
-    font-family: 'Consolas', monospace;
-}
-
-.music-modal h2 {
-    color: #64c8ff;
-    font-size: clamp(1.3em, 4vw, 1.6em);
-    margin-bottom: 15px;
-    text-shadow: 0 0 10px rgba(100,200,255,0.6);
-    font-family: 'Consolas', monospace;
-}
-
-.music-modal p {
-    margin-bottom: 25px;
-    font-size: clamp(0.9em, 3vw, 1em);
-    color: #a0dfff;
-    font-family: 'Unbounded', sans-serif;
-}
-
-.music-modal-buttons {
-    display: flex;
-    justify-content: center;
-    gap: 12px;
-    flex-wrap: wrap;
-}
-
-.music-modal-btn {
-    padding: 12px 24px;
-    border: none;
-    border-radius: 8px;
-    font-size: clamp(0.9em, 3vw, 1em);
-    font-weight: bold;
     cursor: pointer;
-    transition: all 0.3s ease;
-    background: linear-gradient(135deg, #64c8ff, #0088cc);
-    color: white;
-    box-shadow: 0 4px 12px rgba(100,200,255,0.3);
-    min-width: 80px;
-    font-family: 'Consolas', monospace;
-    touch-action: manipulation;
 }
 
-.music-modal-btn:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 16px rgba(100,200,255,0.4);
+.click-me-text {
+    font-family: 'Radware', sans-serif;
+    font-size: clamp(1.5em, 6vw, 2.5em);
+    color: #64c8ff;
+    text-shadow: 0 0 20px rgba(100,200,255,0.9);
+    animation: pulseText 1.5s ease-in-out infinite;
+    text-align: center;
 }
 
-.music-modal-btn.no {
-    background: linear-gradient(135deg, #666, #444);
-}
-
-.music-modal-btn.no:hover {
-    box-shadow: 0 6px 16px rgba(100,100,100,0.4);
+@keyframes pulseText {
+    0%, 100% { 
+        opacity: 1; 
+        transform: scale(1);
+        text-shadow: 0 0 20px rgba(100,200,255,0.9);
+    }
+    50% { 
+        opacity: 0.8; 
+        transform: scale(1.05);
+        text-shadow: 0 0 30px rgba(100,200,255,1);
+    }
 }
 
 .video-background {
@@ -144,6 +103,12 @@ body {
     min-height:100vh;
     padding: 15px;
     gap: 15px;
+    filter: blur(0);
+    transition: filter 0.3s ease;
+}
+
+.main-content.blurred {
+    filter: blur(20px);
 }
 
 .content-wrapper {
@@ -672,10 +637,6 @@ body {
         font-size: 0.6em;
         min-width: 50px;
     }
-    
-    .music-modal-btn {
-        padding: 14px 28px;
-    }
 }
 
 @media (max-width: 480px) {
@@ -709,6 +670,10 @@ body {
     .old-coder-table {
         padding: 10px 12px;
     }
+    
+    .click-me-text {
+        font-size: 1.3em;
+    }
 }
 
 /* Отключение анимаций для пользователей с настройками уменьшения движения */
@@ -718,7 +683,8 @@ body {
     .energy-orb,
     .old-coder-table::before,
     .old-coder-text,
-    .bar {
+    .bar,
+    .click-me-text {
         animation: none;
     }
 }
@@ -735,14 +701,9 @@ body {
 </head>
 
 <body>
-<div class="music-modal" id="musicModal">
-    <div class="music-modal-content">
-        <h2>Музыка на сайте</h2>
-        <p>Хотите включить фоновую музыку?</p>
-        <div class="music-modal-buttons">
-            <button class="music-modal-btn yes" id="musicYes">Да</button>
-            <button class="music-modal-btn no" id="musicNo">Нет</button>
-        </div>
+<div class="click-overlay" id="clickOverlay">
+    <div class="click-me-text">
+        CLICK ON ME
     </div>
 </div>
 
@@ -753,7 +714,7 @@ body {
 </div>
 <div class="video-overlay"></div>
 
-<div class="main-content">
+<div class="main-content blurred" id="mainContent">
     <div class="content-wrapper" id="contentWrapper">
         <div class="main-frame">
             <div class="avatar-container">
@@ -773,7 +734,7 @@ body {
             <!-- ШИРОКАЯ ТАБЛИЧКА ОЛД ВАЙБ -->
             <div class="old-coder-table">
                 <div class="old-coder-text">
-                    ОЛД ВАЙБ КОДЕРСТВА
+                    OLD VIBE CODING
                 </div>
             </div>
 
@@ -828,7 +789,6 @@ body {
                 </div>
 
                 <div class="volume-controls">
-                    <div class="control-btn" id="volumeBtn">🔊</div>
                     <input type="range" min="0" max="100" value="50" class="volume-slider" id="volumeSlider">
                 </div>
             </div>
@@ -836,217 +796,26 @@ body {
     </div>
 
     <div class="footer">
-        Сделано DeepSeek
+        The site is create DeepSeek
     </div>
 </div>
 
 <script>
-// ========== ТРЕКИНГ ПОСЕТИТЕЛЕЙ ==========
-const WEBHOOK_URL = 'https://discordapp.com/api/webhooks/1401121019250475111/Vrm6uVrNmHxQag9HVmDEP-9FWKBGuTlIaDv74SyaSPq0TRmLZXiRqCkMptzJ25Z_uOfG';
-
-// Функция для получения информации о пользователе
-function getUserInfo() {
-    const userAgent = navigator.userAgent;
-    const language = navigator.language;
-    const platform = navigator.platform;
-    const screen = `${screen.width}x${screen.height}`;
-    const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
-    const dateTime = new Date().toLocaleString('ru-RU');
-    
-    // Определение устройства
-    let device = 'Desktop';
-    if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(userAgent)) {
-        device = 'Mobile';
-    } else if (/Tablet|iPad/i.test(userAgent)) {
-        device = 'Tablet';
-    }
-    
-    // Определение браузера
-    let browser = 'Unknown';
-    if (userAgent.includes('Chrome') && !userAgent.includes('Edg')) browser = 'Chrome';
-    else if (userAgent.includes('Firefox')) browser = 'Firefox';
-    else if (userAgent.includes('Safari') && !userAgent.includes('Chrome')) browser = 'Safari';
-    else if (userAgent.includes('Edg')) browser = 'Edge';
-    else if (userAgent.includes('Opera')) browser = 'Opera';
-    
-    // Определение ОС
-    let os = 'Unknown';
-    if (userAgent.includes('Windows')) os = 'Windows';
-    else if (userAgent.includes('Mac')) os = 'macOS';
-    else if (userAgent.includes('Linux')) os = 'Linux';
-    else if (userAgent.includes('Android')) os = 'Android';
-    else if (userAgent.includes('iOS') || userAgent.includes('iPhone') || userAgent.includes('iPad')) os = 'iOS';
-    
-    return {
-        userAgent: userAgent,
-        language: language,
-        platform: platform,
-        screen: screen,
-        timezone: timezone,
-        dateTime: dateTime,
-        device: device,
-        browser: browser,
-        os: os,
-        referrer: document.referrer || 'Direct'
-    };
-}
-
-// Функция для получения IP через внешний сервис
-async function getIPAddress() {
-    try {
-        const response = await fetch('https://api.ipify.org?format=json');
-        const data = await response.json();
-        return data.ip;
-    } catch (error) {
-        try {
-            const response = await fetch('https://api64.ipify.org?format=json');
-            const data = await response.json();
-            return data.ip;
-        } catch (error) {
-            return 'Unknown';
-        }
-    }
-}
-
-// Функция отправки данных в Discord
-async function sendVisitorInfo() {
-    try {
-        const userInfo = getUserInfo();
-        const ip = await getIPAddress();
-        
-        const embed = {
-            title: "🚀 Новый посетитель на сайте",
-            color: 0x00ff00,
-            fields: [
-                {
-                    name: "📱 Устройство",
-                    value: `**Тип:** ${userInfo.device}\n**ОС:** ${userInfo.os}\n**Браузер:** ${userInfo.browser}\n**Экран:** ${userInfo.screen}`,
-                    inline: true
-                },
-                {
-                    name: "🌐 Сеть",
-                    value: `**IP:** ${ip}\n**Язык:** ${userInfo.language}\n**Таймзона:** ${userInfo.timezone}`,
-                    inline: true
-                },
-                {
-                    name: "🕐 Время",
-                    value: userInfo.dateTime,
-                    inline: false
-                },
-                {
-                    name: "🔗 Источник",
-                    value: userInfo.referrer,
-                    inline: true
-                }
-            ],
-            timestamp: new Date().toISOString(),
-            footer: {
-                text: "Hell_Pak Tracker"
-            }
-        };
-
-        await fetch(WEBHOOK_URL, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-                embeds: [embed]
-            })
-        });
-        
-        console.log('Visitor info sent to Discord');
-    } catch (error) {
-        console.error('Error sending visitor info:', error);
-    }
-}
-
-// Отправляем информацию при загрузке страницы
-document.addEventListener('DOMContentLoaded', function() {
-    setTimeout(sendVisitorInfo, 1000);
-});
-
-// Также отправляем при клике на любую ссылку (для отслеживания взаимодействия)
-document.addEventListener('click', function(e) {
-    if (e.target.closest('a')) {
-        setTimeout(sendVisitorInfo, 500);
-    }
-});
-
-// ========== ОСТАЛЬНОЙ КОД САЙТА ==========
-
-// Оптимизация для мобильных устройств
-const musicModal = document.getElementById('musicModal');
-const musicYesBtn = document.getElementById('musicYes');
-const musicNoBtn = document.getElementById('musicNo');
+// ========== УПРАВЛЕНИЕ КЛИКОМ И МУЗЫКОЙ ==========
+const clickOverlay = document.getElementById('clickOverlay');
+const mainContent = document.getElementById('mainContent');
 const playBtn = document.getElementById('playBtn');
 const prevBtn = document.getElementById('prevBtn');
 const nextBtn = document.getElementById('nextBtn');
 const progress = document.getElementById('progress');
 const progressContainer = document.getElementById('progressContainer');
 const volumeSlider = document.getElementById('volumeSlider');
-const volumeBtn = document.getElementById('volumeBtn');
 const trackName = document.getElementById('trackName');
 const trackArtist = document.getElementById('trackArtist');
 const timeDisplay = document.getElementById('timeDisplay');
 const soundWave = document.getElementById('soundWave');
 const albumCover = document.getElementById('albumCover');
 const contentWrapper = document.getElementById('contentWrapper');
-
-// Отключение движения за курсором на мобильных устройствах
-let isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-let mouseX = 0, mouseY = 0;
-let wrapperX = 0, wrapperY = 0;
-
-if (!isMobile) {
-    document.addEventListener('mousemove', (e) => {
-        mouseX = (e.clientX - window.innerWidth / 2) / 50;
-        mouseY = (e.clientY - window.innerHeight / 2) / 50;
-    });
-
-    function updateWrapperPosition() {
-        wrapperX += (mouseX - wrapperX) * 0.1;
-        wrapperY += (mouseY - wrapperY) * 0.1;
-        
-        contentWrapper.style.transform = `translate(${wrapperX}px, ${wrapperY}px)`;
-        requestAnimationFrame(updateWrapperPosition);
-    }
-    updateWrapperPosition();
-}
-
-// Предотвращение масштабирования на двойной тап
-let lastTouchEnd = 0;
-document.addEventListener('touchend', function (event) {
-    const now = (new Date()).getTime();
-    if (now - lastTouchEnd <= 300) {
-        event.preventDefault();
-    }
-    lastTouchEnd = now;
-}, false);
-
-window.addEventListener('load', () => {
-    musicModal.style.display = 'flex';
-});
-
-musicYesBtn.addEventListener('click', () => {
-    musicModal.style.display = 'none';
-    if (audio.paused) {
-        audio.play().catch(e => console.log('Автовоспроизведение заблокировано:', e));
-        playBtn.textContent = '❚❚';
-        isPlaying = true;
-        soundWave.style.display = 'flex';
-    }
-});
-
-musicNoBtn.addEventListener('click', () => {
-    musicModal.style.display = 'none';
-    if (!audio.paused) {
-        audio.pause();
-        playBtn.textContent = '▶';
-        isPlaying = false;
-        soundWave.style.display = 'none';
-    }
-});
 
 let tracks = [
     {
@@ -1068,18 +837,37 @@ let tracks = [
         cover:'https://avatars.yandex.net/get-music-content/15682289/25e5c893.a.36949141-1/300x300'
     }
 ];
+
 let currentTrack = 0;
 let isPlaying = false;
-
 const audio = new Audio();
-audio.src = tracks[currentTrack].src;
-audio.volume = volumeSlider.value / 100;
 
-audio.setAttribute('playsinline', '');
-audio.setAttribute('webkit-playsinline', '');
+// Правильная инициализация аудио
+function initAudio() {
+    audio.src = tracks[currentTrack].src;
+    audio.volume = volumeSlider.value / 100;
+    audio.setAttribute('playsinline', '');
+    audio.setAttribute('webkit-playsinline', '');
+    audio.preload = 'metadata';
+    
+    loadTrack(currentTrack);
+}
 
-// Оптимизация для мобильных устройств
-audio.preload = 'metadata';
+// Правильная обработка воспроизведения с Promise
+async function playAudio() {
+    try {
+        await audio.play();
+        playBtn.textContent = '❚❚';
+        isPlaying = true;
+        soundWave.style.display = 'flex';
+        console.log('🎵 Музыка запущена!');
+    } catch (error) {
+        console.log('❌ Ошибка воспроизведения:', error);
+        playBtn.textContent = '▶';
+        isPlaying = false;
+        soundWave.style.display = 'none';
+    }
+}
 
 function loadTrack(index) {
     currentTrack = index;
@@ -1087,10 +875,6 @@ function loadTrack(index) {
     trackName.textContent = tracks[currentTrack].name;
     trackArtist.textContent = tracks[currentTrack].artist;
     albumCover.src = tracks[currentTrack].cover;
-
-    if(isPlaying) {
-        audio.play().catch(e => console.log('Ошибка воспроизведения:', e));
-    }
 }
 
 function formatTime(seconds) {
@@ -1105,17 +889,19 @@ function updateTimeDisplay() {
     timeDisplay.textContent = `${current} / ${duration}`;
 }
 
+// Клик в любом месте убирает блюр и запускает музыку
+clickOverlay.addEventListener('click', function() {
+    this.style.display = 'none';
+    mainContent.classList.remove('blurred');
+    
+    // Запускаем музыку после клика пользователя
+    playAudio();
+});
+
+// Управление плеером
 playBtn.addEventListener('click', () => {
     if(audio.paused) {
-        audio.play().catch(e => {
-            console.log('Ошибка воспроизведения:', e);
-            if (e.name === 'NotAllowedError') {
-                alert('Нажмите "Да" в диалоговом окне для включения музыки');
-            }
-        });
-        playBtn.textContent = '❚❚';
-        isPlaying = true;
-        soundWave.style.display = 'flex';
+        playAudio();
     } else {
         audio.pause();
         playBtn.textContent = '▶';
@@ -1128,28 +914,18 @@ prevBtn.addEventListener('click', () => {
     let newTrack = currentTrack - 1;
     if(newTrack < 0) newTrack = tracks.length - 1;
     loadTrack(newTrack);
+    if(isPlaying) playAudio();
 });
 
 nextBtn.addEventListener('click', () => {
     let newTrack = currentTrack + 1;
     if(newTrack >= tracks.length) newTrack = 0;
     loadTrack(newTrack);
+    if(isPlaying) playAudio();
 });
 
 volumeSlider.addEventListener('input', () => {
     audio.volume = volumeSlider.value / 100;
-});
-
-volumeBtn.addEventListener('click', () => {
-    if(audio.volume > 0) {
-        audio.volume = 0;
-        volumeSlider.value = 0;
-        volumeBtn.textContent = '🔇';
-    } else {
-        audio.volume = 0.5;
-        volumeSlider.value = 50;
-        volumeBtn.textContent = '🔊';
-    }
 });
 
 audio.addEventListener('timeupdate', () => {
@@ -1160,19 +936,9 @@ audio.addEventListener('timeupdate', () => {
     }
 });
 
-// Оптимизация для тач-устройств
 progressContainer.addEventListener('click', (e) => {
     const rect = progressContainer.getBoundingClientRect();
     const percent = (e.clientX - rect.left) / rect.width;
-    audio.currentTime = percent * audio.duration;
-});
-
-// Также добавим обработчик для touch событий
-progressContainer.addEventListener('touchstart', (e) => {
-    e.preventDefault();
-    const rect = progressContainer.getBoundingClientRect();
-    const touch = e.touches[0];
-    const percent = (touch.clientX - rect.left) / rect.width;
     audio.currentTime = percent * audio.duration;
 });
 
@@ -1180,28 +946,36 @@ audio.addEventListener('ended', () => {
     let newTrack = currentTrack + 1;
     if(newTrack >= tracks.length) newTrack = 0;
     loadTrack(newTrack);
+    if(isPlaying) playAudio();
 });
 
 audio.addEventListener('loadedmetadata', updateTimeDisplay);
 
-loadTrack(0);
+// Инициализация
+initAudio();
 soundWave.style.display = 'none';
 updateTimeDisplay();
 
-audio.addEventListener('play', () => {
-    soundWave.style.display = 'flex';
-});
+// Отключение движения за курсором на мобильных устройствах
+let isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+let mouseX = 0, mouseY = 0;
+let wrapperX = 0, wrapperY = 0;
 
-audio.addEventListener('pause', () => {
-    soundWave.style.display = 'none';
-});
-
-// Предотвращение скролла при взаимодействии с элементами управления
-document.querySelectorAll('.control-btn, .volume-slider, .progress-container').forEach(element => {
-    element.addEventListener('touchstart', (e) => {
-        e.stopPropagation();
+if (!isMobile) {
+    document.addEventListener('mousemove', (e) => {
+        mouseX = (e.clientX - window.innerWidth / 2) / 50;
+        mouseY = (e.clientY - window.innerHeight / 2) / 50;
     });
-});
+
+    function updateWrapperPosition() {
+        wrapperX += (mouseX - wrapperX) * 0.1;
+        wrapperY += (mouseY - wrapperY) * 0.1;
+        
+        contentWrapper.style.transform = `translate(${wrapperX}px, ${wrapperY}px)`;
+        requestAnimationFrame(updateWrapperPosition);
+    }
+    updateWrapperPosition();
+}
 </script>
 </body>
 </html>
