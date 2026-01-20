@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Bio</title>
+<title>Hell_Pak - Bio</title>
 <style>
 @font-face {
     font-family: 'Consolas';
@@ -371,22 +371,22 @@ body {
     transform:translateX(-50%) translateY(-5px);
 }
 
-/* КОМПАКТНЫЙ САУНДБАР - МЕНЬШЕ ВЫСОТА */
+/* КОМПАКТНЫЙ САУНДБАР */
 .soundbar-container {
     display:flex;
     flex-direction:column;
     align-items:center;
-    gap: 8px; /* Уменьшен gap */
+    gap: 8px;
     width: 100%;
     max-width: 800px;
     background:rgba(20,20,25,0.85);
-    padding: 10px 20px; /* Уменьшены отступы */
+    padding: 10px 20px;
     border-radius: 12px;
     border:1px solid rgba(100,200,255,0.3);
     box-shadow:0 0 25px rgba(100,200,255,0.2);
     backdrop-filter:blur(15px);
     margin: 0 auto;
-    min-height: auto; /* Убрана фиксированная высота */
+    min-height: auto;
 }
 
 .soundbar-header {
@@ -394,11 +394,11 @@ body {
     align-items:center;
     gap: 10px;
     width:100%;
-    margin-bottom: 5px; /* Уменьшен отступ */
+    margin-bottom: 5px;
 }
 
 .album-cover {
-    width: 35px; /* Уменьшен размер */
+    width: 35px;
     height: 35px;
     border-radius:6px;
     overflow:hidden;
@@ -421,7 +421,7 @@ body {
 
 .track-name {
     color:#fff;
-    font-size: 0.85em; /* Уменьшен шрифт */
+    font-size: 0.85em;
     font-weight:600;
     margin-bottom:2px;
     text-shadow:0 0 6px rgba(100,200,255,0.5);
@@ -433,7 +433,7 @@ body {
 
 .track-artist {
     color:#a0dfff;
-    font-size: 0.75em; /* Уменьшен шрифт */
+    font-size: 0.75em;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -449,7 +449,7 @@ body {
 
 .bar {
     width:1.5px;
-    height: 12px; /* Уменьшена высота */
+    height: 12px;
     background:linear-gradient(to top, #64c8ff, #a0dfff);
     border-radius:1px;
     animation:soundWave 1.3s ease-in-out infinite;
@@ -484,7 +484,7 @@ body {
 }
 
 .control-btn {
-    width: 26px; /* Уменьшены кнопки */
+    width: 26px;
     height: 26px;
     border-radius:5px;
     border:none;
@@ -519,7 +519,7 @@ body {
 
 .progress-container {
     flex:1;
-    height:3px; /* Уменьшена высота */
+    height:3px;
     background:rgba(50,50,60,0.6);
     border-radius:2px;
     cursor:pointer;
@@ -542,7 +542,7 @@ body {
     position:absolute;
     top:50%;
     right:0;
-    width:6px; /* Уменьшен размер */
+    width:6px;
     height:6px;
     background:#fff;
     border-radius:50%;
@@ -558,7 +558,7 @@ body {
 }
 
 .volume-slider {
-    width: 50px; /* Уменьшен слайдер */
+    width: 50px;
     accent-color:#64c8ff;
     cursor:pointer;
     touch-action: manipulation;
@@ -566,7 +566,7 @@ body {
 
 .time-display {
     color:#a0dfff;
-    font-size: 0.65em; /* Уменьшен шрифт */
+    font-size: 0.65em;
     font-family:'Consolas', monospace;
     min-width: 55px;
     text-align:center;
@@ -754,15 +754,15 @@ body {
             </div>
         </div>
 
-        <!-- КОМПАКТНЫЙ САУНДБАР - МЕНЬШЕ ВЫСОТА -->
+        <!-- КОМПАКТНЫЙ САУНДБАР -->
         <div class="soundbar-container">
             <div class="soundbar-header">
                 <div class="album-cover">
-                    <img id="albumCover" src="https://avatars.mds.yandex.net/i?id=07c473b40b57de03071e49f758a31f7ac47f341b-4080498-images-thumbs&n=13" alt="Album Cover">
+                    <img id="albumCover" src="https://avatars.mds.yandex.net/i?id=951702c95710e15ab08b94d88c879dd5_l-10353822-images-thumbs&n=13" alt="RUSSIA DREAMS Cover">
                 </div>
                 <div class="track-info">
-                    <div class="track-name" id="trackName">MARTIN ROSE</div>
-                    <div class="track-artist" id="trackArtist">greyrock, madk1d, tewiq</div>
+                    <div class="track-name" id="trackName">RUSSIA DREAMS</div>
+                    <div class="track-artist" id="trackArtist">Hell_Pak</div>
                 </div>
                 <div class="sound-wave" id="soundWave">
                     <div class="bar"></div>
@@ -777,9 +777,7 @@ body {
 
             <div class="soundbar-controls">
                 <div class="control-buttons">
-                    <button class="control-btn" id="prevBtn">◀◀</button>
                     <button class="control-btn play-pause" id="playBtn">▶</button>
-                    <button class="control-btn" id="nextBtn">▶▶</button>
                 </div>
 
                 <div class="time-display" id="timeDisplay">0:00 / 0:00</div>
@@ -805,8 +803,6 @@ body {
 const clickOverlay = document.getElementById('clickOverlay');
 const mainContent = document.getElementById('mainContent');
 const playBtn = document.getElementById('playBtn');
-const prevBtn = document.getElementById('prevBtn');
-const nextBtn = document.getElementById('nextBtn');
 const progress = document.getElementById('progress');
 const progressContainer = document.getElementById('progressContainer');
 const volumeSlider = document.getElementById('volumeSlider');
@@ -817,24 +813,13 @@ const soundWave = document.getElementById('soundWave');
 const albumCover = document.getElementById('albumCover');
 const contentWrapper = document.getElementById('contentWrapper');
 
+// ТОЛЬКО ОДИН ТРЕК - RUSSIA DREAMS
 let tracks = [
     {
-        name:'MARTIN ROSE',
-        artist:'greyrock, madk1d, tewiq',
-        src:'assets/sound/music.mp3',
-        cover:'https://avatars.mds.yandex.net/i?id=07c473b40b57de03071e49f758a31f7ac47f341b-4080498-images-thumbs&n=13'
-    },
-    {
-        name:'Священная война',
-        artist:'remakerr',
-        src:'assets/sound/music1.mp3',
-        cover:'https://avatars.yandex.net/get-music-content/16616584/bdd24c64.a.38514843-1/300x300'
-    },
-    {
-        name:'В клубе', 
-        artist:'Темный Принц',
-        src:'assets/sound/music2.mp3',
-        cover:'https://avatars.yandex.net/get-music-content/15682289/25e5c893.a.36949141-1/300x300'
+        name:'RUSSIA DREAMS',
+        artist:'Hell_Pak',
+        src:'assets/sound/russia_dreams.mp3',
+        cover:'https://avatars.mds.yandex.net/i?id=951702c95710e15ab08b94d88c879dd5_l-10353822-images-thumbs&n=13'
     }
 ];
 
@@ -860,7 +845,7 @@ async function playAudio() {
         playBtn.textContent = '❚❚';
         isPlaying = true;
         soundWave.style.display = 'flex';
-        console.log('🎵 Музыка запущена!');
+        console.log('🎵 RUSSIA DREAMS запущена!');
     } catch (error) {
         console.log('❌ Ошибка воспроизведения:', error);
         playBtn.textContent = '▶';
@@ -910,20 +895,6 @@ playBtn.addEventListener('click', () => {
     }
 });
 
-prevBtn.addEventListener('click', () => {
-    let newTrack = currentTrack - 1;
-    if(newTrack < 0) newTrack = tracks.length - 1;
-    loadTrack(newTrack);
-    if(isPlaying) playAudio();
-});
-
-nextBtn.addEventListener('click', () => {
-    let newTrack = currentTrack + 1;
-    if(newTrack >= tracks.length) newTrack = 0;
-    loadTrack(newTrack);
-    if(isPlaying) playAudio();
-});
-
 volumeSlider.addEventListener('input', () => {
     audio.volume = volumeSlider.value / 100;
 });
@@ -943,10 +914,11 @@ progressContainer.addEventListener('click', (e) => {
 });
 
 audio.addEventListener('ended', () => {
-    let newTrack = currentTrack + 1;
-    if(newTrack >= tracks.length) newTrack = 0;
-    loadTrack(newTrack);
-    if(isPlaying) playAudio();
+    // Автоповтор одного трека
+    audio.currentTime = 0;
+    if(isPlaying) {
+        playAudio();
+    }
 });
 
 audio.addEventListener('loadedmetadata', updateTimeDisplay);
