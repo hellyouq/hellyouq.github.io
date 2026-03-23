@@ -16,6 +16,7 @@ Click to Enter — стартовый экран с размытием
 text
 
 assets/
+
 ├── fonts/          # Шрифты (Consolas, Unbounded, Radware)
 
 ├── images/         # Аватарка (avatar.jpg)
