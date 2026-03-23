@@ -12,11 +12,16 @@ Click to Enter — стартовый экран с размытием
 Встроенный плеер — автоматическое воспроизведение трека после входа
 
 Структура файлов
+
 text
+
 assets/
 ├── fonts/          # Шрифты (Consolas, Unbounded, Radware)
+
 ├── images/         # Аватарка (avatar.jpg)
+
 ├── sound/          # Музыка (music.mp3)
+
 └── videos/         # Фоновое видео (backmenu.mp4)
 
 Быстрая настройка
