@@ -1,0 +1,5995 @@
+═══════════════════════════════════════════════════════════════════════════════
+ПОЛНОЕ РУКОВОДСТВО ПО СОВРЕМЕННОЙ ВЕБ-РАЗРАБОТКЕ
+React, Node.js, HTML, CSS, JS и инструменты
+═══════════════════════════════════════════════════════════════════════════════
+
+На основе анализа шести передовых UI-библиотек и платформ:
+retroui, magicui, smoothui, ui.unlumen, tweakcn, manus и GitHub Radar
+
+═══════════════════════════════════════════════════════════════════════════════
+ОГЛАВЛЕНИЕ
+═══════════════════════════════════════════════════════════════════════════════
+
+Часть 0: Введение и обзор проектов
+Часть 1: HTML5 — структура и семантика
+Часть 2: CSS3 — стилизация и анимации
+Часть 3: JavaScript (ES6+) — язык программирования
+Часть 4: React — разработка интерфейсов
+Часть 5: Анимации в React — Framer Motion / Motion / React Spring
+Часть 6: Node.js — серверная разработка
+Часть 7: Базы данных и ORM
+Часть 8: GraphQL — альтернатива REST
+Часть 9: Инструменты и экосистема
+Часть 10: Тестирование (Unit, Integration, E2E)
+Часть 11: Докеризация и оркестрация
+Часть 12: CI/CD пайплайны
+Часть 13: Мониторинг и логирование
+Часть 14: Безопасность в веб-приложениях
+Часть 15: Оптимизация производительности
+Часть 16: Управление состоянием (State Management)
+Часть 17: AI-агенты в разработке (Manus и другие)
+Часть 18: Самостоятельное обучение и ресурсы
+Часть 19: Чек-лист современного разработчика
+
+═══════════════════════════════════════════════════════════════════════════════
+ЧАСТЬ 0: ВВЕДЕНИЕ И ОБЗОР ПРОЕКТОВ
+═══════════════════════════════════════════════════════════════════════════════
+
+Современная веб-разработка стремительно эволюционирует. Появились десятки
+библиотек, фреймворков и инструментов, которые позволяют создавать сложные
+интерфейсы с минимальными усилиями. Мы проанализировали шесть выдающихся
+проектов, каждый из которых демонстрирует уникальный подход к созданию
+пользовательских интерфейсов и разработке в целом.
+
+┌─────────────────────────────────────────────────────────────────────────────┐
+│ 0.1 RETROUI — UI-кит в ретро/необруталистском стиле                       │
+│ Сайт: retroui.dev                                                          │
+│                                                                            │
+│ Основная идея: предоставить готовые React-компоненты в стиле необрутализма │
+│ — толстые границы, жёсткие тени, яркие цвета. Компоненты доступны в двух   │
+│ вариантах: на основе Radix UI и Base UI. Устанавливаются через shadcn CLI  │
+│ и поставляются в виде исходного кода.                                     │
+│                                                                            │
+│ Технологический стек:                                                      │
+│ • React (функциональные компоненты, хуки)                                  │
+│ • Radix UI / Base UI — библиотеки примитивов с поддержкой доступности      │
+│ • shadcn CLI — инструмент для установки компонентов                        │
+│ • Tailwind CSS для стилизации                                              │
+│                                                                            │
+│ Особенности:                                                               │
+│ • Доступность (a11y): все компоненты построены на Radix UI, который        │
+│   изначально соответствует WCAG.                                           │
+│ • Кастомизация: поскольку код поставляется в исходниках, вы можете легко   │
+│   менять стили и поведение.                                                │
+│ • Компоненты: Accordion, Alert, Menu, Search, Sign In, Get Access и др.   │
+│ • Стиль: необрутализм — сейчас тренд в дизайне.                           │
+│                                                                            │
+│ Комбинация с другими библиотеками: Retroui отлично работает вместе с       │
+│ MagicUI для добавления анимаций к ретро-компонентам.                       │
+│                                                                            │
+│ Репозиторий: github.com/retroui/retroui                                    │
+│ Документация: retroui.dev/docs                                             │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+┌─────────────────────────────────────────────────────────────────────────────┐
+│ 0.2 MAGICUI — анимированные компоненты для дизайн-инженеров               │
+│ Сайт: magicui.design                                                       │
+│                                                                            │
+│ Основная идея: 150+ бесплатных компонентов и эффектов с анимациями,        │
+│ построенных на React, TypeScript, Tailwind CSS и Motion. Позиционируются   │
+│ как идеальный компаньон для shadcn/ui.                                    │
+│                                                                            │
+│ Технологический стек:                                                      │
+│ • React + TypeScript                                                       │
+│ • Tailwind CSS для стилизации                                              │
+│ • Motion (форк Framer Motion) для анимаций                                 │
+│ • shadcn/ui — интеграция с экосистемой                                    │
+│                                                                            │
+│ Особенности:                                                               │
+│ • Готовые анимированные эффекты: Glyph Matrix, текстовые анимации,         │
+│   появление элементов.                                                     │
+│ • Компоненты и шаблоны: можно использовать как отдельные компоненты или    │
+│   целые шаблоны страниц.                                                   │
+│ • Открытый исходный код: 150+ компонентов бесплатно.                       │
+│                                                                            │
+│ Комбинация: Используйте MagicUI вместе с shadcn/ui для добавления анимаций │
+│ к базовым компонентам.                                                     │
+│                                                                            │
+│ Репозиторий: github.com/magicui/magicui                                    │
+│ Документация: magicui.design/docs                                          │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+┌─────────────────────────────────────────────────────────────────────────────┐
+│ 0.3 SMOOTHUI — плавные и стильные компоненты                              │
+│ Сайт: smoothui.dev                                                         │
+│                                                                            │
+│ Основная идея: коллекция React-компонентов с плавными анимациями           │
+│ (аккордеон, инпуты с плавающими лейблами, прогресс-бар). Упор на UX —     │
+│ анимации делают интерфейс живым и отзывчивым.                             │
+│                                                                            │
+│ Технологический стек:                                                      │
+│ • React                                                                   │
+│ • Tailwind CSS для стилей                                                  │
+│ • Для анимаций — CSS transitions и keyframes, React Spring                 │
+│                                                                            │
+│ Особенности:                                                               │
+│ • Accordion — плавное раскрытие/сворачивание с доступностью               │
+│ • Animated Input — лейбл анимируется при фокусе                            │
+│ • Animated Progress Bar — плавное заполнение                               │
+│                                                                            │
+│ Репозиторий: github.com/smoothui/smoothui                                  │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+┌─────────────────────────────────────────────────────────────────────────────┐
+│ 0.4 UI.UNLUMEN — анимированные компоненты с shadcn CLI                    │
+│ Сайт: ui.unlumen.com                                                       │
+│                                                                            │
+│ Основная идея: библиотека анимированных React-компонентов, которые         │
+│ устанавливаются через shadcn CLI. Содержит нестандартные компоненты:       │
+│ Floating Tooltip, Dock, Dia Text Reveal, Scramble Text, Volume контрол.   │
+│                                                                            │
+│ Технологический стек:                                                      │
+│ • React + TypeScript                                                       │
+│ • shadcn CLI для установки                                                 │
+│ • Tailwind CSS                                                             │
+│ • Framer Motion или React Spring для анимаций                              │
+│                                                                            │
+│ Особенности:                                                               │
+│ • Floating Tooltip — тултип с анимацией                                    │
+│ • Dock — macOS-подобная панель с увеличением иконок                       │
+│ • Dia Text Reveal — текст появляется по буквам                             │
+│ • Scramble Text — текст "перемешивается" при наведении                    │
+│                                                                            │
+│ Репозиторий: github.com/unlumen/ui                                         │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+┌─────────────────────────────────────────────────────────────────────────────┐
+│ 0.5 TWEAKCN — визуальный редактор тем для shadcn/ui                       │
+│ Сайт: tweakcn.com                                                          │
+│                                                                            │
+│ Основная идея: визуальный редактор тем для shadcn/ui (и, следовательно,   │
+│ для Tailwind). Позволяет настраивать цвета, типографику, отступы с        │
+│ реальным превью и экспортировать готовую тему.                            │
+│                                                                            │
+│ Технологический стек:                                                      │
+│ • React (вероятно, Next.js)                                                │
+│ • Tailwind CSS — основа для стилей                                         │
+│ • shadcn/ui — компоненты, которые темизируются                            │
+│ • Radix UI для примитивов                                                  │
+│                                                                            │
+│ Пресеты тем: Midnight Bloom, Vintage Paper, Clauci, Candyland,            │
+│ Sunset Horizon, Vercel, Northern Lights, Starry Night, Darkman.           │
+│                                                                            │
+│ Репозиторий: github.com/tweakcn/tweakcn                                    │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+┌─────────────────────────────────────────────────────────────────────────────┐
+│ 0.6 MANUS — AI-агент, пишущий код                                          │
+│                                                                            │
+│ Основная идея: AI-агент, который самостоятельно выполняет задачи и пишет  │
+│ код по заданию. Это не UI-библиотека, а инструмент, использующий ИИ для   │
+│ автоматизации разработки.                                                  │
+│                                                                            │
+│ Технологии:                                                                │
+│ • Искусственный интеллект (большие языковые модели)                        │
+│ • Интеграция с IDE и системами контроля версий                             │
+│                                                                            │
+│ Значение для разработчика: показывает, что ИИ всё больше внедряется в     │
+│ процесс создания кода. Для обучения важно уметь формулировать задачи для  │
+│ ИИ и проверять генерируемый код.                                          │
+│                                                                            │
+│ Сайт: manus.im (в разработке)                                              │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+┌─────────────────────────────────────────────────────────────────────────────┐
+│ 0.7 GITHUB RADAR И SANDSTORM                                               │
+│                                                                            │
+│ GitHub Radar — телеграм-канал с 18 673 подписчиками, который публикует    │
+│ полезные сервисы. Один из них — Sandstorm:                                 │
+│                                                                            │
+│ • Self-hosted платформа для запуска веб-приложений на своём сервере.      │
+│ • Работает как менеджер пакетов для веб-приложений с усиленной изоляцией. │
+│ • Устанавливается на любой x86-64 Linux.                                   │
+│ • Позволяет разворачивать приложения для работы с документами, таблицами,  │
+│   блогами, git-репозиториями и задачами.                                  │
+│                                                                            │
+│ Технологии: Docker (контейнеризация), Linux, веб-технологии.              │
+│                                                                            │
+│ Сайт: sandstorm.io                                                         │
+│ Telegram: @github_radar                                                    │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+═══════════════════════════════════════════════════════════════════════════════
+ЧАСТЬ 1: HTML5 — СТРУКТУРА И СЕМАНТИКА
+═══════════════════════════════════════════════════════════════════════════════
+
+1.1 ОСНОВЫ HTML
+
+HTML — это язык разметки, определяющий структуру веб-страницы.
+
+Базовый шаблон:
+─────────────────────────────────────────────────────────────────────────────
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Мой сайт</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+</head>
+<body>
+    <header>
+        <nav>...</nav>
+    </header>
+    <main>
+        <section>
+            <h1>Заголовок</h1>
+            <p>Абзац текста.</p>
+        </section>
+        <aside>Боковая панель</aside>
+    </main>
+    <footer>Подвал</footer>
+    <script src="script.js" defer></script>
+</body>
+</html>
+─────────────────────────────────────────────────────────────────────────────
+
+1.2 СЕМАНТИЧЕСКИЕ ТЕГИ
+
+Семантические теги улучшают SEO и доступность:
+
+• <header> — шапка сайта
+• <footer> — подвал сайта
+• <main> — основное содержимое
+• <nav> — навигация
+• <section> — логический раздел
+• <article> — самостоятельная единица контента
+• <aside> — дополнительная информация
+• <figure> / <figcaption> — иллюстрации с подписями
+• <time> — дата и время
+• <address> — контактная информация
+• <mark> — выделенный текст
+• <details> / <summary> — раскрывающийся блок
+
+1.3 ДОСТУПНОСТЬ (A11Y)
+
+Основные принципы доступности:
+
+1. Атрибуты:
+   • alt — для изображений
+   • title — для ссылок (дополнительное пояснение)
+   • aria-* — для динамического контента
+   • role — для кастомных компонентов
+
+2. Иерархия заголовков:
+   • Используйте h1-h6 в правильном порядке
+   • Не пропускайте уровни
+
+3. Клавиатурная навигация:
+   • Все интерактивные элементы должны быть доступны через Tab
+   • Используйте :focus-visible для визуальной индикации
+
+4. Цветовой контраст:
+   • Минимальный контраст 4.5:1 для текста
+   • Используйте инструменты проверки контраста
+
+5. Адаптивность:
+   • Используйте относительные единицы (rem, %, vw/vh)
+   • Медиа-запросы для разных устройств
+
+Пример доступной формы:
+─────────────────────────────────────────────────────────────────────────────
+<form aria-label="Форма обратной связи" role="form">
+    <fieldset>
+        <legend>Контактная информация</legend>
+        
+        <label for="name">Имя *</label>
+        <input 
+            type="text" 
+            id="name" 
+            name="name" 
+            required 
+            aria-required="true"
+            placeholder="Введите ваше имя"
+        >
+        
+        <label for="email">Email *</label>
+        <input 
+            type="email" 
+            id="email" 
+            name="email" 
+            required 
+            aria-required="true"
+            placeholder="example@mail.com"
+        >
+        
+        <label for="message">Сообщение</label>
+        <textarea 
+            id="message" 
+            name="message" 
+            rows="4"
+            aria-describedby="message-hint"
+        ></textarea>
+        <span id="message-hint">Максимум 500 символов</span>
+        
+        <button type="submit" aria-label="Отправить сообщение">
+            Отправить
+        </button>
+    </fieldset>
+</form>
+─────────────────────────────────────────────────────────────────────────────
+
+1.4 HTML5 API
+
+Основные API, доступные в HTML5:
+
+• Canvas — для рисования графики
+• SVG — векторная графика
+• Audio / Video — работа с мультимедиа
+• Web Storage — localStorage, sessionStorage
+• Geolocation — определение местоположения
+• Web Workers — многопоточность в браузере
+• History API — управление историей браузера
+• Drag and Drop — перетаскивание элементов
+
+Пример использования Web Storage:
+─────────────────────────────────────────────────────────────────────────────
+// Сохранение данных
+localStorage.setItem('user', JSON.stringify({ name: 'John', age: 30 }));
+
+// Получение данных
+const userData = JSON.parse(localStorage.getItem('user'));
+
+// Удаление
+localStorage.removeItem('user');
+localStorage.clear(); // Очистить всё
+─────────────────────────────────────────────────────────────────────────────
+
+═══════════════════════════════════════════════════════════════════════════════
+ЧАСТЬ 2: CSS3 — СТИЛИЗАЦИЯ И АНИМАЦИИ
+═══════════════════════════════════════════════════════════════════════════════
+
+2.1 ОСНОВЫ CSS
+
+• Селекторы: классы (.class), идентификаторы (#id), теги (div)
+• Псевдоклассы: :hover, :focus, :active, :nth-child()
+• Псевдоэлементы: ::before, ::after, ::first-line
+• Каскадность и специфичность (inline > id > class > тег)
+• Блочная модель: margin, border, padding, content
+
+2.2 FLEXBOX — ОДНОМЕРНАЯ РАСКЛАДКА
+
+─────────────────────────────────────────────────────────────────────────────
+.container {
+    display: flex;
+    flex-direction: row | column | row-reverse | column-reverse;
+    justify-content: flex-start | center | space-between | space-around | space-evenly;
+    align-items: flex-start | center | stretch | baseline;
+    gap: 20px;
+    flex-wrap: wrap;
+    flex-flow: row wrap; /* сокращение для flex-direction + flex-wrap */
+}
+
+.item {
+    flex: 1 1 200px; /* grow shrink basis */
+    flex-grow: 1;
+    flex-shrink: 0;
+    flex-basis: 200px;
+    align-self: center;
+    order: 2;
+}
+─────────────────────────────────────────────────────────────────────────────
+
+2.3 GRID — ДВУМЕРНАЯ РАСКЛАДКА
+
+─────────────────────────────────────────────────────────────────────────────
+.grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr) | 200px 1fr 2fr | auto;
+    grid-template-rows: 100px auto 100px;
+    grid-template-areas: 
+        "header header header"
+        "sidebar main main"
+        "footer footer footer";
+    gap: 16px;
+    justify-items: start | center | end | stretch;
+    align-items: start | center | end | stretch;
+}
+
+.item {
+    grid-column: 1 / 3;
+    grid-row: 2 / 4;
+    grid-area: header;
+}
+─────────────────────────────────────────────────────────────────────────────
+
+2.4 TAILWIND CSS — УТИЛИТАРНЫЙ ПОДХОД
+
+Установка:
+─────────────────────────────────────────────────────────────────────────────
+npm install -D tailwindcss postcss autoprefixer
+npx tailwindcss init -p
+─────────────────────────────────────────────────────────────────────────────
+
+tailwind.config.js:
+─────────────────────────────────────────────────────────────────────────────
+/** @type {import('tailwindcss').Config} */
+module.exports = {
+  content: ["./src/**/*.{html,js,jsx,ts,tsx}"],
+  theme: {
+    extend: {
+      colors: {
+        primary: {
+          50: '#eff6ff',
+          100: '#dbeafe',
+          200: '#bfdbfe',
+          300: '#93c5fd',
+          400: '#60a5fa',
+          500: '#3b82f6',
+          600: '#2563eb',
+          700: '#1d4ed8',
+          800: '#1e40af',
+          900: '#1e3a8a',
+        },
+      },
+      fontFamily: {
+        sans: ['Inter', 'system-ui', 'sans-serif'],
+      },
+      spacing: {
+        '18': '4.5rem',
+        '88': '22rem',
+      },
+      animation: {
+        'fade-in': 'fadeIn 0.5s ease-in-out',
+        'slide-up': 'slideUp 0.3s ease-out',
+      },
+      keyframes: {
+        fadeIn: {
+          '0%': { opacity: '0' },
+          '100%': { opacity: '1' },
+        },
+        slideUp: {
+          '0%': { transform: 'translateY(10px)', opacity: '0' },
+          '100%': { transform: 'translateY(0)', opacity: '1' },
+        },
+      },
+    },
+  },
+  plugins: [
+    require('@tailwindcss/forms'),
+    require('@tailwindcss/typography'),
+    require('@tailwindcss/aspect-ratio'),
+  ],
+}
+─────────────────────────────────────────────────────────────────────────────
+
+Подключение в CSS:
+─────────────────────────────────────────────────────────────────────────────
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  h1 {
+    @apply text-4xl font-bold mb-4;
+  }
+  h2 {
+    @apply text-2xl font-semibold mb-3;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply px-4 py-2 bg-primary-500 text-white rounded-lg hover:bg-primary-600 
+           transition-colors duration-200 focus:outline-none focus:ring-2 
+           focus:ring-primary-500 focus:ring-offset-2;
+  }
+  .card {
+    @apply bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition-shadow;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+─────────────────────────────────────────────────────────────────────────────
+
+Пример компонента с Tailwind:
+─────────────────────────────────────────────────────────────────────────────
+<div class="max-w-sm mx-auto bg-white rounded-xl shadow-md overflow-hidden md:max-w-2xl">
+  <div class="md:flex">
+    <div class="md:flex-shrink-0">
+      <img class="h-48 w-full object-cover md:h-full md:w-48" 
+           src="/img/logo.png" alt="Логотип компании">
+    </div>
+    <div class="p-8">
+      <div class="uppercase tracking-wide text-sm text-primary-500 font-semibold">
+        Компания
+      </div>
+      <a href="#" class="block mt-1 text-lg leading-tight font-medium text-black hover:underline">
+        Название продукта
+      </a>
+      <p class="mt-2 text-gray-500">
+        Описание продукта. Уникальные преимущества и характеристики.
+      </p>
+      <div class="mt-4 flex items-center gap-3">
+        <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-primary-100 text-primary-800">
+          Новинка
+        </span>
+        <span class="text-sm text-gray-500">★ 4.8 (256 отзывов)</span>
+      </div>
+    </div>
+  </div>
+</div>
+─────────────────────────────────────────────────────────────────────────────
+
+2.5 CSS-ПЕРЕМЕННЫЕ (CUSTOM PROPERTIES)
+
+─────────────────────────────────────────────────────────────────────────────
+:root {
+    --primary: #3490dc;
+    --primary-dark: #2779bd;
+    --secondary: #ffed4a;
+    --spacing-unit: 8px;
+    --border-radius: 8px;
+    --transition-speed: 0.3s;
+}
+
+.button {
+    background-color: var(--primary);
+    border-radius: var(--border-radius);
+    padding: calc(var(--spacing-unit) * 2) calc(var(--spacing-unit) * 4);
+    transition: all var(--transition-speed) ease;
+}
+
+.button:hover {
+    background-color: var(--primary-dark);
+}
+
+/* Темизация через CSS-переменные */
+[data-theme="dark"] {
+    --bg-primary: #1a202c;
+    --text-primary: #f7fafc;
+}
+
+[data-theme="light"] {
+    --bg-primary: #f7fafc;
+    --text-primary: #1a202c;
+}
+─────────────────────────────────────────────────────────────────────────────
+
+2.6 CSS-АНИМАЦИИ
+
+CSS Transitions — для плавных изменений свойств:
+─────────────────────────────────────────────────────────────────────────────
+.button {
+    background-color: #3b82f6;
+    color: white;
+    padding: 12px 24px;
+    border-radius: 8px;
+    transform: scale(1);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.button:hover {
+    background-color: #2563eb;
+    transform: scale(1.05);
+    box-shadow: 0 10px 20px rgba(59, 130, 246, 0.3);
+}
+
+.button:active {
+    transform: scale(0.95);
+}
+─────────────────────────────────────────────────────────────────────────────
+
+CSS Keyframes — для сложных анимаций:
+─────────────────────────────────────────────────────────────────────────────
+@keyframes slideIn {
+    0% {
+        transform: translateX(-100px);
+        opacity: 0;
+    }
+    60% {
+        transform: translateX(20px);
+        opacity: 0.8;
+    }
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+}
+
+@keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+.element {
+    animation: slideIn 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+    animation-delay: 0.2s;
+    animation-iteration-count: 1;
+    animation-fill-mode: both;
+}
+
+.loader {
+    animation: spin 1s linear infinite;
+}
+─────────────────────────────────────────────────────────────────────────────
+
+Плавающий лейбл (как в smoothui):
+─────────────────────────────────────────────────────────────────────────────
+.input-group {
+    position: relative;
+    margin-bottom: 24px;
+}
+
+.input-group input,
+.input-group textarea {
+    width: 100%;
+    padding: 16px 12px 8px;
+    border: 2px solid #e2e8f0;
+    border-radius: 8px;
+    font-size: 16px;
+    transition: border-color 0.3s ease;
+    background: transparent;
+}
+
+.input-group input:focus,
+.input-group textarea:focus {
+    border-color: #3b82f6;
+    outline: none;
+}
+
+.input-group label {
+    position: absolute;
+    left: 12px;
+    top: 16px;
+    font-size: 16px;
+    color: #718096;
+    transition: all 0.2s ease;
+    pointer-events: none;
+    background: white;
+    padding: 0 4px;
+}
+
+.input-group input:focus ~ label,
+.input-group input:not(:placeholder-shown) ~ label,
+.input-group textarea:focus ~ label,
+.input-group textarea:not(:placeholder-shown) ~ label {
+    top: -8px;
+    font-size: 12px;
+    color: #3b82f6;
+    transform: translateY(0);
+}
+─────────────────────────────────────────────────────────────────────────────
+
+═══════════════════════════════════════════════════════════════════════════════
+ЧАСТЬ 3: JAVASCRIPT (ES6+) — ЯЗЫК ПРОГРАММИРОВАНИЯ
+═══════════════════════════════════════════════════════════════════════════════
+
+3.1 ОСНОВЫ JS
+
+Переменные:
+─────────────────────────────────────────────────────────────────────────────
+// let — изменяемая переменная
+let name = 'John';
+name = 'Jane';
+
+// const — неизменяемая переменная (константа)
+const PI = 3.14159;
+// PI = 3.14; // Ошибка!
+
+// var — устаревший способ (не использовать)
+var oldWay = 'не рекомендуется';
+─────────────────────────────────────────────────────────────────────────────
+
+Типы данных:
+─────────────────────────────────────────────────────────────────────────────
+// Примитивные типы
+const string = 'Hello';         // Строка
+const number = 42;              // Число
+const boolean = true;           // Булево
+const nullValue = null;         // Null (намеренное отсутствие значения)
+const undefinedValue = undefined; // Undefined (неопределённое)
+const symbol = Symbol('id');    // Символ (уникальный идентификатор)
+const bigInt = 9007199254740991n; // BigInt (большие числа)
+
+// Ссылочные типы
+const object = { name: 'John', age: 30 };  // Объект
+const array = [1, 2, 3, 4, 5];              // Массив
+const function_ = function() { return 'Hello'; }; // Функция
+const date = new Date();                    // Дата
+const regex = /[a-z]+/;                     // Регулярное выражение
+
+// Проверка типа
+console.log(typeof string); // "string"
+console.log(typeof object); // "object"
+console.log(Array.isArray(array)); // true
+─────────────────────────────────────────────────────────────────────────────
+
+Шаблонные строки:
+─────────────────────────────────────────────────────────────────────────────
+const name = 'Alice';
+const age = 25;
+
+// Старый способ
+console.log('Меня зовут ' + name + ', мне ' + age + ' лет.');
+
+// Новый способ (шаблонные строки)
+console.log(`Меня зовут ${name}, мне ${age} лет.`);
+
+// Многострочные строки
+const multiline = `
+    Строка 1
+    Строка 2
+    Строка 3
+`;
+─────────────────────────────────────────────────────────────────────────────
+
+Деструктуризация:
+─────────────────────────────────────────────────────────────────────────────
+// Объекты
+const person = { firstName: 'John', lastName: 'Doe', age: 30 };
+const { firstName, lastName, age: personAge } = person;
+console.log(firstName); // 'John'
+console.log(personAge); // 30
+
+// Массивы
+const colors = ['red', 'green', 'blue'];
+const [firstColor, secondColor, thirdColor] = colors;
+console.log(firstColor); // 'red'
+
+// Деструктуризация в параметрах функции
+function printUser({ name, email }) {
+    console.log(`User: ${name}, Email: ${email}`);
+}
+printUser({ name: 'Alice', email: 'alice@mail.com' });
+─────────────────────────────────────────────────────────────────────────────
+
+Spread и Rest операторы:
+─────────────────────────────────────────────────────────────────────────────
+// Spread (распаковка)
+const arr1 = [1, 2, 3];
+const arr2 = [4, 5, 6];
+const combined = [...arr1, ...arr2]; // [1,2,3,4,5,6]
+
+const obj1 = { a: 1, b: 2 };
+const obj2 = { c: 3, d: 4 };
+const merged = { ...obj1, ...obj2 }; // { a:1, b:2, c:3, d:4 }
+
+// Rest (сборка)
+const [first, second, ...rest] = [1, 2, 3, 4, 5];
+console.log(first); // 1
+console.log(rest); // [3,4,5]
+
+function sum(...numbers) {
+    return numbers.reduce((acc, curr) => acc + curr, 0);
+}
+console.log(sum(1, 2, 3, 4)); // 10
+─────────────────────────────────────────────────────────────────────────────
+
+3.2 ФУНКЦИИ
+
+Стрелочные функции:
+─────────────────────────────────────────────────────────────────────────────
+// Обычная функция
+function add(a, b) {
+    return a + b;
+}
+
+// Функциональное выражение
+const subtract = function(a, b) {
+    return a - b;
+};
+
+// Стрелочная функция
+const multiply = (a, b) => a * b;
+
+// Стрелочная с блоком кода
+const divide = (a, b) => {
+    if (b === 0) throw new Error('Деление на ноль');
+    return a / b;
+};
+
+// Стрелочная без параметров
+const greet = () => 'Hello World!';
+
+// Стрелочная с одним параметром (скобки не обязательны)
+const square = x => x * x;
+
+// Контекст this в стрелочных функциях
+const obj = {
+    name: 'Test',
+    regularFunction: function() {
+        console.log(this.name); // 'Test' — this ссылается на obj
+    },
+    arrowFunction: () => {
+        console.log(this.name); // undefined — this из внешнего контекста
+    }
+};
+─────────────────────────────────────────────────────────────────────────────
+
+3.3 АСИНХРОННОСТЬ
+
+Промисы:
+─────────────────────────────────────────────────────────────────────────────
+// Создание промиса
+const myPromise = new Promise((resolve, reject) => {
+    // Асинхронная операция
+    setTimeout(() => {
+        const success = true;
+        if (success) {
+            resolve('Операция выполнена успешно');
+        } else {
+            reject('Произошла ошибка');
+        }
+    }, 1000);
+});
+
+// Использование промиса
+myPromise
+    .then(result => {
+        console.log('Успех:', result);
+        return result.toUpperCase();
+    })
+    .then(processed => {
+        console.log('Обработанный результат:', processed);
+    })
+    .catch(error => {
+        console.error('Ошибка:', error);
+    })
+    .finally(() => {
+        console.log('Промис завершён');
+    });
+
+// Promise.all — параллельное выполнение
+Promise.all([
+    fetch('/api/users'),
+    fetch('/api/posts'),
+    fetch('/api/comments')
+])
+.then(responses => Promise.all(responses.map(r => r.json())))
+.then(([users, posts, comments]) => {
+    console.log({ users, posts, comments });
+})
+.catch(error => console.error('Ошибка загрузки:', error));
+
+// Promise.race — первый завершённый
+Promise.race([
+    fetch('/api/fast'),
+    fetch('/api/slow')
+])
+.then(response => response.json())
+.then(data => console.log('Первый ответ:', data));
+─────────────────────────────────────────────────────────────────────────────
+
+Async / Await:
+─────────────────────────────────────────────────────────────────────────────
+// Объявление асинхронной функции
+async function fetchUserData(userId) {
+    try {
+        // await останавливает выполнение до завершения промиса
+        const userResponse = await fetch(`/api/users/${userId}`);
+        if (!userResponse.ok) {
+            throw new Error(`HTTP error! status: ${userResponse.status}`);
+        }
+        const user = await userResponse.json();
+        
+        // Параллельные запросы
+        const [posts, comments] = await Promise.all([
+            fetch(`/api/users/${userId}/posts`).then(r => r.json()),
+            fetch(`/api/users/${userId}/comments`).then(r => r.json())
+        ]);
+        
+        return { ...user, posts, comments };
+    } catch (error) {
+        console.error('Ошибка:', error);
+        // Пробрасываем ошибку дальше
+        throw new Error(`Не удалось получить данные пользователя: ${error.message}`);
+    }
+}
+
+// Использование
+async function displayUser() {
+    try {
+        const userData = await fetchUserData(1);
+        console.log('Данные пользователя:', userData);
+    } catch (error) {
+        console.error('Произошла ошибка:', error.message);
+        // Показать сообщение пользователю
+        document.getElementById('error').textContent = 'Не удалось загрузить данные';
+    }
+}
+
+// IIFE (Immediately Invoked Function Expression) с async
+(async () => {
+    const data = await fetchUserData(1);
+    console.log('Данные загружены:', data);
+})();
+─────────────────────────────────────────────────────────────────────────────
+
+3.4 РАБОТА С DOM
+
+─────────────────────────────────────────────────────────────────────────────
+// Получение элементов
+const element = document.getElementById('myId');
+const elements = document.getElementsByClassName('myClass');
+const elementsByTag = document.getElementsByTagName('div');
+const querySelector = document.querySelector('.myClass');
+const querySelectorAll = document.querySelectorAll('.myClass');
+
+// Создание элементов
+const div = document.createElement('div');
+div.className = 'container';
+div.id = 'newElement';
+div.textContent = 'Привет мир!';
+div.innerHTML = '<span>HTML контент</span>';
+
+// Добавление в DOM
+document.body.appendChild(div);
+document.body.insertBefore(div, document.body.firstChild);
+parentElement.appendChild(div);
+
+// Удаление элемента
+element.remove();
+parentElement.removeChild(element);
+
+// Работа с классами
+element.classList.add('new-class');
+element.classList.remove('old-class');
+element.classList.toggle('active');
+element.classList.contains('active'); // true/false
+
+// Работа с атрибутами
+element.setAttribute('data-id', '123');
+const dataId = element.getAttribute('data-id');
+element.hasAttribute('data-id'); // true
+element.removeAttribute('data-id');
+
+// События
+element.addEventListener('click', handleClick, { once: true });
+element.addEventListener('input', (e) => {
+    console.log('Значение:', e.target.value);
+});
+
+// Удаление обработчика
+element.removeEventListener('click', handleClick);
+
+// Делегирование событий
+document.addEventListener('click', (e) => {
+    if (e.target.matches('.btn-delete')) {
+        console.log('Кнопка удаления нажата', e.target);
+    }
+});
+
+// Кастомные события
+const customEvent = new CustomEvent('userAction', {
+    detail: { userId: 123, action: 'login' }
+});
+element.dispatchEvent(customEvent);
+
+document.addEventListener('userAction', (e) => {
+    console.log('Кастомное событие:', e.detail);
+});
+─────────────────────────────────────────────────────────────────────────────
+
+3.5 МОДУЛИ
+
+─────────────────────────────────────────────────────────────────────────────
+// module.js
+export const PI = 3.14159;
+export const E = 2.71828;
+
+export function circleArea(radius) {
+    return PI * radius * radius;
+}
+
+export default function greet(name) {
+    return `Привет, ${name}!`;
+}
+
+// main.js
+import greet, { PI, E, circleArea as area } from './module.js';
+
+console.log(PI); // 3.14159
+console.log(area(5)); // 78.53975
+console.log(greet('Алексей')); // Привет, Алексей!
+
+// Импорт всего модуля
+import * as math from './module.js';
+console.log(math.PI);
+console.log(math.circleArea(5));
+
+// Динамический импорт
+const module = await import('./module.js');
+console.log(module.default('Динамический импорт'));
+─────────────────────────────────────────────────────────────────────────────
+
+═══════════════════════════════════════════════════════════════════════════════
+ЧАСТЬ 4: REACT — РАЗРАБОТКА ИНТЕРФЕЙСОВ
+═══════════════════════════════════════════════════════════════════════════════
+
+4.1 ОСНОВНЫЕ КОНЦЕПЦИИ
+
+Создание React-приложения:
+─────────────────────────────────────────────────────────────────────────────
+# Vite (рекомендуется)
+npm create vite@latest my-app -- --template react-ts
+cd my-app
+npm install
+npm run dev
+
+# Create React App (устаревает)
+npx create-react-app my-app
+cd my-app
+npm start
+─────────────────────────────────────────────────────────────────────────────
+
+Компоненты:
+─────────────────────────────────────────────────────────────────────────────
+// Функциональный компонент (современный)
+function Welcome({ name, age }) {
+    return (
+        <div className="welcome">
+            <h1>Привет, {name}!</h1>
+            {age && <p>Возраст: {age} лет</p>}
+        </div>
+    );
+}
+
+// Компонент с TypeScript
+interface WelcomeProps {
+    name: string;
+    age?: number;
+    onGreet?: () => void;
+}
+
+const Welcome: React.FC<WelcomeProps> = ({ name, age, onGreet }) => {
+    const [isVisible, setIsVisible] = useState(true);
+    
+    return (
+        <div className="welcome">
+            <h1>Привет, {name}!</h1>
+            {age && <p>Возраст: {age} лет</p>}
+            <button onClick={onGreet}>Поздороваться</button>
+        </div>
+    );
+};
+
+// Компонент с children
+function Card({ children, className = '' }) {
+    return (
+        <div className={`card ${className}`}>
+            {children}
+        </div>
+    );
+}
+
+// Использование
+function App() {
+    return (
+        <Card className="custom-card">
+            <h2>Заголовок</h2>
+            <p>Содержимое</p>
+        </Card>
+    );
+}
+─────────────────────────────────────────────────────────────────────────────
+
+Хуки (Hooks):
+─────────────────────────────────────────────────────────────────────────────
+// useState — управление состоянием
+function Counter() {
+    const [count, setCount] = useState(0);
+    const [isLoading, setIsLoading] = useState(false);
+    
+    const increment = () => {
+        setCount(prev => prev + 1);
+    };
+    
+    const decrement = () => {
+        setCount(prev => prev - 1);
+    };
+    
+    return (
+        <div>
+            <p>Счёт: {count}</p>
+            <button onClick={increment}>+1</button>
+            <button onClick={decrement}>-1</button>
+            {isLoading && <span>Загрузка...</span>}
+        </div>
+    );
+}
+
+// useEffect — работа с побочными эффектами
+function UserProfile({ userId }) {
+    const [user, setUser] = useState(null);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
+    
+    useEffect(() => {
+        // Выполняется при монтировании и при изменении userId
+        let isMounted = true;
+        
+        async function fetchUser() {
+            try {
+                setLoading(true);
+                setError(null);
+                const response = await fetch(`/api/users/${userId}`);
+                const data = await response.json();
+                if (isMounted) {
+                    setUser(data);
+                }
+            } catch (err) {
+                if (isMounted) {
+                    setError(err.message);
+                }
+            } finally {
+                if (isMounted) {
+                    setLoading(false);
+                }
+            }
+        }
+        
+        fetchUser();
+        
+        // Функция очистки (выполняется при размонтировании)
+        return () => {
+            isMounted = false;
+            console.log('Компонент размонтирован');
+        };
+    }, [userId]); // Массив зависимостей
+    
+    if (loading) return <div>Загрузка...</div>;
+    if (error) return <div>Ошибка: {error}</div>;
+    if (!user) return <div>Пользователь не найден</div>;
+    
+    return (
+        <div>
+            <h2>{user.name}</h2>
+            <p>Email: {user.email}</p>
+        </div>
+    );
+}
+
+// useContext — доступ к контексту
+const ThemeContext = React.createContext('light');
+
+function ThemedButton() {
+    const theme = useContext(ThemeContext);
+    return (
+        <button className={`btn-${theme}`}>
+            Кнопка в теме {theme}
+        </button>
+    );
+}
+
+function App() {
+    return (
+        <ThemeContext.Provider value="dark">
+            <ThemedButton />
+        </ThemeContext.Provider>
+    );
+}
+
+// useReducer — для сложного состояния
+const initialState = { count: 0, step: 1 };
+
+function reducer(state, action) {
+    switch (action.type) {
+        case 'increment':
+            return { ...state, count: state.count + state.step };
+        case 'decrement':
+            return { ...state, count: state.count - state.step };
+        case 'setStep':
+            return { ...state, step: action.payload };
+        case 'reset':
+            return initialState;
+        default:
+            return state;
+    }
+}
+
+function CounterWithReducer() {
+    const [state, dispatch] = useReducer(reducer, initialState);
+    
+    return (
+        <div>
+            <p>Счёт: {state.count}</p>
+            <p>Шаг: {state.step}</p>
+            <button onClick={() => dispatch({ type: 'increment' })}>+</button>
+            <button onClick={() => dispatch({ type: 'decrement' })}>-</button>
+            <input 
+                type="number" 
+                value={state.step}
+                onChange={(e) => dispatch({ 
+                    type: 'setStep', 
+                    payload: Number(e.target.value) 
+                })}
+            />
+            <button onClick={() => dispatch({ type: 'reset' })}>Сброс</button>
+        </div>
+    );
+}
+
+// useRef — ссылки на DOM и сохраняемые значения
+function FocusInput() {
+    const inputRef = useRef(null);
+    const countRef = useRef(0);
+    
+    const handleFocus = () => {
+        inputRef.current.focus();
+        countRef.current += 1;
+        console.log('Количество фокусов:', countRef.current);
+    };
+    
+    return (
+        <div>
+            <input ref={inputRef} type="text" placeholder="Введите текст" />
+            <button onClick={handleFocus}>Фокус</button>
+        </div>
+    );
+}
+
+// useMemo — мемоизация вычислений
+function ExpensiveComponent({ items, filter }) {
+    const filteredItems = useMemo(() => {
+        console.log('Фильтрация...');
+        return items.filter(item => item.includes(filter));
+    }, [items, filter]); // Пересчёт только при изменении items или filter
+    
+    return (
+        <ul>
+            {filteredItems.map(item => (
+                <li key={item}>{item}</li>
+            ))}
+        </ul>
+    );
+}
+
+// useCallback — мемоизация функций
+function ParentComponent() {
+    const [count, setCount] = useState(0);
+    
+    // Функция создаётся заново только при изменении dependencies
+    const handleClick = useCallback(() => {
+        setCount(prev => prev + 1);
+    }, []); // Пустой массив — функция никогда не меняется
+    
+    return (
+        <div>
+            <p>Count: {count}</p>
+            <ChildComponent onClick={handleClick} />
+        </div>
+    );
+}
+
+const ChildComponent = React.memo(({ onClick }) => {
+    console.log('ChildComponent рендерится');
+    return <button onClick={onClick}>Нажми</button>;
+});
+─────────────────────────────────────────────────────────────────────────────
+
+4.2 РАБОТА С ФОРМАМИ
+
+Управляемые компоненты:
+─────────────────────────────────────────────────────────────────────────────
+function RegistrationForm() {
+    const [formData, setFormData] = useState({
+        username: '',
+        email: '',
+        password: '',
+        agree: false
+    });
+    const [errors, setErrors] = useState({});
+    const [isSubmitting, setIsSubmitting] = useState(false);
+    
+    const validate = () => {
+        const newErrors = {};
+        if (!formData.username) {
+            newErrors.username = 'Имя пользователя обязательно';
+        } else if (formData.username.length < 3) {
+            newErrors.username = 'Минимум 3 символа';
+        }
+        
+        if (!formData.email) {
+            newErrors.email = 'Email обязателен';
+        } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(formData.email)) {
+            newErrors.email = 'Неверный формат email';
+        }
+        
+        if (formData.password && formData.password.length < 6) {
+            newErrors.password = 'Минимум 6 символов';
+        }
+        
+        if (!formData.agree) {
+            newErrors.agree = 'Необходимо согласиться с условиями';
+        }
+        
+        setErrors(newErrors);
+        return Object.keys(newErrors).length === 0;
+    };
+    
+    const handleChange = (e) => {
+        const { name, value, type, checked } = e.target;
+        setFormData(prev => ({
+            ...prev,
+            [name]: type === 'checkbox' ? checked : value
+        }));
+        // Очищаем ошибку при изменении поля
+        if (errors[name]) {
+            setErrors(prev => ({ ...prev, [name]: undefined }));
+        }
+    };
+    
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        if (!validate()) return;
+        
+        setIsSubmitting(true);
+        try {
+            // Отправка данных на сервер
+            const response = await fetch('/api/register', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(formData)
+            });
+            
+            if (!response.ok) {
+                throw new Error('Ошибка регистрации');
+            }
+            
+            const result = await response.json();
+            console.log('Успешно зарегистрирован:', result);
+            // Перенаправление или показ сообщения
+        } catch (error) {
+            setErrors({ submit: error.message });
+        } finally {
+            setIsSubmitting(false);
+        }
+    };
+    
+    return (
+        <form onSubmit={handleSubmit} className="registration-form">
+            <div className="form-group">
+                <label htmlFor="username">Имя пользователя</label>
+                <input
+                    type="text"
+                    id="username"
+                    name="username"
+                    value={formData.username}
+                    onChange={handleChange}
+                    className={errors.username ? 'error' : ''}
+                />
+                {errors.username && <span className="error-message">{errors.username}</span>}
+            </div>
+            
+            <div className="form-group">
+                <label htmlFor="email">Email</label>
+                <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    value={formData.email}
+                    onChange={handleChange}
+                    className={errors.email ? 'error' : ''}
+                />
+                {errors.email && <span className="error-message">{errors.email}</span>}
+            </div>
+            
+            <div className="form-group">
+                <label htmlFor="password">Пароль</label>
+                <input
+                    type="password"
+                    id="password"
+                    name="password"
+                    value={formData.password}
+                    onChange={handleChange}
+                    className={errors.password ? 'error' : ''}
+                />
+                {errors.password && <span className="error-message">{errors.password}</span>}
+            </div>
+            
+            <div className="form-group">
+                <label>
+                    <input
+                        type="checkbox"
+                        name="agree"
+                        checked={formData.agree}
+                        onChange={handleChange}
+                    />
+                    Согласен с условиями
+                </label>
+                {errors.agree && <span className="error-message">{errors.agree}</span>}
+            </div>
+            
+            {errors.submit && <div className="error-message">{errors.submit}</div>}
+            
+            <button type="submit" disabled={isSubmitting}>
+                {isSubmitting ? 'Отправка...' : 'Зарегистрироваться'}
+            </button>
+        </form>
+    );
+}
+─────────────────────────────────────────────────────────────────────────────
+
+Неуправляемые компоненты:
+─────────────────────────────────────────────────────────────────────────────
+function UncontrolledForm() {
+    const nameRef = useRef(null);
+    const emailRef = useRef(null);
+    const fileRef = useRef(null);
+    
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        console.log('Name:', nameRef.current.value);
+        console.log('Email:', emailRef.current.value);
+        console.log('File:', fileRef.current.files[0]);
+    };
+    
+    return (
+        <form onSubmit={handleSubmit}>
+            <input type="text" ref={nameRef} placeholder="Имя" />
+            <input type="email" ref={emailRef} placeholder="Email" />
+            <input type="file" ref={fileRef} />
+            <button type="submit">Отправить</button>
+        </form>
+    );
+}
+─────────────────────────────────────────────────────────────────────────────
+
+4.3 МАРШРУТИЗАЦИЯ (REACT ROUTER)
+
+─────────────────────────────────────────────────────────────────────────────
+npm install react-router-dom
+
+// App.js
+import { BrowserRouter, Routes, Route, Link, Navigate, useNavigate } from 'react-router-dom';
+import { lazy, Suspense } from 'react';
+
+// Ленивая загрузка
+const Home = lazy(() => import('./pages/Home'));
+const About = lazy(() => import('./pages/About'));
+const Contact = lazy(() => import('./pages/Contact'));
+const UserProfile = lazy(() => import('./pages/UserProfile'));
+const NotFound = lazy(() => import('./pages/NotFound'));
+
+// Компонент навигации
+function Navigation() {
+    const navigate = useNavigate();
+    
+    return (
+        <nav>
+            <Link to="/">Главная</Link>
+            <Link to="/about">О нас</Link>
+            <Link to="/contact">Контакты</Link>
+            <button onClick={() => navigate('/about')}>Перейти в раздел "О нас"</button>
+        </nav>
+    );
+}
+
+// Защищённый маршрут
+function ProtectedRoute({ children }) {
+    const [isAuthenticated, setIsAuthenticated] = useState(false);
+    
+    useEffect(() => {
+        // Проверка авторизации
+        const token = localStorage.getItem('token');
+        setIsAuthenticated(!!token);
+    }, []);
+    
+    if (!isAuthenticated) {
+        return <Navigate to="/login" replace />;
+    }
+    
+    return children;
+}
+
+function App() {
+    return (
+        <BrowserRouter>
+            <div className="app">
+                <Navigation />
+                <main>
+                    <Suspense fallback={<div>Загрузка...</div>}>
+                        <Routes>
+                            <Route path="/" element={<Home />} />
+                            <Route path="/about" element={<About />} />
+                            <Route path="/contact" element={<Contact />} />
+                            <Route path="/user/:userId" element={<UserProfile />} />
+                            <Route path="/login" element={<Login />} />
+                            <Route path="/dashboard" element={
+                                <ProtectedRoute>
+                                    <Dashboard />
+                                </ProtectedRoute>
+                            } />
+                            <Route path="*" element={<NotFound />} />
+                        </Routes>
+                    </Suspense>
+                </main>
+            </div>
+        </BrowserRouter>
+    );
+}
+
+// Компонент с параметрами URL
+function UserProfile() {
+    const { userId } = useParams();
+    const [user, setUser] = useState(null);
+    
+    useEffect(() => {
+        fetch(`/api/users/${userId}`)
+            .then(res => res.json())
+            .then(setUser);
+    }, [userId]);
+    
+    return (
+        <div>
+            <h2>Профиль пользователя {userId}</h2>
+            {user && (
+                <div>
+                    <p>Имя: {user.name}</p>
+                    <p>Email: {user.email}</p>
+                </div>
+            )}
+        </div>
+    );
+}
+
+// Навигация с параметрами
+function SearchComponent() {
+    const navigate = useNavigate();
+    const [searchTerm, setSearchTerm] = useState('');
+    
+    const handleSearch = () => {
+        navigate(`/search?q=${encodeURIComponent(searchTerm)}`);
+    };
+    
+    return (
+        <div>
+            <input 
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+                placeholder="Поиск..."
+            />
+            <button onClick={handleSearch}>Найти</button>
+        </div>
+    );
+}
+
+// Получение query параметров
+function SearchResults() {
+    const [searchParams, setSearchParams] = useSearchParams();
+    const query = searchParams.get('q');
+    const page = Number(searchParams.get('page')) || 1;
+    
+    return (
+        <div>
+            <h2>Результаты поиска: "{query}"</h2>
+            <p>Страница: {page}</p>
+            <button onClick={() => setSearchParams({ q: query, page: page + 1 })}>
+                Следующая страница
+            </button>
+        </div>
+    );
+}
+─────────────────────────────────────────────────────────────────────────────
+
+4.4 СТИЛИЗАЦИЯ В REACT
+
+CSS Modules:
+─────────────────────────────────────────────────────────────────────────────
+// Button.module.css
+.button {
+    background-color: #3b82f6;
+    color: white;
+    padding: 8px 16px;
+    border-radius: 4px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.button:hover {
+    background-color: #2563eb;
+}
+
+.button.primary {
+    background-color: #2563eb;
+}
+
+.button.secondary {
+    background-color: #6b7280;
+}
+
+// Button.jsx
+import styles from './Button.module.css';
+
+function Button({ variant = 'primary', children, ...props }) {
+    return (
+        <button 
+            className={`${styles.button} ${styles[variant]}`}
+            {...props}
+        >
+            {children}
+        </button>
+    );
+}
+─────────────────────────────────────────────────────────────────────────────
+
+Styled Components (CSS-in-JS):
+─────────────────────────────────────────────────────────────────────────────
+npm install styled-components
+
+// Button.jsx
+import styled from 'styled-components';
+
+const StyledButton = styled.button`
+    background-color: ${props => props.variant === 'primary' ? '#3b82f6' : '#6b7280'};
+    color: white;
+    padding: 8px 16px;
+    border-radius: 4px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s;
+    
+    &:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        background-color: ${props => props.variant === 'primary' ? '#2563eb' : '#4b5563'};
+    }
+    
+    &:active {
+        transform: translateY(0);
+    }
+    
+    &:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+    }
+`;
+
+// Расширение стилей
+const DangerButton = styled(StyledButton)`
+    background-color: #dc2626;
+    
+    &:hover {
+        background-color: #b91c1c;
+    }
+`;
+
+function Button({ variant, ...props }) {
+    if (variant === 'danger') {
+        return <DangerButton {...props} />;
+    }
+    return <StyledButton variant={variant} {...props} />;
+}
+─────────────────────────────────────────────────────────────────────────────
+
+═══════════════════════════════════════════════════════════════════════════════
+ЧАСТЬ 5: АНИМАЦИИ В REACT — FRAMER MOTION / MOTION / REACT SPRING
+═══════════════════════════════════════════════════════════════════════════════
+
+5.1 FRAMER MOTION / MOTION (РЕКОМЕНДУЕТСЯ)
+
+Установка:
+─────────────────────────────────────────────────────────────────────────────
+npm install motion
+# или
+npm install framer-motion
+─────────────────────────────────────────────────────────────────────────────
+
+Базовые анимации:
+─────────────────────────────────────────────────────────────────────────────
+import { motion, AnimatePresence } from 'motion';
+
+// Простое появление
+function FadeIn() {
+    return (
+        <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ 
+                duration: 0.5,
+                ease: "easeOut",
+                delay: 0.2 
+            }}
+        >
+            Привет, мир!
+        </motion.div>
+    );
+}
+
+// Анимация при монтировании/размонтировании
+function AnimatedList() {
+    const [items, setItems] = useState(['Item 1', 'Item 2', 'Item 3']);
+    const [isVisible, setIsVisible] = useState(true);
+    
+    return (
+        <div>
+            <button onClick={() => setIsVisible(!isVisible)}>
+                {isVisible ? 'Скрыть' : 'Показать'}
+            </button>
+            
+            <AnimatePresence mode="wait">
+                {isVisible && (
+                    <motion.ul
+                        initial={{ opacity: 0, height: 0 }}
+                        animate={{ opacity: 1, height: 'auto' }}
+                        exit={{ opacity: 0, height: 0 }}
+                        transition={{ duration: 0.3 }}
+                    >
+                        {items.map((item, index) => (
+                            <motion.li
+                                key={item}
+                                initial={{ opacity: 0, x: -20 }}
+                                animate={{ opacity: 1, x: 0 }}
+                                exit={{ opacity: 0, x: 20 }}
+                                transition={{ delay: index * 0.1 }}
+                            >
+                                {item}
+                            </motion.li>
+                        ))}
+                    </motion.ul>
+                )}
+            </AnimatePresence>
+        </div>
+    );
+}
+
+// Жесты
+function InteractiveButton() {
+    return (
+        <motion.button
+            whileHover={{ 
+                scale: 1.1,
+                backgroundColor: '#2563eb',
+                boxShadow: '0 10px 20px rgba(0,0,0,0.2)'
+            }}
+            whileTap={{ scale: 0.9 }}
+            whileFocus={{ outline: '2px solid #3b82f6', outlineOffset: '2px' }}
+            transition={{ type: 'spring', stiffness: 400, damping: 10 }}
+        >
+            Наведи или нажми
+        </motion.button>
+    );
+}
+
+// Анимация по скроллу
+function ScrollAnimation() {
+    const { scrollYProgress } = useScroll();
+    const scale = useTransform(scrollYProgress, [0, 1], [0.5, 1.5]);
+    const opacity = useTransform(scrollYProgress, [0, 0.5, 1], [0, 1, 0]);
+    const x = useTransform(scrollYProgress, [0, 1], ['-100%', '0%']);
+    
+    return (
+        <motion.div
+            style={{ scale, opacity, x }}
+            className="scroll-element"
+        >
+            Прокручивай меня
+        </motion.div>
+    );
+}
+
+// Layout-анимации
+function ExpandableCard() {
+    const [expanded, setExpanded] = useState(false);
+    
+    return (
+        <motion.div
+            layout
+            className="card"
+            onClick={() => setExpanded(!expanded)}
+        >
+            <motion.h3 layout>Заголовок карточки</motion.h3>
+            <AnimatePresence>
+                {expanded && (
+                    <motion.div
+                        initial={{ opacity: 0, height: 0 }}
+                        animate={{ opacity: 1, height: 'auto' }}
+                        exit={{ opacity: 0, height: 0 }}
+                        transition={{ duration: 0.3 }}
+                    >
+                        <p>Дополнительное содержимое карточки</p>
+                        <p>Много текста для демонстрации анимации</p>
+                    </motion.div>
+                )}
+            </AnimatePresence>
+        </motion.div>
+    );
+}
+
+// Анимация в цикле
+function LoadingSpinner() {
+    return (
+        <motion.div
+            animate={{ rotate: 360 }}
+            transition={{ 
+                repeat: Infinity, 
+                duration: 1,
+                ease: "linear"
+            }}
+            style={{
+                width: 40,
+                height: 40,
+                border: '4px solid #e2e8f0',
+                borderTopColor: '#3b82f6',
+                borderRadius: '50%'
+            }}
+        />
+    );
+}
+─────────────────────────────────────────────────────────────────────────────
+
+5.2 REACT SPRING (АЛЬТЕРНАТИВА)
+
+─────────────────────────────────────────────────────────────────────────────
+npm install @react-spring/web
+
+import { useSpring, animated, useTransition, useTrail } from '@react-spring/web';
+
+// Простая анимация
+function SpringExample() {
+    const styles = useSpring({
+        from: { opacity: 0, transform: 'translateY(-20px)' },
+        to: { opacity: 1, transform: 'translateY(0px)' },
+        config: { mass: 1, tension: 170, friction: 26 }
+    });
+    
+    return <animated.div style={styles}>Анимированный текст</animated.div>;
+}
+
+// Transition
+function SpringTransition() {
+    const [show, toggle] = useState(true);
+    const transitions = useTransition(show, {
+        from: { opacity: 0, transform: 'scale(0.8)' },
+        enter: { opacity: 1, transform: 'scale(1)' },
+        leave: { opacity: 0, transform: 'scale(0.8)' },
+        config: { tension: 300, friction: 20 }
+    });
+    
+    return transitions((styles, item) => (
+        item && <animated.div style={styles}>Контент</animated.div>
+    ));
+}
+
+// Trail (последовательная анимация)
+function SpringTrail() {
+    const items = ['Item 1', 'Item 2', 'Item 3', 'Item 4'];
+    const trail = useTrail(items.length, {
+        from: { opacity: 0, x: -20 },
+        to: { opacity: 1, x: 0 },
+        config: { tension: 200, friction: 20 }
+    });
+    
+    return (
+        <div>
+            {trail.map((styles, index) => (
+                <animated.div key={index} style={styles}>
+                    {items[index]}
+                </animated.div>
+            ))}
+        </div>
+    );
+}
+─────────────────────────────────────────────────────────────────────────────
+
+5.3 REACT TRANSITION GROUP (ДЛЯ ПРОСТЫХ АНИМАЦИЙ)
+
+─────────────────────────────────────────────────────────────────────────────
+npm install react-transition-group
+
+import { CSSTransition, TransitionGroup } from 'react-transition-group';
+
+function TransitionGroupExample() {
+    const [items, setItems] = useState(['Item 1', 'Item 2']);
+    
+    const addItem = () => {
+        setItems([...items, `Item ${items.length + 1}`]);
+    };
+    
+    const removeItem = (index) => {
+        setItems(items.filter((_, i) => i !== index));
+    };
+    
+    return (
+        <div>
+            <button onClick={addItem}>Добавить</button>
+            <TransitionGroup>
+                {items.map((item, index) => (
+                    <CSSTransition
+                        key={index}
+                        timeout={300}
+                        classNames={{
+                            enter: 'item-enter',
+                            enterActive: 'item-enter-active',
+                            exit: 'item-exit',
+                            exitActive: 'item-exit-active'
+                        }}
+                    >
+                        <div onClick={() => removeItem(index)}>
+                            {item} (нажми для удаления)
+                        </div>
+                    </CSSTransition>
+                ))}
+            </TransitionGroup>
+        </div>
+    );
+}
+
+// CSS для анимаций
+.item-enter {
+    opacity: 0;
+    transform: translateX(-20px);
+}
+.item-enter-active {
+    opacity: 1;
+    transform: translateX(0);
+    transition: all 300ms ease-in;
+}
+.item-exit {
+    opacity: 1;
+    transform: translateX(0);
+}
+.item-exit-active {
+    opacity: 0;
+    transform: translateX(20px);
+    transition: all 300ms ease-out;
+}
+─────────────────────────────────────────────────────────────────────────────
+
+5.4 РЕАЛИЗАЦИЯ ЭФФЕКТА SCRAMBLE (КАК В UI.UNLUMEN)
+
+─────────────────────────────────────────────────────────────────────────────
+function ScrambleText({ text, duration = 1000 }) {
+    const [displayText, setDisplayText] = useState(text);
+    const [isHovering, setIsHovering] = useState(false);
+    const [isAnimating, setIsAnimating] = useState(false);
+    
+    useEffect(() => {
+        let interval;
+        let timeout;
+        
+        if (isHovering && !isAnimating) {
+            setIsAnimating(true);
+            const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()';
+            let iterations = 0;
+            const maxIterations = 10;
+            
+            interval = setInterval(() => {
+                const scrambled = text.split('').map((char, index) => {
+                    if (index < iterations) {
+                        return text[index];
+                    }
+                    return chars[Math.floor(Math.random() * chars.length)];
+                }).join('');
+                
+                setDisplayText(scrambled);
+                iterations += 1;
+                
+                if (iterations >= text.length) {
+                    clearInterval(interval);
+                    setDisplayText(text);
+                    setTimeout(() => {
+                        setIsAnimating(false);
+                    }, 200);
+                }
+            }, 50);
+        }
+        
+        return () => {
+            clearInterval(interval);
+            clearTimeout(timeout);
+        };
+    }, [isHovering, text, isAnimating]);
+    
+    return (
+        <motion.span
+            onMouseEnter={() => setIsHovering(true)}
+            onMouseLeave={() => setIsHovering(false)}
+            style={{ display: 'inline-block' }}
+        >
+            {displayText}
+        </motion.span>
+    );
+}
+─────────────────────────────────────────────────────────────────────────────
+
+═══════════════════════════════════════════════════════════════════════════════
+ЧАСТЬ 6: NODE.JS — СЕРВЕРНАЯ РАЗРАБОТКА
+═══════════════════════════════════════════════════════════════════════════════
+
+6.1 ОСНОВЫ NODE.JS
+
+─────────────────────────────────────────────────────────────────────────────
+// Простой HTTP-сервер
+const http = require('http');
+const fs = require('fs');
+const path = require('path');
+
+const server = http.createServer((req, res) => {
+    console.log(`${req.method} ${req.url}`);
+    
+    if (req.url === '/') {
+        res.writeHead(200, { 'Content-Type': 'text/html' });
+        res.end('<h1>Hello World</h1>');
+    } else if (req.url === '/api/data') {
+        res.writeHead(200, { 'Content-Type': 'application/json' });
+        res.end(JSON.stringify({ message: 'Hello API', timestamp: Date.now() }));
+    } else {
+        res.writeHead(404);
+        res.end('Not Found');
+    }
+});
+
+const PORT = process.env.PORT || 3000;
+server.listen(PORT, () => {
+    console.log(`Server running on port ${PORT}`);
+});
+
+// Обработка ошибок
+server.on('error', (error) => {
+    console.error('Server error:', error);
+});
+─────────────────────────────────────────────────────────────────────────────
+
+6.2 EXPRESS.JS — ФРЕЙМВОРК
+
+Установка:
+─────────────────────────────────────────────────────────────────────────────
+npm install express cors helmet morgan compression
+npm install -D nodemon @types/express
+─────────────────────────────────────────────────────────────────────────────
+
+Базовое приложение:
+─────────────────────────────────────────────────────────────────────────────
+const express = require('express');
+const cors = require('cors');
+const helmet = require('helmet');
+const morgan = require('morgan');
+const compression = require('compression');
+const rateLimit = require('express-rate-limit');
+
+const app = express();
+
+// Middleware
+app.use(helmet()); // Безопасность
+app.use(cors()); // CORS
+app.use(morgan('combined')); // Логирование
+app.use(compression()); // Сжатие
+app.use(express.json()); // Парсинг JSON
+app.use(express.urlencoded({ extended: true })); // Парсинг URL-encoded
+
+// Rate limiting
+const limiter = rateLimit({
+    windowMs: 15 * 60 * 1000, // 15 минут
+    max: 100, // максимум 100 запросов
+    message: 'Слишком много запросов, попробуйте позже',
+});
+app.use('/api', limiter);
+
+// Статические файлы
+app.use(express.static('public'));
+
+// Маршруты
+app.get('/', (req, res) => {
+    res.json({ message: 'API работает', version: '1.0.0' });
+});
+
+app.get('/api/users', async (req, res) => {
+    try {
+        const users = await User.find();
+        res.json(users);
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+});
+
+app.post('/api/users', async (req, res) => {
+    try {
+        const { name, email } = req.body;
+        // Валидация
+        if (!name || !email) {
+            return res.status(400).json({ error: 'Name and email are required' });
+        }
+        const user = new User({ name, email });
+        await user.save();
+        res.status(201).json(user);
+    } catch (error) {
+        if (error.code === 11000) {
+            res.status(400).json({ error: 'User already exists' });
+        } else {
+            res.status(500).json({ error: error.message });
+        }
+    }
+});
+
+// Обработка ошибок
+app.use((err, req, res, next) => {
+    console.error(err.stack);
+    res.status(500).json({ error: 'Что-то пошло не так!' });
+});
+
+// 404
+app.use((req, res) => {
+    res.status(404).json({ error: 'Endpoint not found' });
+});
+
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+    console.log(`Server running on port ${PORT}`);
+});
+─────────────────────────────────────────────────────────────────────────────
+
+6.3 АУТЕНТИФИКАЦИЯ С JWT
+
+─────────────────────────────────────────────────────────────────────────────
+npm install jsonwebtoken bcryptjs
+
+// auth.js
+const jwt = require('jsonwebtoken');
+const bcrypt = require('bcryptjs');
+const User = require('./models/User');
+
+const JWT_SECRET = process.env.JWT_SECRET || 'your-secret-key';
+
+// Регистрация
+app.post('/api/auth/register', async (req, res) => {
+    try {
+        const { email, password, name } = req.body;
+        
+        // Проверка существования пользователя
+        const existingUser = await User.findOne({ email });
+        if (existingUser) {
+            return res.status(400).json({ error: 'User already exists' });
+        }
+        
+        // Хеширование пароля
+        const hashedPassword = await bcrypt.hash(password, 10);
+        
+        const user = new User({
+            email,
+            password: hashedPassword,
+            name
+        });
+        
+        await user.save();
+        
+        res.status(201).json({ 
+            message: 'User registered successfully',
+            userId: user._id
+        });
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+});
+
+// Вход
+app.post('/api/auth/login', async (req, res) => {
+    try {
+        const { email, password } = req.body;
+        
+        const user = await User.findOne({ email });
+        if (!user) {
+            return res.status(401).json({ error: 'Invalid credentials' });
+        }
+        
+        const isPasswordValid = await bcrypt.compare(password, user.password);
+        if (!isPasswordValid) {
+            return res.status(401).json({ error: 'Invalid credentials' });
+        }
+        
+        const token = jwt.sign(
+            { userId: user._id, email: user.email },
+            JWT_SECRET,
+            { expiresIn: '24h' }
+        );
+        
+        res.json({
+            token,
+            user: {
+                id: user._id,
+                email: user.email,
+                name: user.name
+            }
+        });
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+});
+
+// Middleware для проверки токена
+const authenticateToken = (req, res, next) => {
+    const authHeader = req.headers['authorization'];
+    const token = authHeader && authHeader.split(' ')[1];
+    
+    if (!token) {
+        return res.status(401).json({ error: 'Access token required' });
+    }
+    
+    jwt.verify(token, JWT_SECRET, (err, user) => {
+        if (err) {
+            return res.status(403).json({ error: 'Invalid or expired token' });
+        }
+        req.user = user;
+        next();
+    });
+};
+
+// Защищённый маршрут
+app.get('/api/profile', authenticateToken, async (req, res) => {
+    try {
+        const user = await User.findById(req.user.userId).select('-password');
+        res.json(user);
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+});
+
+// Обновление токена
+app.post('/api/auth/refresh', authenticateToken, (req, res) => {
+    const newToken = jwt.sign(
+        { userId: req.user.userId, email: req.user.email },
+        JWT_SECRET,
+        { expiresIn: '24h' }
+    );
+    res.json({ token: newToken });
+});
+─────────────────────────────────────────────────────────────────────────────
+
+6.4 WEBSOCKETS (SOCKET.IO)
+
+─────────────────────────────────────────────────────────────────────────────
+npm install socket.io
+
+// server.js
+const http = require('http');
+const socketIo = require('socket.io');
+const express = require('express');
+
+const app = express();
+const server = http.createServer(app);
+const io = socketIo(server, {
+    cors: {
+        origin: "http://localhost:5173",
+        methods: ["GET", "POST"]
+    }
+});
+
+// Middleware для Socket.IO
+io.use((socket, next) => {
+    const token = socket.handshake.auth.token;
+    try {
+        const decoded = jwt.verify(token, JWT_SECRET);
+        socket.userId = decoded.userId;
+        next();
+    } catch (err) {
+        next(new Error('Authentication error'));
+    }
+});
+
+io.on('connection', (socket) => {
+    console.log(`User ${socket.userId} connected`);
+    
+    // Присоединение к комнате
+    socket.on('join-room', (roomId) => {
+        socket.join(roomId);
+        socket.to(roomId).emit('user-joined', socket.userId);
+    });
+    
+    // Отправка сообщения
+    socket.on('send-message', async (data) => {
+        const { roomId, message } = data;
+        const timestamp = new Date();
+        
+        // Сохранение в БД
+        await Message.create({
+            userId: socket.userId,
+            roomId,
+            message,
+            timestamp
+        });
+        
+        // Отправка всем в комнате
+        io.to(roomId).emit('new-message', {
+            userId: socket.userId,
+            message,
+            timestamp
+        });
+    });
+    
+    // Печатает...
+    socket.on('typing', (roomId) => {
+        socket.to(roomId).emit('user-typing', socket.userId);
+    });
+    
+    // Отключение
+    socket.on('disconnect', () => {
+        console.log(`User ${socket.userId} disconnected`);
+        io.emit('user-disconnected', socket.userId);
+    });
+});
+
+server.listen(3000, () => {
+    console.log('Socket.IO server running on port 3000');
+});
+
+// Client (React)
+import { io } from 'socket.io-client';
+
+function ChatApp() {
+    const [socket, setSocket] = useState(null);
+    const [messages, setMessages] = useState([]);
+    const [message, setMessage] = useState('');
+    const [isTyping, setIsTyping] = useState(false);
+    
+    useEffect(() => {
+        const token = localStorage.getItem('token');
+        const socketInstance = io('http://localhost:3000', {
+            auth: { token }
+        });
+        
+        socketInstance.on('new-message', (data) => {
+            setMessages(prev => [...prev, data]);
+        });
+        
+        socketInstance.on('user-typing', (userId) => {
+            // Показываем индикатор печати
+        });
+        
+        setSocket(socketInstance);
+        
+        return () => socketInstance.disconnect();
+    }, []);
+    
+    const sendMessage = () => {
+        if (message.trim() && socket) {
+            socket.emit('send-message', {
+                roomId: 'general',
+                message: message.trim()
+            });
+            setMessage('');
+        }
+    };
+    
+    return (
+        <div className="chat">
+            <div className="messages">
+                {messages.map((msg, index) => (
+                    <div key={index} className="message">
+                        <strong>{msg.userId}</strong>: {msg.message}
+                    </div>
+                ))}
+            </div>
+            <div className="input-area">
+                <input
+                    value={message}
+                    onChange={(e) => {
+                        setMessage(e.target.value);
+                        socket?.emit('typing', 'general');
+                    }}
+                    onKeyPress={(e) => e.key === 'Enter' && sendMessage()}
+                    placeholder="Введите сообщение..."
+                />
+                <button onClick={sendMessage}>Отправить</button>
+            </div>
+        </div>
+    );
+}
+─────────────────────────────────────────────────────────────────────────────
+
+═══════════════════════════════════════════════════════════════════════════════
+ЧАСТЬ 7: БАЗЫ ДАННЫХ И ORM
+═══════════════════════════════════════════════════════════════════════════════
+
+7.1 MONGODB + MONGOOSE
+
+─────────────────────────────────────────────────────────────────────────────
+npm install mongoose
+
+// models/User.js
+const mongoose = require('mongoose');
+const bcrypt = require('bcryptjs');
+
+const userSchema = new mongoose.Schema({
+    email: {
+        type: String,
+        required: true,
+        unique: true,
+        lowercase: true,
+        trim: true
+    },
+    password: {
+        type: String,
+        required: true,
+        minlength: 6
+    },
+    name: {
+        type: String,
+        required: true,
+        trim: true
+    },
+    avatar: {
+        type: String,
+        default: 'default-avatar.png'
+    },
+    isActive: {
+        type: Boolean,
+        default: true
+    },
+    roles: [{
+        type: String,
+        enum: ['user', 'admin', 'moderator'],
+        default: ['user']
+    }],
+    lastLogin: {
+        type: Date,
+        default: null
+    },
+    createdAt: {
+        type: Date,
+        default: Date.now
+    },
+    updatedAt: {
+        type: Date,
+        default: Date.now
+    }
+}, {
+    timestamps: true,
+    toJSON: {
+        transform: (doc, ret) => {
+            ret.id = ret._id;
+            delete ret._id;
+            delete ret.__v;
+            delete ret.password;
+            return ret;
+        }
+    }
+});
+
+// Индексы для производительности
+userSchema.index({ email: 1 }, { unique: true });
+userSchema.index({ name: 'text' });
+
+// Middleware
+userSchema.pre('save', async function(next) {
+    if (!this.isModified('password')) return next();
+    this.password = await bcrypt.hash(this.password, 10);
+    next();
+});
+
+userSchema.pre('updateOne', function(next) {
+    this.set({ updatedAt: new Date() });
+    next();
+});
+
+// Статические методы
+userSchema.statics.findByEmail = function(email) {
+    return this.findOne({ email });
+};
+
+// Методы экземпляра
+userSchema.methods.comparePassword = async function(candidatePassword) {
+    return bcrypt.compare(candidatePassword, this.password);
+};
+
+userSchema.methods.updateLastLogin = async function() {
+    this.lastLogin = new Date();
+    return this.save();
+};
+
+const User = mongoose.model('User', userSchema);
+module.exports = User;
+
+// Подключение к БД
+const mongoose = require('mongoose');
+
+async function connectDB() {
+    try {
+        await mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/myapp', {
+            useNewUrlParser: true,
+            useUnifiedTopology: true,
+        });
+        console.log('MongoDB connected successfully');
+        
+        // Обработка событий
+        mongoose.connection.on('error', (err) => {
+            console.error('MongoDB connection error:', err);
+        });
+        
+        mongoose.connection.on('disconnected', () => {
+            console.log('MongoDB disconnected');
+        });
+    } catch (error) {
+        console.error('MongoDB connection failed:', error);
+        process.exit(1);
+    }
+}
+
+// Использование
+async function getUserData(userId) {
+    try {
+        const user = await User.findById(userId)
+            .select('name email roles')
+            .populate('posts', 'title createdAt')
+            .lean(); // Возвращает POJO вместо mongoose документа
+        
+        if (!user) {
+            throw new Error('User not found');
+        }
+        
+        return user;
+    } catch (error) {
+        console.error('Error fetching user:', error);
+        throw error;
+    }
+}
+
+// Агрегация
+async function getUserStats() {
+    return User.aggregate([
+        { $match: { isActive: true } },
+        { $group: {
+            _id: null,
+            totalUsers: { $sum: 1 },
+            avgAge: { $avg: '$age' },
+            roles: { $addToSet: '$roles' }
+        }},
+        { $project: {
+            totalUsers: 1,
+            avgAge: { $round: ['$avgAge', 2] },
+            roles: 1
+        }}
+    ]);
+}
+─────────────────────────────────────────────────────────────────────────────
+
+7.2 POSTGRESQL + PRISMA
+
+─────────────────────────────────────────────────────────────────────────────
+npm install prisma @prisma/client
+npx prisma init
+
+// prisma/schema.prisma
+generator client {
+    provider = "prisma-client-js"
+}
+
+datasource db {
+    provider = "postgresql"
+    url      = env("DATABASE_URL")
+}
+
+model User {
+    id        String   @id @default(cuid())
+    email     String   @unique
+    password  String
+    name      String
+    avatar    String?  @default("default-avatar.png")
+    isActive  Boolean  @default(true)
+    roles     Role[]   @default([USER])
+    lastLogin DateTime?
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+    
+    posts     Post[]
+    comments  Comment[]
+    
+    @@index([email])
+}
+
+model Post {
+    id        String   @id @default(cuid())
+    title     String
+    content   String   @db.Text
+    published Boolean  @default(false)
+    authorId  String
+    author    User     @relation(fields: [authorId], references: [id])
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+    
+    comments  Comment[]
+}
+
+model Comment {
+    id        String   @id @default(cuid())
+    content   String   @db.Text
+    postId    String
+    post      Post     @relation(fields: [postId], references: [id])
+    authorId  String
+    author    User     @relation(fields: [authorId], references: [id])
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+}
+
+enum Role {
+    USER
+    MODERATOR
+    ADMIN
+}
+
+// Использование Prisma Client
+const { PrismaClient } = require('@prisma/client');
+const prisma = new PrismaClient();
+
+// CRUD операции
+async function createUser(email, password, name) {
+    return prisma.user.create({
+        data: {
+            email,
+            password,
+            name,
+            roles: ['USER']
+        }
+    });
+}
+
+async function getUsersWithPosts() {
+    return prisma.user.findMany({
+        where: {
+            isActive: true,
+            posts: {
+                some: {
+                    published: true
+                }
+            }
+        },
+        select: {
+            id: true,
+            name: true,
+            email: true,
+            posts: {
+                select: {
+                    title: true,
+                    content: true,
+                    createdAt: true
+                }
+            }
+        }
+    });
+}
+
+async function updateUser(id, data) {
+    return prisma.user.update({
+        where: { id },
+        data
+    });
+}
+
+async function deleteUser(id) {
+    return prisma.user.delete({
+        where: { id }
+    });
+}
+
+// Транзакции
+async function createPostWithComments(authorId, postData, commentsData) {
+    return prisma.$transaction(async (prisma) => {
+        const post = await prisma.post.create({
+            data: {
+                ...postData,
+                author: {
+                    connect: { id: authorId }
+                }
+            }
+        });
+        
+        const comments = await Promise.all(
+            commentsData.map(content => 
+                prisma.comment.create({
+                    data: {
+                        content,
+                        post: { connect: { id: post.id } },
+                        author: { connect: { id: authorId } }
+                    }
+                })
+            )
+        );
+        
+        return { post, comments };
+    });
+}
+
+// Raw SQL запросы
+async function complexQuery() {
+    return prisma.$queryRaw`
+        SELECT u.name, COUNT(p.id) as post_count
+        FROM "User" u
+        LEFT JOIN "Post" p ON u.id = p."authorId" AND p.published = true
+        WHERE u."isActive" = true
+        GROUP BY u.id, u.name
+        HAVING COUNT(p.id) > 0
+        ORDER BY post_count DESC
+    `;
+}
+─────────────────────────────────────────────────────────────────────────────
+
+═══════════════════════════════════════════════════════════════════════════════
+ЧАСТЬ 8: GRAPHQL — АЛЬТЕРНАТИВА REST
+═══════════════════════════════════════════════════════════════════════════════
+
+Установка:
+─────────────────────────────────────────────────────────────────────────────
+npm install @apollo/server graphql graphql-tools
+npm install @apollo/client graphql
+─────────────────────────────────────────────────────────────────────────────
+
+GraphQL сервер (Apollo Server):
+─────────────────────────────────────────────────────────────────────────────
+const { ApolloServer } = require('@apollo/server');
+const { startStandaloneServer } = require('@apollo/server/standalone');
+
+// Схема GraphQL
+const typeDefs = `
+    type User {
+        id: ID!
+        email: String!
+        name: String!
+        avatar: String
+        posts: [Post!]!
+        comments: [Comment!]!
+        createdAt: String!
+    }
+    
+    type Post {
+        id: ID!
+        title: String!
+        content: String!
+        published: Boolean!
+        author: User!
+        comments: [Comment!]!
+        createdAt: String!
+    }
+    
+    type Comment {
+        id: ID!
+        content: String!
+        post: Post!
+        author: User!
+        createdAt: String!
+    }
+    
+    type Query {
+        users: [User!]!
+        user(id: ID!): User
+        posts: [Post!]!
+        post(id: ID!): Post
+        searchPosts(query: String!): [Post!]!
+    }
+    
+    type Mutation {
+        createUser(email: String!, password: String!, name: String!): User!
+        updateUser(id: ID!, name: String, avatar: String): User!
+        deleteUser(id: ID!): Boolean!
+        
+        createPost(title: String!, content: String!, authorId: ID!): Post!
+        publishPost(id: ID!): Post!
+        deletePost(id: ID!): Boolean!
+        
+        createComment(content: String!, postId: ID!, authorId: ID!): Comment!
+        deleteComment(id: ID!): Boolean!
+    }
+    
+    type Subscription {
+        postAdded: Post!
+        commentAdded(postId: ID!): Comment!
+    }
+`;
+
+// Резолверы
+const resolvers = {
+    Query: {
+        users: async () => {
+            return prisma.user.findMany({
+                include: {
+                    posts: true,
+                    comments: true
+                }
+            });
+        },
+        user: async (_, { id }) => {
+            return prisma.user.findUnique({
+                where: { id },
+                include: {
+                    posts: true,
+                    comments: true
+                }
+            });
+        },
+        posts: async () => {
+            return prisma.post.findMany({
+                where: { published: true },
+                include: {
+                    author: true,
+                    comments: true
+                }
+            });
+        },
+        searchPosts: async (_, { query }) => {
+            return prisma.post.findMany({
+                where: {
+                    OR: [
+                        { title: { contains: query, mode: 'insensitive' } },
+                        { content: { contains: query, mode: 'insensitive' } }
+                    ],
+                    published: true
+                },
+                include: { author: true }
+            });
+        }
+    },
+    Mutation: {
+        createUser: async (_, { email, password, name }) => {
+            const hashedPassword = await bcrypt.hash(password, 10);
+            return prisma.user.create({
+                data: {
+                    email,
+                    password: hashedPassword,
+                    name
+                }
+            });
+        },
+        updateUser: async (_, { id, name, avatar }) => {
+            return prisma.user.update({
+                where: { id },
+                data: { name, avatar }
+            });
+        },
+        deleteUser: async (_, { id }) => {
+            await prisma.user.delete({ where: { id } });
+            return true;
+        },
+        createPost: async (_, { title, content, authorId }) => {
+            const user = await prisma.user.findUnique({ where: { id: authorId } });
+            if (!user) throw new Error('User not found');
+            
+            return prisma.post.create({
+                data: {
+                    title,
+                    content,
+                    author: { connect: { id: authorId } }
+                },
+                include: { author: true }
+            });
+        },
+        publishPost: async (_, { id }) => {
+            return prisma.post.update({
+                where: { id },
+                data: { published: true },
+                include: { author: true }
+            });
+        }
+    },
+    // Field resolvers
+    User: {
+        posts: async (parent) => {
+            return prisma.post.findMany({
+                where: { authorId: parent.id }
+            });
+        },
+        comments: async (parent) => {
+            return prisma.comment.findMany({
+                where: { authorId: parent.id }
+            });
+        }
+    },
+    Post: {
+        author: async (parent) => {
+            return prisma.user.findUnique({
+                where: { id: parent.authorId }
+            });
+        },
+        comments: async (parent) => {
+            return prisma.comment.findMany({
+                where: { postId: parent.id }
+            });
+        }
+    }
+};
+
+// Создание сервера
+const server = new ApolloServer({
+    typeDefs,
+    resolvers,
+    introspection: process.env.NODE_ENV !== 'production',
+});
+
+const { url } = await startStandaloneServer(server, {
+    listen: { port: 4000 },
+    context: async ({ req }) => {
+        // Аутентификация
+        const token = req.headers.authorization || '';
+        let user = null;
+        
+        try {
+            if (token) {
+                const decoded = jwt.verify(token.replace('Bearer ', ''), JWT_SECRET);
+                user = await prisma.user.findUnique({
+                    where: { id: decoded.userId }
+                });
+            }
+        } catch (err) {
+            // Токен недействителен
+        }
+        
+        return { user, prisma };
+    },
+});
+
+console.log(`GraphQL server ready at ${url}`);
+─────────────────────────────────────────────────────────────────────────────
+
+GraphQL клиент (Apollo Client в React):
+─────────────────────────────────────────────────────────────────────────────
+import { ApolloClient, InMemoryCache, ApolloProvider, useQuery, useMutation, gql } from '@apollo/client';
+
+// Настройка клиента
+const client = new ApolloClient({
+    uri: 'http://localhost:4000',
+    cache: new InMemoryCache(),
+    headers: {
+        authorization: `Bearer ${localStorage.getItem('token')}`,
+    },
+});
+
+// GraphQL запросы
+const GET_USERS = gql`
+    query GetUsers {
+        users {
+            id
+            name
+            email
+            posts {
+                id
+                title
+                published
+            }
+        }
+    }
+`;
+
+const GET_USER = gql`
+    query GetUser($id: ID!) {
+        user(id: $id) {
+            id
+            name
+            email
+            posts {
+                title
+                content
+            }
+        }
+    }
+`;
+
+const CREATE_POST = gql`
+    mutation CreatePost($title: String!, $content: String!, $authorId: ID!) {
+        createPost(title: $title, content: $content, authorId: $authorId) {
+            id
+            title
+            content
+            author {
+                name
+                email
+            }
+        }
+    }
+`;
+
+const UPDATE_USER = gql`
+    mutation UpdateUser($id: ID!, $name: String!) {
+        updateUser(id: $id, name: $name) {
+            id
+            name
+            email
+        }
+    }
+`;
+
+// Компонент с использованием GraphQL
+function UserList() {
+    const { loading, error, data, refetch } = useQuery(GET_USERS);
+    const [createPost] = useMutation(CREATE_POST);
+    
+    if (loading) return <div>Загрузка...</div>;
+    if (error) return <div>Ошибка: {error.message}</div>;
+    
+    const handleCreatePost = async (title, content, authorId) => {
+        try {
+            const { data } = await createPost({
+                variables: { title, content, authorId },
+                // Обновление кэша после мутации
+                update: (cache, { data: { createPost } }) => {
+                    const existingData = cache.readQuery({ query: GET_USERS });
+                    cache.writeQuery({
+                        query: GET_USERS,
+                        data: {
+                            users: existingData.users.map(user =>
+                                user.id === createPost.author.id
+                                    ? { ...user, posts: [...user.posts, createPost] }
+                                    : user
+                            )
+                        }
+                    });
+                }
+            });
+            console.log('Пост создан:', data.createPost);
+        } catch (err) {
+            console.error('Ошибка создания поста:', err);
+        }
+    };
+    
+    return (
+        <div>
+            <h2>Пользователи</h2>
+            <button onClick={() => refetch()}>Обновить</button>
+            <ul>
+                {data.users.map(user => (
+                    <li key={user.id}>
+                        {user.name} - {user.email}
+                        <ul>
+                            {user.posts.map(post => (
+                                <li key={post.id}>{post.title}</li>
+                            ))}
+                        </ul>
+                    </li>
+                ))}
+            </ul>
+        </div>
+    );
+}
+
+// Использование в приложении
+function App() {
+    return (
+        <ApolloProvider client={client}>
+            <UserList />
+            <CreatePostForm />
+        </ApolloProvider>
+    );
+}
+─────────────────────────────────────────────────────────────────────────────
+
+═══════════════════════════════════════════════════════════════════════════════
+ЧАСТЬ 9: ИНСТРУМЕНТЫ И ЭКОСИСТЕМА
+═══════════════════════════════════════════════════════════════════════════════
+
+9.1 МЕНЕДЖЕРЫ ПАКЕТОВ
+
+npm vs yarn vs pnpm:
+─────────────────────────────────────────────────────────────────────────────
+# npm (стандартный)
+npm init -y
+npm install express
+npm install -D typescript
+npm run start
+
+# yarn (альтернатива)
+yarn init -y
+yarn add express
+yarn add -D typescript
+yarn start
+
+# pnpm (быстрый, экономит место)
+pnpm init
+pnpm add express
+pnpm add -D typescript
+pnpm start
+
+# Преимущества pnpm:
+# - Экономия дискового пространства (использует hard links)
+# - Быстрее установка
+# - Строгая структура зависимостей (нет проблем с плоским node_modules)
+─────────────────────────────────────────────────────────────────────────────
+
+9.2 СБОРЩИКИ (BUNDLERS)
+
+Vite (рекомендуется для новых проектов):
+─────────────────────────────────────────────────────────────────────────────
+npm create vite@latest my-app -- --template react-ts
+
+// vite.config.js
+import { defineConfig } from 'vite';
+import react from '@vitejs/plugin-react';
+import path from 'path';
+
+export default defineConfig({
+    plugins: [react()],
+    resolve: {
+        alias: {
+            '@': path.resolve(__dirname, './src'),
+            '@components': path.resolve(__dirname, './src/components'),
+            '@utils': path.resolve(__dirname, './src/utils'),
+        }
+    },
+    server: {
+        port: 3000,
+        proxy: {
+            '/api': {
+                target: 'http://localhost:5000',
+                changeOrigin: true,
+                rewrite: (path) => path.replace(/^\/api/, '')
+            }
+        }
+    },
+    build: {
+        rollupOptions: {
+            output: {
+                manualChunks: {
+                    vendor: ['react', 'react-dom'],
+                    router: ['react-router-dom'],
+                    ui: ['@radix-ui/react-accordion']
+                }
+            }
+        },
+        target: 'es2020',
+        sourcemap: true,
+        chunkSizeWarningLimit: 1000,
+        minify: 'terser',
+        terserOptions: {
+            compress: {
+                drop_console: true,
+                drop_debugger: true
+            }
+        }
+    }
+});
+─────────────────────────────────────────────────────────────────────────────
+
+Webpack (классический):
+─────────────────────────────────────────────────────────────────────────────
+// webpack.config.js
+const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+
+module.exports = {
+    entry: './src/index.js',
+    output: {
+        path: path.resolve(__dirname, 'dist'),
+        filename: '[name].[contenthash].js',
+        clean: true,
+        publicPath: '/'
+    },
+    module: {
+        rules: [
+            {
+                test: /\.(js|jsx|ts|tsx)$/,
+                exclude: /node_modules/,
+                use: {
+                    loader: 'babel-loader',
+                    options: {
+                        presets: ['@babel/preset-env', '@babel/preset-react', '@babel/preset-typescript']
+                    }
+                }
+            },
+            {
+                test: /\.css$/,
+                use: [MiniCssExtractPlugin.loader, 'css-loader', 'postcss-loader']
+            },
+            {
+                test: /\.(png|svg|jpg|jpeg|gif|webp)$/i,
+                type: 'asset/resource'
+            },
+            {
+                test: /\.(woff|woff2|eot|ttf|otf)$/i,
+                type: 'asset/resource'
+            }
+        ]
+    },
+    resolve: {
+        extensions: ['.js', '.jsx', '.ts', '.tsx'],
+        alias: {
+            '@': path.resolve(__dirname, 'src')
+        }
+    },
+    plugins: [
+        new HtmlWebpackPlugin({
+            template: './public/index.html'
+        }),
+        new MiniCssExtractPlugin({
+            filename: '[name].[contenthash].css'
+        })
+    ],
+    devServer: {
+        historyApiFallback: true,
+        hot: true,
+        port: 3000,
+        proxy: {
+            '/api': 'http://localhost:5000'
+        }
+    },
+    optimization: {
+        splitChunks: {
+            chunks: 'all',
+            cacheGroups: {
+                vendor: {
+                    test: /[\\/]node_modules[\\/]/,
+                    name: 'vendors',
+                    chunks: 'all'
+                }
+            }
+        }
+    }
+};
+─────────────────────────────────────────────────────────────────────────────
+
+9.3 ЛИНТИНГ И ФОРМАТИРОВАНИЕ
+
+ESLint + Prettier:
+─────────────────────────────────────────────────────────────────────────────
+npm install -D eslint prettier @typescript-eslint/eslint-plugin @typescript-eslint/parser
+npm install -D eslint-config-prettier eslint-plugin-react eslint-plugin-react-hooks
+
+// .eslintrc.js
+module.exports = {
+    root: true,
+    parser: '@typescript-eslint/parser',
+    extends: [
+        'eslint:recommended',
+        'plugin:react/recommended',
+        'plugin:react-hooks/recommended',
+        'plugin:@typescript-eslint/recommended',
+        'plugin:import/recommended',
+        'plugin:import/typescript',
+        'prettier'
+    ],
+    plugins: ['react', 'react-hooks', '@typescript-eslint', 'import'],
+    rules: {
+        'react/react-in-jsx-scope': 'off',
+        'react/prop-types': 'off',
+        '@typescript-eslint/explicit-module-boundary-types': 'off',
+        '@typescript-eslint/no-unused-vars': ['error', { argsIgnorePattern: '^_' }],
+        'import/order': ['error', {
+            'groups': ['builtin', 'external', 'internal', 'parent', 'sibling', 'index'],
+            'newlines-between': 'always'
+        }],
+        'no-console': ['warn', { allow: ['warn', 'error'] }],
+        'eqeqeq': ['error', 'always'],
+        'curly': ['error', 'all']
+    },
+    settings: {
+        react: {
+            version: 'detect'
+        },
+        'import/resolver': {
+            typescript: {},
+            node: {
+                extensions: ['.js', '.jsx', '.ts', '.tsx']
+            }
+        }
+    },
+    env: {
+        browser: true,
+        node: true,
+        es2021: true
+    }
+};
+
+// .prettierrc
+{
+    "semi": true,
+    "singleQuote": true,
+    "tabWidth": 2,
+    "trailingComma": "es5",
+    "printWidth": 100,
+    "bracketSpacing": true,
+    "arrowParens": "avoid",
+    "endOfLine": "lf",
+    "jsxSingleQuote": false,
+    "bracketSameLine": false
+}
+
+// package.json скрипты
+{
+    "scripts": {
+        "lint": "eslint src --ext .js,.jsx,.ts,.tsx",
+        "lint:fix": "eslint src --ext .js,.jsx,.ts,.tsx --fix",
+        "format": "prettier --write 'src/**/*.{js,jsx,ts,tsx,json,css,md}'",
+        "type-check": "tsc --noEmit"
+    }
+}
+─────────────────────────────────────────────────────────────────────────────
+
+═══════════════════════════════════════════════════════════════════════════════
+ЧАСТЬ 10: ТЕСТИРОВАНИЕ
+═══════════════════════════════════════════════════════════════════════════════
+
+10.1 UNIT-ТЕСТЫ (JEST + REACT TESTING LIBRARY)
+
+─────────────────────────────────────────────────────────────────────────────
+npm install -D @testing-library/react @testing-library/jest-dom @testing-library/user-event
+npm install -D jest @types/jest
+
+// Тестирование компонента
+import { render, screen, fireEvent, waitFor } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
+import { UserProfile } from './UserProfile';
+
+// Мок API
+jest.mock('../../api', () => ({
+    fetchUser: jest.fn()
+}));
+
+describe('UserProfile', () => {
+    beforeEach(() => {
+        jest.clearAllMocks();
+    });
+    
+    test('отображает данные пользователя', async () => {
+        const mockUser = {
+            id: 1,
+            name: 'John Doe',
+            email: 'john@example.com'
+        };
+        
+        const { fetchUser } = require('../../api');
+        fetchUser.mockResolvedValue(mockUser);
+        
+        render(<UserProfile userId={1} />);
+        
+        // Проверка состояния загрузки
+        expect(screen.getByText(/загрузка/i)).toBeInTheDocument();
+        
+        // Ожидание загрузки данных
+        await waitFor(() => {
+            expect(screen.getByText('John Doe')).toBeInTheDocument();
+            expect(screen.getByText('john@example.com')).toBeInTheDocument();
+        });
+        
+        // Проверка, что API был вызван с правильным аргументом
+        expect(fetchUser).toHaveBeenCalledWith(1);
+        expect(fetchUser).toHaveBeenCalledTimes(1);
+    });
+    
+    test('обрабатывает ошибку загрузки', async () => {
+        const { fetchUser } = require('../../api');
+        fetchUser.mockRejectedValue(new Error('Network error'));
+        
+        render(<UserProfile userId={1} />);
+        
+        await waitFor(() => {
+            expect(screen.getByText(/ошибка/i)).toBeInTheDocument();
+        });
+    });
+    
+    test('обновляет данные при изменении userId', async () => {
+        const { fetchUser } = require('../../api');
+        fetchUser
+            .mockResolvedValueOnce({ id: 1, name: 'John' })
+            .mockResolvedValueOnce({ id: 2, name: 'Jane' });
+        
+        const { rerender } = render(<UserProfile userId={1} />);
+        
+        await waitFor(() => {
+            expect(screen.getByText('John')).toBeInTheDocument();
+        });
+        
+        rerender(<UserProfile userId={2} />);
+        
+        await waitFor(() => {
+            expect(screen.getByText('Jane')).toBeInTheDocument();
+        });
+    });
+});
+
+// Тестирование формы
+describe('RegistrationForm', () => {
+    test('валидирует поля формы', async () => {
+        render(<RegistrationForm />);
+        const user = userEvent.setup();
+        
+        // Нажимаем кнопку отправки без заполнения
+        const submitButton = screen.getByRole('button', { name: /зарегистрироваться/i });
+        await user.click(submitButton);
+        
+        // Проверка сообщений об ошибках
+        expect(await screen.findByText(/имя обязательно/i)).toBeInTheDocument();
+        expect(await screen.findByText(/email обязателен/i)).toBeInTheDocument();
+        
+        // Заполняем поля
+        await user.type(screen.getByLabelText(/имя пользователя/i), 'John');
+        await user.type(screen.getByLabelText(/email/i), 'invalid-email');
+        
+        // Проверка валидации email
+        await user.click(submitButton);
+        expect(await screen.findByText(/неверный формат email/i)).toBeInTheDocument();
+    });
+});
+
+// Тестирование пользовательских хуков
+import { renderHook, act } from '@testing-library/react';
+import { useCounter } from './useCounter';
+
+describe('useCounter', () => {
+    test('инициализирует счётчик', () => {
+        const { result } = renderHook(() => useCounter(10));
+        expect(result.current.count).toBe(10);
+    });
+    
+    test('инкрементирует счётчик', () => {
+        const { result } = renderHook(() => useCounter());
+        
+        act(() => {
+            result.current.increment();
+        });
+        
+        expect(result.current.count).toBe(1);
+    });
+    
+    test('декрементирует счётчик', () => {
+        const { result } = renderHook(() => useCounter(5));
+        
+        act(() => {
+            result.current.decrement();
+        });
+        
+        expect(result.current.count).toBe(4);
+    });
+});
+─────────────────────────────────────────────────────────────────────────────
+
+10.2 ИНТЕГРАЦИОННЫЕ ТЕСТЫ (API)
+
+─────────────────────────────────────────────────────────────────────────────
+npm install -D supertest
+
+// app.test.js
+const request = require('supertest');
+const app = require('../app');
+const mongoose = require('mongoose');
+
+describe('API Интеграционные тесты', () => {
+    let token;
+    let userId;
+    
+    beforeAll(async () => {
+        await mongoose.connect(process.env.TEST_DATABASE_URL);
+    });
+    
+    afterAll(async () => {
+        await mongoose.connection.dropDatabase();
+        await mongoose.connection.close();
+    });
+    
+    describe('POST /api/auth/register', () => {
+        test('регистрирует нового пользователя', async () => {
+            const response = await request(app)
+                .post('/api/auth/register')
+                .send({
+                    email: 'test@example.com',
+                    password: 'password123',
+                    name: 'Test User'
+                });
+            
+            expect(response.status).toBe(201);
+            expect(response.body).toHaveProperty('userId');
+            userId = response.body.userId;
+        });
+        
+        test('возвращает ошибку при дублировании email', async () => {
+            const response = await request(app)
+                .post('/api/auth/register')
+                .send({
+                    email: 'test@example.com',
+                    password: 'password123',
+                    name: 'Another User'
+                });
+            
+            expect(response.status).toBe(400);
+            expect(response.body.error).toContain('already exists');
+        });
+    });
+    
+    describe('POST /api/auth/login', () => {
+        test('авторизует пользователя', async () => {
+            const response = await request(app)
+                .post('/api/auth/login')
+                .send({
+                    email: 'test@example.com',
+                    password: 'password123'
+                });
+            
+            expect(response.status).toBe(200);
+            expect(response.body).toHaveProperty('token');
+            expect(response.body).toHaveProperty('user');
+            token = response.body.token;
+        });
+        
+        test('отклоняет неверные данные', async () => {
+            const response = await request(app)
+                .post('/api/auth/login')
+                .send({
+                    email: 'test@example.com',
+                    password: 'wrongpassword'
+                });
+            
+            expect(response.status).toBe(401);
+            expect(response.body.error).toBe('Invalid credentials');
+        });
+    });
+    
+    describe('GET /api/profile', () => {
+        test('возвращает профиль пользователя', async () => {
+            const response = await request(app)
+                .get('/api/profile')
+                .set('Authorization', `Bearer ${token}`);
+            
+            expect(response.status).toBe(200);
+            expect(response.body).toHaveProperty('email', 'test@example.com');
+        });
+        
+        test('отклоняет запрос без токена', async () => {
+            const response = await request(app)
+                .get('/api/profile');
+            
+            expect(response.status).toBe(401);
+        });
+    });
+});
+─────────────────────────────────────────────────────────────────────────────
+
+10.3 E2E ТЕСТЫ (CYPRESS)
+
+─────────────────────────────────────────────────────────────────────────────
+npm install -D cypress
+
+// cypress/e2e/auth.cy.js
+describe('Аутентификация', () => {
+    beforeEach(() => {
+        cy.visit('/login');
+    });
+    
+    it('авторизует пользователя', () => {
+        cy.get('input[name="email"]').type('test@example.com');
+        cy.get('input[name="password"]').type('password123');
+        cy.get('button[type="submit"]').click();
+        
+        // Проверка редиректа
+        cy.url().should('include', '/dashboard');
+        cy.contains('Добро пожаловать');
+    });
+    
+    it('показывает ошибку при неверных данных', () => {
+        cy.get('input[name="email"]').type('wrong@example.com');
+        cy.get('input[name="password"]').type('wrong');
+        cy.get('button[type="submit"]').click();
+        
+        cy.contains('Неверные данные').should('be.visible');
+        cy.url().should('include', '/login');
+    });
+});
+
+// cypress/e2e/posts.cy.js
+describe('Управление постами', () => {
+    beforeEach(() => {
+        cy.login(); // Пользовательский команда
+        cy.visit('/posts');
+    });
+    
+    it('создаёт новый пост', () => {
+        cy.get('button').contains('Создать пост').click();
+        cy.get('input[name="title"]').type('Мой новый пост');
+        cy.get('textarea[name="content"]').type('Содержимое поста');
+        cy.get('button').contains('Сохранить').click();
+        
+        cy.contains('Мой новый пост').should('be.visible');
+        cy.contains('Пост создан успешно').should('be.visible');
+    });
+    
+    it('редактирует существующий пост', () => {
+        cy.contains('Мой новый пост').parent().find('button').contains('Редактировать').click();
+        cy.get('input[name="title"]').clear().type('Обновлённый пост');
+        cy.get('button').contains('Сохранить').click();
+        
+        cy.contains('Обновлённый пост').should('be.visible');
+        cy.contains('Пост обновлён успешно').should('be.visible');
+    });
+    
+    it('удаляет пост', () => {
+        cy.contains('Обновлённый пост')
+            .parent()
+            .find('button')
+            .contains('Удалить')
+            .click();
+        
+        cy.get('button').contains('Подтвердить').click();
+        cy.contains('Обновлённый пост').should('not.exist');
+        cy.contains('Пост удалён').should('be.visible');
+    });
+});
+
+// cypress/support/commands.js
+Cypress.Commands.add('login', () => {
+    cy.request('POST', '/api/auth/login', {
+        email: 'test@example.com',
+        password: 'password123'
+    }).then((response) => {
+        window.localStorage.setItem('token', response.body.token);
+    });
+});
+
+// cypress.config.js
+const { defineConfig } = require('cypress');
+
+module.exports = defineConfig({
+    e2e: {
+        baseUrl: 'http://localhost:5173',
+        supportFile: 'cypress/support/e2e.js',
+        specPattern: 'cypress/e2e/**/*.cy.{js,jsx,ts,tsx}',
+        viewportWidth: 1280,
+        viewportHeight: 720,
+        screenshotOnRunFailure: true,
+        video: false,
+        defaultCommandTimeout: 10000
+    },
+    component: {
+        devServer: {
+            framework: 'react',
+            bundler: 'vite'
+        }
+    }
+});
+─────────────────────────────────────────────────────────────────────────────
+
+═══════════════════════════════════════════════════════════════════════════════
+ЧАСТЬ 11: ДОКЕРИЗАЦИЯ И ОРКЕСТРАЦИЯ
+═══════════════════════════════════════════════════════════════════════════════
+
+11.1 DOCKER — КОНТЕЙНЕРИЗАЦИЯ
+
+Dockerfile для React-приложения:
+─────────────────────────────────────────────────────────────────────────────
+# Stage 1: Build
+FROM node:18-alpine AS builder
+
+WORKDIR /app
+
+COPY package*.json ./
+COPY yarn.lock ./
+
+RUN yarn install --frozen-lockfile
+
+COPY . .
+
+RUN yarn build
+
+# Stage 2: Production
+FROM nginx:alpine
+
+COPY --from=builder /app/dist /usr/share/nginx/html
+
+# Настройка nginx для SPA
+RUN echo 'server { \
+    listen 80; \
+    location / { \
+        root /usr/share/nginx/html; \
+        try_files $uri $uri/ /index.html; \
+    } \
+    location /api { \
+        proxy_pass http://backend:3000; \
+        proxy_set_header Host $host; \
+        proxy_set_header X-Real-IP $remote_addr; \
+    } \
+}' > /etc/nginx/conf.d/default.conf
+
+EXPOSE 80
+
+CMD ["nginx", "-g", "daemon off;"]
+─────────────────────────────────────────────────────────────────────────────
+
+Dockerfile для Node.js сервера:
+─────────────────────────────────────────────────────────────────────────────
+FROM node:18-alpine AS builder
+
+WORKDIR /app
+
+COPY package*.json ./
+COPY prisma ./prisma/
+
+RUN yarn install --frozen-lockfile
+
+COPY . .
+
+RUN yarn build
+RUN npx prisma generate
+
+FROM node:18-alpine
+
+WORKDIR /app
+
+COPY --from=builder /app/dist ./dist
+COPY --from=builder /app/node_modules ./node_modules
+COPY --from=builder /app/prisma ./prisma
+COPY --from=builder /app/package*.json ./
+
+ENV NODE_ENV=production
+
+EXPOSE 3000
+
+CMD ["node", "dist/server.js"]
+─────────────────────────────────────────────────────────────────────────────
+
+Docker Compose для полного стека:
+─────────────────────────────────────────────────────────────────────────────
+version: '3.8'
+
+services:
+  # База данных
+  postgres:
+    image: postgres:15-alpine
+    container_name: myapp-postgres
+    restart: always
+    environment:
+      POSTGRES_USER: myapp
+      POSTGRES_PASSWORD: myapp123
+      POSTGRES_DB: myapp
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U myapp"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # Бэкенд
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: myapp-backend
+    restart: always
+    environment:
+      NODE_ENV: production
+      DATABASE_URL: postgresql://myapp:myapp123@postgres:5432/myapp
+      JWT_SECRET: ${JWT_SECRET}
+    ports:
+      - "3000:3000"
+    depends_on:
+      postgres:
+        condition: service_healthy
+    volumes:
+      - ./uploads:/app/uploads
+
+  # Фронтенд
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: myapp-frontend
+    restart: always
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+
+  # Redis для кэширования и сессий
+  redis:
+    image: redis:7-alpine
+    container_name: myapp-redis
+    restart: always
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+
+  # Nginx для балансировки и статики
+  nginx:
+    image: nginx:alpine
+    container_name: myapp-nginx
+    restart: always
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./nginx/conf.d:/etc/nginx/conf.d:ro
+    ports:
+      - "443:443"
+      - "80:80"
+    depends_on:
+      - frontend
+      - backend
+
+volumes:
+  postgres_data:
+  redis_data:
+─────────────────────────────────────────────────────────────────────────────
+
+11.2 KUBERNETES (ОРКЕСТРАЦИЯ)
+
+Deployment для бэкенда:
+─────────────────────────────────────────────────────────────────────────────
+# backend-deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backend
+  namespace: myapp
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: backend
+  template:
+    metadata:
+      labels:
+        app: backend
+    spec:
+      containers:
+      - name: backend
+        image: myapp/backend:latest
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 3000
+        env:
+        - name: NODE_ENV
+          value: "production"
+        - name: DATABASE_URL
+          valueFrom:
+            secretKeyRef:
+              name: db-secret
+              key: url
+        - name: JWT_SECRET
+          valueFrom:
+            secretKeyRef:
+              name: jwt-secret
+              key: secret
+        resources:
+          requests:
+            memory: "256Mi"
+            cpu: "250m"
+          limits:
+            memory: "512Mi"
+            cpu: "500m"
+        livenessProbe:
+          httpGet:
+            path: /health
+            port: 3000
+          initialDelaySeconds: 30
+          periodSeconds: 10
+        readinessProbe:
+          httpGet:
+            path: /ready
+            port: 3000
+          initialDelaySeconds: 5
+          periodSeconds: 5
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: backend-service
+  namespace: myapp
+spec:
+  selector:
+    app: backend
+  ports:
+  - port: 80
+    targetPort: 3000
+  type: ClusterIP
+---
+apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: backend-hpa
+  namespace: myapp
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: backend
+  minReplicas: 2
+  maxReplicas: 10
+  metrics:
+  - type: Resource
+    resource:
+      name: cpu
+      target:
+        type: Utilization
+        averageUtilization: 70
+  - type: Resource
+    resource:
+      name: memory
+      target:
+        type: Utilization
+        averageUtilization: 80
+─────────────────────────────────────────────────────────────────────────────
+
+Ingress для маршрутизации:
+─────────────────────────────────────────────────────────────────────────────
+# ingress.yaml
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: main-ingress
+  namespace: myapp
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+    nginx.ingress.kubernetes.io/ssl-redirect: "true"
+    cert-manager.io/cluster-issuer: "letsencrypt-prod"
+spec:
+  tls:
+  - hosts:
+    - myapp.com
+    secretName: myapp-tls
+  rules:
+  - host: myapp.com
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: frontend-service
+            port:
+              number: 80
+      - path: /api
+        pathType: Prefix
+        backend:
+          service:
+            name: backend-service
+            port:
+              number: 80
+      - path: /static
+        pathType: Prefix
+        backend:
+          service:
+            name: static-service
+            port:
+              number: 80
+─────────────────────────────────────────────────────────────────────────────
+
+═══════════════════════════════════════════════════════════════════════════════
+ЧАСТЬ 12: CI/CD ПАЙПЛАЙНЫ
+═══════════════════════════════════════════════════════════════════════════════
+
+12.1 GITHUB ACTIONS
+
+─────────────────────────────────────────────────────────────────────────────
+# .github/workflows/ci-cd.yml
+name: CI/CD Pipeline
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main ]
+
+env:
+  NODE_VERSION: '18'
+  AWS_REGION: 'us-east-1'
+
+jobs:
+  test:
+    name: Test
+    runs-on: ubuntu-latest
+    
+    services:
+      postgres:
+        image: postgres:15
+        env:
+          POSTGRES_USER: test
+          POSTGRES_PASSWORD: test
+          POSTGRES_DB: test
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'npm'
+      
+      - name: Install dependencies
+        run: npm ci
+      
+      - name: Lint
+        run: npm run lint
+      
+      - name: Type check
+        run: npm run type-check
+      
+      - name: Run unit tests
+        run: npm run test:unit
+        env:
+          DATABASE_URL: postgresql://test:test@localhost:5432/test
+      
+      - name: Run integration tests
+        run: npm run test:integration
+        env:
+          DATABASE_URL: postgresql://test:test@localhost:5432/test
+      
+      - name: Upload coverage
+        uses: codecov/codecov-action@v3
+        with:
+          files: ./coverage/coverage-final.json
+          fail_ci_if_error: false
+
+  build:
+    name: Build and Push
+    runs-on: ubuntu-latest
+    needs: test
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'npm'
+      
+      - name: Install dependencies
+        run: npm ci
+      
+      - name: Build application
+        run: npm run build
+      
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v2
+      
+      - name: Login to DockerHub
+        uses: docker/login-action@v2
+        with:
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+      
+      - name: Build and push Docker image
+        uses: docker/build-push-action@v4
+        with:
+          context: .
+          push: true
+          tags: |
+            ${{ secrets.DOCKER_USERNAME }}/myapp:latest
+            ${{ secrets.DOCKER_USERNAME }}/myapp:${{ github.sha }}
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+      
+      - name: Scan image for vulnerabilities
+        uses: aquasecurity/trivy-action@master
+        with:
+          image-ref: ${{ secrets.DOCKER_USERNAME }}/myapp:latest
+          format: 'sarif'
+          output: 'trivy-results.sarif'
+      
+      - name: Upload Trivy results
+        uses: github/codeql-action/upload-sarif@v2
+        with:
+          sarif_file: 'trivy-results.sarif'
+
+  deploy:
+    name: Deploy to AWS
+    runs-on: ubuntu-latest
+    needs: build
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    environment:
+      name: production
+      url: https://myapp.com
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+      
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v2
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ${{ env.AWS_REGION }}
+      
+      - name: Update kubeconfig
+        run: aws eks update-kubeconfig --name myapp-cluster --region ${{ env.AWS_REGION }}
+      
+      - name: Deploy to Kubernetes
+        run: |
+          kubectl set image deployment/backend backend=${{ secrets.DOCKER_USERNAME }}/myapp:${{ github.sha }} -n myapp
+          kubectl rollout status deployment/backend -n myapp
+      
+      - name: Notify deployment status
+        if: always()
+        uses: slackapi/slack-github-action@v1.24.0
+        with:
+          payload: |
+            {
+              "text": "Deployment status: ${{ job.status }}\nEnvironment: production\nCommit: ${{ github.sha }}\nURL: https://myapp.com"
+            }
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+
+  security:
+    name: Security Scan
+    runs-on: ubuntu-latest
+    needs: build
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+      
+      - name: Run Snyk vulnerability scan
+        uses: snyk/actions/node@master
+        env:
+          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+        with:
+          args: --severity-threshold=high
+      
+      - name: Run OWASP Dependency Check
+        uses: dependency-check/Dependency-Check_Action@main
+        with:
+          project: 'MyApp'
+          path: '.'
+          format: 'HTML'
+          out: 'reports'
+      
+      - name: Upload security reports
+        uses: actions/upload-artifact@v3
+        with:
+          name: security-reports
+          path: reports
+─────────────────────────────────────────────────────────────────────────────
+
+12.2 GITLAB CI
+
+─────────────────────────────────────────────────────────────────────────────
+# .gitlab-ci.yml
+stages:
+  - test
+  - build
+  - deploy
+  - security
+
+variables:
+  NODE_VERSION: 18
+  DOCKER_IMAGE: $CI_REGISTRY_IMAGE:$CI_COMMIT_SHORT_SHA
+
+# Кэширование
+cache:
+  key: ${CI_COMMIT_REF_SLUG}
+  paths:
+    - node_modules/
+
+# Тестирование
+test:
+  stage: test
+  image: node:$NODE_VERSION-alpine
+  services:
+    - postgres:15
+  variables:
+    DATABASE_URL: postgresql://test:test@postgres:5432/test
+  before_script:
+    - npm ci
+  script:
+    - npm run lint
+    - npm run type-check
+    - npm run test:unit
+    - npm run test:integration
+  artifacts:
+    paths:
+      - coverage/
+    reports:
+      junit: junit.xml
+
+# Сборка
+build:
+  stage: build
+  image: docker:latest
+  services:
+    - docker:dind
+  before_script:
+    - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
+  script:
+    - docker build -t $DOCKER_IMAGE .
+    - docker push $DOCKER_IMAGE
+  only:
+    - main
+
+# Деплой
+deploy_production:
+  stage: deploy
+  image: bitnami/kubectl:latest
+  script:
+    - kubectl set image deployment/backend backend=$DOCKER_IMAGE -n myapp
+    - kubectl rollout status deployment/backend -n myapp
+  environment:
+    name: production
+    url: https://myapp.com
+  only:
+    - main
+  when: manual
+
+# Безопасность
+security_scan:
+  stage: security
+  image: aquasec/trivy:latest
+  script:
+    - trivy image $DOCKER_IMAGE
+    - trivy fs --format sarif --output trivy-results.sarif .
+  artifacts:
+    paths:
+      - trivy-results.sarif
+  only:
+    - main
+─────────────────────────────────────────────────────────────────────────────
+
+═══════════════════════════════════════════════════════════════════════════════
+ЧАСТЬ 13: МОНИТОРИНГ И ЛОГИРОВАНИЕ
+═══════════════════════════════════════════════════════════════════════════════
+
+13.1 ЛОГИРОВАНИЕ (WINSTON / PINO)
+
+─────────────────────────────────────────────────────────────────────────────
+npm install winston winston-daily-rotate-file
+npm install pino pino-pretty
+
+// logger.js (Winston)
+const winston = require('winston');
+const DailyRotateFile = require('winston-daily-rotate-file');
+
+// Форматы логов
+const logFormat = winston.format.combine(
+    winston.format.timestamp({ format: 'YYYY-MM-DD HH:mm:ss' }),
+    winston.format.errors({ stack: true }),
+    winston.format.splat(),
+    winston.format.json()
+);
+
+// Транспорты
+const transports = [
+    // Консоль
+    new winston.transports.Console({
+        format: winston.format.combine(
+            winston.format.colorize(),
+            winston.format.simple()
+        )
+    }),
+    // Файл с ротацией
+    new DailyRotateFile({
+        filename: 'logs/application-%DATE%.log',
+        datePattern: 'YYYY-MM-DD',
+        maxSize: '20m',
+        maxFiles: '14d',
+        format: logFormat
+    }),
+    // Ошибки в отдельный файл
+    new DailyRotateFile({
+        filename: 'logs/error-%DATE%.log',
+        datePattern: 'YYYY-MM-DD',
+        level: 'error',
+        maxSize: '20m',
+        maxFiles: '30d',
+        format: logFormat
+    })
+];
+
+const logger = winston.createLogger({
+    level: process.env.LOG_LEVEL || 'info',
+    format: logFormat,
+    transports,
+    // Исключения
+    exceptionHandlers: [
+        new DailyRotateFile({
+            filename: 'logs/exceptions-%DATE%.log',
+            datePattern: 'YYYY-MM-DD',
+            maxSize: '20m',
+            maxFiles: '7d'
+        })
+    ],
+    rejectionHandlers: [
+        new DailyRotateFile({
+            filename: 'logs/rejections-%DATE%.log',
+            datePattern: 'YYYY-MM-DD',
+            maxSize: '20m',
+            maxFiles: '7d'
+        })
+    ]
+});
+
+// Middleware для Express
+const morgan = require('morgan');
+
+// Создание stream для morgan
+const morganStream = {
+    write: (message) => {
+        logger.info(message.trim());
+    }
+};
+
+app.use(morgan('combined', { stream: morganStream }));
+
+// Использование
+logger.info('Сервер запущен', { port: 3000 });
+logger.error('Ошибка базы данных', { error: err.message, stack: err.stack });
+logger.warn('Медленный запрос', { duration: 5000, url: req.url });
+
+// Создание дочернего логгера для контекста
+const userLogger = logger.child({ module: 'user-service' });
+userLogger.info('Пользователь создан', { userId: 123 });
+─────────────────────────────────────────────────────────────────────────────
+
+13.2 МОНИТОРИНГ (PROMETHEUS + GRAFANA)
+
+─────────────────────────────────────────────────────────────────────────────
+npm install prom-client
+
+// metrics.js
+const client = require('prom-client');
+const express = require('express');
+
+// Сборка метрик по умолчанию
+const collectDefaultMetrics = client.collectDefaultMetrics;
+collectDefaultMetrics({ timeout: 5000 });
+
+// Кастомные метрики
+const httpRequestCounter = new client.Counter({
+    name: 'http_requests_total',
+    help: 'Total number of HTTP requests',
+    labelNames: ['method', 'route', 'status']
+});
+
+const httpRequestDuration = new client.Histogram({
+    name: 'http_request_duration_seconds',
+    help: 'Duration of HTTP requests in seconds',
+    labelNames: ['method', 'route', 'status'],
+    buckets: [0.1, 0.5, 1, 2, 5, 10]
+});
+
+const activeUsers = new client.Gauge({
+    name: 'active_users',
+    help: 'Number of active users'
+});
+
+const userRegistrations = new client.Counter({
+    name: 'user_registrations_total',
+    help: 'Total number of user registrations'
+});
+
+// Middleware для сбора метрик
+function metricsMiddleware(req, res, next) {
+    const start = Date.now();
+    
+    res.on('finish', () => {
+        const duration = (Date.now() - start) / 1000;
+        const route = req.route ? req.route.path : req.url;
+        
+        httpRequestCounter.inc({
+            method: req.method,
+            route: route,
+            status: res.statusCode
+        });
+        
+        httpRequestDuration.observe({
+            method: req.method,
+            route: route,
+            status: res.statusCode
+        }, duration);
+    });
+    
+    next();
+}
+
+app.use(metricsMiddleware);
+
+// Эндпоинт для метрик
+app.get('/metrics', async (req, res) => {
+    res.set('Content-Type', client.register.contentType);
+    res.end(await client.register.metrics());
+});
+
+// Обновление метрик
+setInterval(() => {
+    const userCount = getActiveUserCount(); // Ваша логика
+    activeUsers.set(userCount);
+}, 10000);
+
+// Кастомные метрики в бизнес-логике
+app.post('/api/register', async (req, res) => {
+    try {
+        // Логика регистрации
+        userRegistrations.inc();
+        res.status(201).json({ success: true });
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+});
+
+// Prometheus конфиг
+// prometheus.yml
+global:
+  scrape_interval: 15s
+  evaluation_interval: 15s
+
+scrape_configs:
+  - job_name: 'backend'
+    static_configs:
+      - targets: ['backend:3000']
+    metrics_path: '/metrics'
+─────────────────────────────────────────────────────────────────────────────
+
+13.3 ОТСЛЕЖИВАНИЕ ОШИБОК (SENTRY)
+
+─────────────────────────────────────────────────────────────────────────────
+npm install @sentry/node @sentry/react @sentry/tracing
+
+// server.js
+const Sentry = require('@sentry/node');
+const { nodeProfilingIntegration } = require('@sentry/profiling-node');
+
+Sentry.init({
+    dsn: process.env.SENTRY_DSN,
+    environment: process.env.NODE_ENV || 'development',
+    tracesSampleRate: 0.5,
+    profilesSampleRate: 0.3,
+    integrations: [
+        nodeProfilingIntegration(),
+        new Sentry.Integrations.Http({ tracing: true }),
+    ],
+});
+
+// Express middleware
+app.use(Sentry.Handlers.requestHandler());
+app.use(Sentry.Handlers.tracingHandler());
+
+// Обработка ошибок
+app.use(Sentry.Handlers.errorHandler({
+    shouldHandleError(error) {
+        // Игнорируем определённые ошибки
+        if (error.status === 404) return false;
+        return true;
+    }
+}));
+
+// Ручная отправка ошибок
+try {
+    // Код, который может вызвать ошибку
+} catch (error) {
+    Sentry.captureException(error, {
+        tags: { module: 'user-service' },
+        extra: { userId: 123, action: 'update' }
+    });
+}
+
+// Создание транзакций
+const transaction = Sentry.startTransaction({
+    name: 'User Registration',
+    op: 'registration',
+});
+
+// Браузерный клиент (React)
+import * as Sentry from '@sentry/react';
+import { BrowserTracing } from '@sentry/tracing';
+
+Sentry.init({
+    dsn: 'YOUR_DSN',
+    integrations: [new BrowserTracing()],
+    tracesSampleRate: 1.0,
+});
+
+// Компонент для отлова ошибок
+class ErrorBoundary extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = { hasError: false };
+    }
+
+    static getDerivedStateFromError(error) {
+        return { hasError: true };
+    }
+
+    componentDidCatch(error, errorInfo) {
+        Sentry.captureException(error, { extra: errorInfo });
+    }
+
+    render() {
+        if (this.state.hasError) {
+            return <h1>Что-то пошло не так</h1>;
+        }
+        return this.props.children;
+    }
+}
+
+// Использование
+Sentry.withProfiler(function App() {
+    return (
+        <ErrorBoundary>
+            <MyApp />
+        </ErrorBoundary>
+    );
+});
+─────────────────────────────────────────────────────────────────────────────
+
+═══════════════════════════════════════════════════════════════════════════════
+ЧАСТЬ 14: БЕЗОПАСНОСТЬ В ВЕБ-ПРИЛОЖЕНИЯХ
+═══════════════════════════════════════════════════════════════════════════════
+
+14.1 БАЗОВАЯ БЕЗОПАСНОСТЬ
+
+─────────────────────────────────────────────────────────────────────────────
+npm install helmet cors express-rate-limit express-mongo-sanitize xss
+
+// Security middleware
+const helmet = require('helmet');
+const cors = require('cors');
+const rateLimit = require('express-rate-limit');
+const mongoSanitize = require('express-mongo-sanitize');
+const xss = require('xss');
+
+app.use(helmet({
+    contentSecurityPolicy: {
+        directives: {
+            defaultSrc: ["'self'"],
+            scriptSrc: ["'self'", "'unsafe-inline'"],
+            styleSrc: ["'self'", "'unsafe-inline'"],
+            imgSrc: ["'self'", "data:", "https:"],
+            connectSrc: ["'self'", "https://api.example.com"],
+            fontSrc: ["'self'", "https://fonts.gstatic.com"],
+            objectSrc: ["'none'"],
+            upgradeInsecureRequests: []
+        }
+    },
+    referrerPolicy: { policy: 'strict-origin-when-cross-origin' },
+    hsts: { maxAge: 31536000, includeSubDomains: true, preload: true }
+}));
+
+app.use(cors({
+    origin: process.env.FRONTEND_URL || 'http://localhost:5173',
+    credentials: true,
+    optionsSuccessStatus: 200
+}));
+
+// Ограничение запросов
+const limiter = rateLimit({
+    windowMs: 15 * 60 * 1000,
+    max: 100,
+    message: 'Слишком много запросов, попробуйте позже',
+    standardHeaders: true,
+    legacyHeaders: false,
+});
+
+app.use('/api', limiter);
+
+// Защита от NoSQL инъекций
+app.use(mongoSanitize());
+
+// Валидация данных
+const { body, validationResult, param, query } = require('express-validator');
+
+app.post('/api/users',
+    body('email').isEmail().normalizeEmail(),
+    body('password').isLength({ min: 8 }),
+    body('name').trim().isLength({ min: 2, max: 50 }),
+    (req, res, next) => {
+        const errors = validationResult(req);
+        if (!errors.isEmpty()) {
+            return res.status(400).json({ errors: errors.array() });
+        }
+        next();
+    },
+    async (req, res) => {
+        // Обработка запроса
+    }
+);
+
+// XSS защита для пользовательского ввода
+app.use((req, res, next) => {
+    if (req.body) {
+        for (const key in req.body) {
+            if (typeof req.body[key] === 'string') {
+                req.body[key] = xss(req.body[key]);
+            }
+        }
+    }
+    next();
+});
+─────────────────────────────────────────────────────────────────────────────
+
+14.2 АУТЕНТИФИКАЦИЯ И АВТОРИЗАЦИЯ
+
+─────────────────────────────────────────────────────────────────────────────
+// JWT с безопасными настройками
+const jwt = require('jsonwebtoken');
+const crypto = require('crypto');
+
+const JWT_SECRET = process.env.JWT_SECRET || crypto.randomBytes(64).toString('hex');
+
+// Генерация токена
+function generateToken(userId, email, roles) {
+    return jwt.sign(
+        { userId, email, roles },
+        JWT_SECRET,
+        { 
+            expiresIn: '1h',
+            algorithm: 'HS512',
+            issuer: 'myapp.com',
+            audience: 'myapp-frontend'
+        }
+    );
+}
+
+// Refresh токен (сохраняется в БД)
+async function generateRefreshToken(userId) {
+    const token = crypto.randomBytes(64).toString('hex');
+    const expiresAt = new Date();
+    expiresAt.setDate(expiresAt.getDate() + 7);
+    
+    await RefreshToken.create({
+        token,
+        userId,
+        expiresAt,
+        createdAt: new Date()
+    });
+    
+    return token;
+}
+
+// Middleware для проверки ролей
+function authorize(...allowedRoles) {
+    return (req, res, next) => {
+        if (!req.user) {
+            return res.status(401).json({ error: 'Unauthorized' });
+        }
+        
+        const hasRole = req.user.roles.some(role => allowedRoles.includes(role));
+        if (!hasRole) {
+            return res.status(403).json({ error: 'Insufficient permissions' });
+        }
+        
+        next();
+    };
+}
+
+// Использование
+app.delete('/api/users/:id', 
+    authenticateToken,
+    authorize('ADMIN', 'MODERATOR'),
+    async (req, res) => {
+        // Только админ или модератор могут удалять пользователей
+    }
+);
+
+// Защита от CSRF
+const csrf = require('csurf');
+const csrfProtection = csrf({ cookie: true });
+
+app.get('/api/csrf-token', csrfProtection, (req, res) => {
+    res.json({ csrfToken: req.csrfToken() });
+});
+
+app.post('/api/sensitive-action', 
+    csrfProtection,
+    authenticateToken,
+    (req, res) => {
+        // Действие, защищённое от CSRF
+    }
+);
+─────────────────────────────────────────────────────────────────────────────
+
+14.3 ЗАЩИТА ОТ SQL-ИНЪЕКЦИЙ
+
+─────────────────────────────────────────────────────────────────────────────
+// Использование параметризованных запросов с Prisma
+// Правильно
+const user = await prisma.user.findUnique({
+    where: { email: userInput.email } // Параметризовано автоматически
+});
+
+// Использование параметризованных запросов с pg
+const { Pool } = require('pg');
+const pool = new Pool();
+
+// Правильно
+const result = await pool.query(
+    'SELECT * FROM users WHERE email = $1',
+    [userInput.email]
+);
+
+// Неправильно (уязвимо к SQL-инъекциям)
+const result = await pool.query(
+    `SELECT * FROM users WHERE email = '${userInput.email}'`
+);
+
+// Использование ORM/ODM вместо raw SQL когда возможно
+─────────────────────────────────────────────────────────────────────────────
+
+14.4 ШИФРОВАНИЕ ДАННЫХ
+
+─────────────────────────────────────────────────────────────────────────────
+npm install crypto-js
+
+const crypto = require('crypto');
+
+// Симметричное шифрование
+const algorithm = 'aes-256-gcm';
+const key = crypto.randomBytes(32);
+const iv = crypto.randomBytes(16);
+
+function encrypt(text) {
+    const cipher = crypto.createCipheriv(algorithm, key, iv);
+    let encrypted = cipher.update(text, 'utf8', 'hex');
+    encrypted += cipher.final('hex');
+    const tag = cipher.getAuthTag();
+    return { encrypted, tag, iv };
+}
+
+function decrypt(encrypted, tag, iv) {
+    const decipher = crypto.createDecipheriv(algorithm, key, iv);
+    decipher.setAuthTag(tag);
+    let decrypted = decipher.update(encrypted, 'hex', 'utf8');
+    decrypted += decipher.final('utf8');
+    return decrypted;
+}
+
+// Хеширование паролей (bcrypt уже используется)
+// Хеширование данных (не для паролей)
+function hashData(data) {
+    return crypto.createHash('sha256').update(data).digest('hex');
+}
+─────────────────────────────────────────────────────────────────────────────
+
+═══════════════════════════════════════════════════════════════════════════════
+ЧАСТЬ 15: ОПТИМИЗАЦИЯ ПРОИЗВОДИТЕЛЬНОСТИ
+═══════════════════════════════════════════════════════════════════════════════
+
+15.1 РЕАКТ-ОПТИМИЗАЦИЯ
+
+─────────────────────────────────────────────────────────────────────────────
+// React.memo для предотвращения лишних рендеров
+const ExpensiveComponent = React.memo(({ data, onUpdate }) => {
+    // Компонент перерендерится только при изменении data или onUpdate
+    return <div>{/* сложный рендеринг */}</div>;
+});
+
+// useMemo для дорогих вычислений
+function DataProcessor({ items, filter }) {
+    const processedData = useMemo(() => {
+        console.log('Выполняется дорогое вычисление...');
+        return items
+            .filter(item => item.active)
+            .map(item => ({ ...item, computed: expensiveOperation(item) }));
+    }, [items]); // Пересчёт только при изменении items
+    
+    return <div>{/* рендеринг processedData */}</div>;
+}
+
+// useCallback для стабильных ссылок на функции
+function ParentComponent() {
+    const [items, setItems] = useState([]);
+    
+    const handleAddItem = useCallback((newItem) => {
+        setItems(prev => [...prev, newItem]);
+    }, []); // Функция не меняется
+    
+    return <ChildComponent onAddItem={handleAddItem} items={items} />;
+}
+
+// Ленивая загрузка компонентов
+const LazyComponent = React.lazy(() => import('./HeavyComponent'));
+
+function App() {
+    return (
+        <Suspense fallback={<div>Загрузка...</div>}>
+            <LazyComponent />
+        </Suspense>
+    );
+}
+
+// Виртуализация списков
+npm install react-window
+
+import { FixedSizeList as List } from 'react-window';
+
+function VirtualizedList({ items }) {
+    const Row = ({ index, style }) => (
+        <div style={style}>
+            {items[index].name} - {items[index].email}
+        </div>
+    );
+    
+    return (
+        <List
+            height={400}
+            itemCount={items.length}
+            itemSize={35}
+            width="100%"
+        >
+            {Row}
+        </List>
+    );
+}
+
+// Оптимизация изображений
+npm install @next/image
+
+import Image from 'next/image';
+
+function OptimizedImage() {
+    return (
+        <Image
+            src="/large-image.jpg"
+            alt="Описание"
+            width={800}
+            height={600}
+            placeholder="blur"
+            blurDataURL="/blur-image.jpg"
+            priority={true} // Для важных изображений
+            loading="lazy"
+        />
+    );
+}
+
+// Код-сплиттинг
+const loadHome = () => import('./pages/Home');
+const loadAbout = () => import('./pages/About');
+
+function App() {
+    return (
+        <Routes>
+            <Route path="/" element={<AsyncComponent loader={loadHome} />} />
+            <Route path="/about" element={<AsyncComponent loader={loadAbout} />} />
+        </Routes>
+    );
+}
+─────────────────────────────────────────────────────────────────────────────
+
+15.2 БЭКЕНД-ОПТИМИЗАЦИЯ
+
+─────────────────────────────────────────────────────────────────────────────
+// Индексы в базе данных
+// Создайте индексы для часто используемых полей
+// MongoDB
+db.users.createIndex({ email: 1 }, { unique: true });
+db.posts.createIndex({ createdAt: -1 });
+db.comments.createIndex({ postId: 1, createdAt: -1 });
+
+// Кэширование с Redis
+npm install redis
+
+const redis = require('redis');
+const client = redis.createClient({
+    url: process.env.REDIS_URL
+});
+
+// Middleware кэширования
+const cacheMiddleware = (duration = 60) => {
+    return async (req, res, next) => {
+        const key = `cache:${req.originalUrl}`;
+        
+        try {
+            const cachedData = await client.get(key);
+            if (cachedData) {
+                return res.json(JSON.parse(cachedData));
+            }
+            
+            // Сохраняем оригинальный res.json
+            const originalJson = res.json;
+            res.json = function(data) {
+                // Кэшируем ответ
+                client.setex(key, duration, JSON.stringify(data));
+                originalJson.call(this, data);
+            };
+            
+            next();
+        } catch (error) {
+            console.error('Cache error:', error);
+            next();
+        }
+    };
+};
+
+app.get('/api/posts', cacheMiddleware(300), async (req, res) => {
+    const posts = await Post.find().lean();
+    res.json(posts);
+});
+
+// Пайплайны и агрегация
+async function getPostsWithComments() {
+    return Post.aggregate([
+        { $match: { published: true } },
+        { $lookup: {
+            from: 'comments',
+            localField: '_id',
+            foreignField: 'postId',
+            as: 'comments'
+        }},
+        { $addFields: {
+            commentCount: { $size: '$comments' }
+        }},
+        { $sort: { createdAt: -1 } },
+        { $limit: 50 }
+    ]);
+}
+
+// Балансировка нагрузки
+const cluster = require('cluster');
+const os = require('os');
+
+if (cluster.isMaster) {
+    const numWorkers = os.cpus().length;
+    console.log(`Master process ${process.pid} started`);
+    
+    for (let i = 0; i < numWorkers; i++) {
+        cluster.fork();
+    }
+    
+    cluster.on('exit', (worker) => {
+        console.log(`Worker ${worker.process.pid} died`);
+        cluster.fork();
+    });
+} else {
+    // Код приложения
+    const app = require('./app');
+    app.listen(3000, () => {
+        console.log(`Worker ${process.pid} started`);
+    });
+}
+
+// Сжатие ответов
+const compression = require('compression');
+
+app.use(compression({
+    level: 6, // Уровень сжатия (1-9)
+    threshold: 1024, // Сжимать только ответы больше 1KB
+    filter: (req, res) => {
+        // Не сжимать изображения и видео
+        if (req.path.match(/\.(jpg|jpeg|png|gif|webp|mp4|webm)$/)) {
+            return false;
+        }
+        return compression.filter(req, res);
+    }
+}));
+─────────────────────────────────────────────────────────────────────────────
+
+15.3 ИНСТРУМЕНТЫ ИЗМЕРЕНИЯ
+
+─────────────────────────────────────────────────────────────────────────────
+// React DevTools - профилирование
+// Используйте Profiler для измерения производительности компонентов
+
+import { Profiler } from 'react';
+
+function onRenderCallback(
+    id, // ID компонента
+    phase, // "mount" или "update"
+    actualDuration, // Время рендеринга
+    baseDuration, // Время без мемоизации
+    startTime, // Время начала
+    commitTime, // Время коммита
+    interactions // Взаимодействия
+) {
+    console.log(`${id} ${phase} took ${actualDuration}ms`);
+    
+    // Отправка метрик в аналитику
+    if (actualDuration > 16) {
+        // Медленный рендер
+        analytics.track('slow-render', {
+            component: id,
+            duration: actualDuration,
+            phase
+        });
+    }
+}
+
+function App() {
+    return (
+        <Profiler id="App" onRender={onRenderCallback}>
+            <MainContent />
+        </Profiler>
+    );
+}
+
+// Lighthouse в CI
+npm install -D @lhci/cli
+
+// package.json
+{
+    "scripts": {
+        "lhci": "lhci autorun"
+    }
+}
+
+// .lighthouserc.js
+module.exports = {
+    ci: {
+        collect: {
+            startServerCommand: 'npm run start',
+            url: ['http://localhost:3000'],
+            numberOfRuns: 3
+        },
+        assert: {
+            assertions: {
+                'categories:performance': ['warn', { minScore: 0.8 }],
+                'categories:accessibility': ['error', { minScore: 0.9 }],
+                'categories:best-practices': ['warn', { minScore: 0.8 }],
+                'categories:seo': ['warn', { minScore: 0.9 }]
+            }
+        },
+        upload: {
+            target: 'filesystem',
+            outputDir: './lighthouse-reports'
+        }
+    }
+};
+─────────────────────────────────────────────────────────────────────────────
+
+═══════════════════════════════════════════════════════════════════════════════
+ЧАСТЬ 16: УПРАВЛЕНИЕ СОСТОЯНИЕМ
+═══════════════════════════════════════════════════════════════════════════════
+
+16.1 ZUSTAND (РЕКОМЕНДУЕТСЯ ДЛЯ МАЛЕНЬКИХ/СРЕДНИХ ПРОЕКТОВ)
+
+─────────────────────────────────────────────────────────────────────────────
+npm install zustand
+
+// store.js
+import { create } from 'zustand';
+import { devtools, persist } from 'zustand/middleware';
+
+const useStore = create(
+    devtools(
+        persist(
+            (set, get) => ({
+                // Состояние
+                user: null,
+                posts: [],
+                comments: {},
+                isLoading: false,
+                error: null,
+                darkMode: false,
+                notifications: [],
+                
+                // Действия
+                setUser: (user) => set({ user }),
+                login: async (email, password) => {
+                    set({ isLoading: true, error: null });
+                    try {
+                        const response = await fetch('/api/auth/login', {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify({ email, password })
+                        });
+                        
+                        if (!response.ok) throw new Error('Login failed');
+                        
+                        const data = await response.json();
+                        set({ user: data.user, isLoading: false });
+                        return data;
+                    } catch (error) {
+                        set({ error: error.message, isLoading: false });
+                        throw error;
+                    }
+                },
+                
+                logout: () => set({ user: null }),
+                
+                addPost: (post) => set((state) => ({
+                    posts: [post, ...state.posts]
+                })),
+                
+                updatePost: (postId, updates) => set((state) => ({
+                    posts: state.posts.map(post =>
+                        post.id === postId ? { ...post, ...updates } : post
+                    )
+                })),
+                
+                deletePost: (postId) => set((state) => ({
+                    posts: state.posts.filter(post => post.id !== postId)
+                })),
+                
+                toggleDarkMode: () => set((state) => ({
+                    darkMode: !state.darkMode
+                })),
+                
+                addNotification: (notification) => set((state) => ({
+                    notifications: [...state.notifications, notification]
+                })),
+                
+                clearNotifications: () => set({ notifications: [] }),
+                
+                // Селекторы
+                getPostById: (id) => get().posts.find(post => post.id === id),
+                getCommentsForPost: (postId) => get().comments[postId] || [],
+                getPostCount: () => get().posts.length,
+                isAuthenticated: () => !!get().user,
+            }),
+            {
+                name: 'app-storage', // имя в localStorage
+                partialize: (state) => ({
+                    user: state.user,
+                    darkMode: state.darkMode,
+                    notifications: state.notifications.slice(-10) // только последние 10
+                }),
+            }
+        ),
+        { name: 'App Store' }
+    )
+);
+
+// Использование в компоненте
+function UserProfile() {
+    const user = useStore((state) => state.user);
+    const isAuthenticated = useStore((state) => state.isAuthenticated());
+    const login = useStore((state) => state.login);
+    const logout = useStore((state) => state.logout);
+    const toggleDarkMode = useStore((state) => state.toggleDarkMode);
+    
+    return (
+        <div>
+            {isAuthenticated ? (
+                <div>
+                    <h2>Привет, {user?.name}</h2>
+                    <button onClick={logout}>Выйти</button>
+                    <button onClick={toggleDarkMode}>Сменить тему</button>
+                </div>
+            ) : (
+                <LoginForm onLogin={login} />
+            )}
+        </div>
+    );
+}
+
+// Срезы (slices) для организации кода
+import { create } from 'zustand';
+import { createUserSlice } from './slices/userSlice';
+import { createPostSlice } from './slices/postSlice';
+import { createUISlice } from './slices/uiSlice';
+
+const useStore = create((set, get, store) => ({
+    ...createUserSlice(set, get, store),
+    ...createPostSlice(set, get, store),
+    ...createUISlice(set, get, store),
+}));
+
+// userSlice.js
+export const createUserSlice = (set, get) => ({
+    user: null,
+    isLoading: false,
+    setUser: (user) => set({ user }),
+    login: async (email, password) => {
+        // логика
+    },
+    logout: () => set({ user: null }),
+});
+
+// postSlice.js
+export const createPostSlice = (set, get) => ({
+    posts: [],
+    addPost: (post) => set((state) => ({
+        posts: [post, ...state.posts]
+    })),
+    deletePost: (id) => set((state) => ({
+        posts: state.posts.filter(p => p.id !== id)
+    })),
+});
+
+// uiSlice.js
+export const createUISlice = (set) => ({
+    darkMode: false,
+    toggleDarkMode: () => set((state) => ({ darkMode: !state.darkMode })),
+    notifications: [],
+    addNotification: (notification) => set((state) => ({
+        notifications: [...state.notifications, notification]
+    })),
+});
+─────────────────────────────────────────────────────────────────────────────
+
+16.2 JOTAI (ПРОСТОЙ И ГИБКИЙ)
+
+─────────────────────────────────────────────────────────────────────────────
+npm install jotai
+
+import { atom, useAtom, useAtomValue, useSetAtom } from 'jotai';
+import { atomWithStorage } from 'jotai/utils';
+
+// Базовые атомы
+const countAtom = atom(0);
+const textAtom = atom('hello');
+const userAtom = atom(null);
+const postsAtom = atom([]);
+
+// Производные атомы
+const doubledCountAtom = atom((get) => get(countAtom) * 2);
+const postCountAtom = atom((get) => get(postsAtom).length);
+const isLoggedInAtom = atom((get) => get(userAtom) !== null);
+
+// Атом с персистентностью
+const darkModeAtom = atomWithStorage('dark-mode', false);
+
+// Асинхронные атомы
+const userPostsAtom = atom(async (get) => {
+    const user = get(userAtom);
+    if (!user) return [];
+    
+    const response = await fetch(`/api/users/${user.id}/posts`);
+    return response.json();
+});
+
+const postsStatusAtom = atom(
+    (get) => ({
+        posts: get(postsAtom),
+        count: get(postCountAtom),
+        loading: get(isLoadingAtom),
+    }),
+    (get, set, newPost) => {
+        set(postsAtom, [newPost, ...get(postsAtom)]);
+    }
+);
+
+// Использование
+function Counter() {
+    const [count, setCount] = useAtom(countAtom);
+    const doubleCount = useAtomValue(doubledCountAtom);
+    
+    return (
+        <div>
+            <p>Счёт: {count}</p>
+            <p>Удвоенный: {doubleCount}</p>
+            <button onClick={() => setCount(c => c + 1)}>+1</button>
+        </div>
+    );
+}
+
+// Композиция атомов
+function PostList() {
+    const [posts, setPosts] = useAtom(postsAtom);
+    const postStatus = useAtomValue(postsStatusAtom);
+    const addPost = useSetAtom(postsStatusAtom);
+    
+    return (
+        <div>
+            <p>Всего постов: {postStatus.count}</p>
+            <button onClick={() => addPost({
+                id: Date.now(),
+                title: 'Новый пост',
+                content: 'Содержимое'
+            })}>
+                Добавить пост
+            </button>
+        </div>
+    );
+}
+─────────────────────────────────────────────────────────────────────────────
+
+16.3 REDUX TOOLKIT (ДЛЯ БОЛЬШИХ ПРОЕКТОВ)
+
+─────────────────────────────────────────────────────────────────────────────
+npm install @reduxjs/toolkit react-redux
+
+// store.js
+import { configureStore } from '@reduxjs/toolkit';
+import userReducer from './slices/userSlice';
+import postsReducer from './slices/postsSlice';
+import uiReducer from './slices/uiSlice';
+
+export const store = configureStore({
+    reducer: {
+        user: userReducer,
+        posts: postsReducer,
+        ui: uiReducer,
+    },
+    middleware: (getDefaultMiddleware) =>
+        getDefaultMiddleware({
+            serializableCheck: {
+                ignoredActions: ['persist/PERSIST'],
+            },
+        }),
+    devTools: process.env.NODE_ENV !== 'production',
+});
+
+// userSlice.js
+import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+import api from '../services/api';
+
+export const loginUser = createAsyncThunk(
+    'user/login',
+    async ({ email, password }, { rejectWithValue }) => {
+        try {
+            const response = await api.login(email, password);
+            localStorage.setItem('token', response.token);
+            return response.user;
+        } catch (error) {
+            return rejectWithValue(error.message);
+        }
+    }
+);
+
+export const userSlice = createSlice({
+    name: 'user',
+    initialState: {
+        user: null,
+        isLoading: false,
+        error: null,
+    },
+    reducers: {
+        logout: (state) => {
+            state.user = null;
+            localStorage.removeItem('token');
+        },
+        setUser: (state, action) => {
+            state.user = action.payload;
+        },
+    },
+    extraReducers: (builder) => {
+        builder
+            .addCase(loginUser.pending, (state) => {
+                state.isLoading = true;
+                state.error = null;
+            })
+            .addCase(loginUser.fulfilled, (state, action) => {
+                state.isLoading = false;
+                state.user = action.payload;
+            })
+            .addCase(loginUser.rejected, (state, action) => {
+                state.isLoading = false;
+                state.error = action.payload;
+            });
+    },
+});
+
+export const { logout, setUser } = userSlice.actions;
+export default userSlice.reducer;
+
+// Использование в компоненте
+import { useSelector, useDispatch } from 'react-redux';
+import { loginUser } from './slices/userSlice';
+
+function LoginForm() {
+    const dispatch = useDispatch();
+    const { isLoading, error } = useSelector((state) => state.user);
+    
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        const formData = new FormData(e.target);
+        await dispatch(loginUser({
+            email: formData.get('email'),
+            password: formData.get('password')
+        })).unwrap();
+        // Перенаправление
+    };
+    
+    return (
+        <form onSubmit={handleSubmit}>
+            {error && <div className="error">{error}</div>}
+            <input name="email" type="email" required />
+            <input name="password" type="password" required />
+            <button type="submit" disabled={isLoading}>
+                {isLoading ? 'Вход...' : 'Войти'}
+            </button>
+        </form>
+    );
+}
+─────────────────────────────────────────────────────────────────────────────
+
+═══════════════════════════════════════════════════════════════════════════════
+ЧАСТЬ 17: AI-АГЕНТЫ В РАЗРАБОТКЕ
+═══════════════════════════════════════════════════════════════════════════════
+
+17.1 ИНСТРУМЕНТЫ AI ДЛЯ РАЗРАБОТЧИКОВ
+
+GitHub Copilot:
+─────────────────────────────────────────────────────────────────────────────
+// Copilot может генерировать целые функции по описанию
+// Введите комментарий:
+// Функция для валидации email адреса с использованием регулярного выражения
+
+function validateEmail(email) {
+    const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return regex.test(email);
+}
+
+// Copilot также может генерировать тесты
+describe('validateEmail', () => {
+    it('should return true for valid emails', () => {
+        expect(validateEmail('test@example.com')).toBe(true);
+        expect(validateEmail('user.name@domain.co')).toBe(true);
+    });
+    
+    it('should return false for invalid emails', () => {
+        expect(validateEmail('invalid')).toBe(false);
+        expect(validateEmail('test@')).toBe(false);
+        expect(validateEmail('@example.com')).toBe(false);
+    });
+});
+─────────────────────────────────────────────────────────────────────────────
+
+Cursor IDE:
+─────────────────────────────────────────────────────────────────────────────
+// Cursor позволяет редактировать код через естественный язык
+// Пример запроса: "Создай React компонент для отображения карточки товара 
+// с изображением, названием, ценой и кнопкой добавления в корзину"
+
+function ProductCard({ product, onAddToCart }) {
+    const [isInCart, setIsInCart] = useState(false);
+    
+    const handleAddToCart = () => {
+        onAddToCart(product);
+        setIsInCart(true);
+        // Анимация добавления
+        setTimeout(() => setIsInCart(false), 2000);
+    };
+    
+    return (
+        <div className="product-card">
+            <img 
+                src={product.image} 
+                alt={product.name}
+                className="product-image"
+                loading="lazy"
+            />
+            <div className="product-info">
+                <h3>{product.name}</h3>
+                <p className="price">{product.price} ₽</p>
+                <p className="description">{product.description}</p>
+                <div className="rating">
+                    ★ {product.rating} ({product.reviews} отзывов)
+                </div>
+                <button 
+                    onClick={handleAddToCart}
+                    className={`add-to-cart ${isInCart ? 'added' : ''}`}
+                    disabled={isInCart}
+                >
+                    {isInCart ? 'В корзине ✓' : 'Добавить в корзину'}
+                </button>
+            </div>
+        </div>
+    );
+}
+─────────────────────────────────────────────────────────────────────────────
+
+17.2 ПРОМПТ-ИНЖИНИРИНГ ДЛЯ РАЗРАБОТКИ
+
+Шаблоны промптов:
+─────────────────────────────────────────────────────────────────────────────
+// 1. Генерация компонента
+/*
+Создай React компонент Modal с следующими функциями:
+- Открытие/закрытие с анимацией
+- Доступность (a11y) с управлением фокусом
+- Закрытие по клику на overlay и по Escape
+- TypeScript типы для пропсов
+- Использование Tailwind CSS для стилей
+*/
+
+// 2. Рефакторинг кода
+/*
+Рефактори следующий код, чтобы он был более читаемым, 
+использовал современные паттерны React (хуки, мемоизация) 
+и был оптимизирован для производительности:
+[вставьте код]
+*/
+
+// 3. Генерация API эндпоинтов
+/*
+Создай Express.js эндпоинты для CRUD операций с пользователями:
+- GET /api/users - список всех пользователей (с пагинацией)
+- GET /api/users/:id - получить пользователя
+- POST /api/users - создать пользователя (с валидацией)
+- PUT /api/users/:id - обновить пользователя
+- DELETE /api/users/:id - удалить пользователя
+Используй Prisma для работы с PostgreSQL, 
+добавь JWT аутентификацию и роли (user, admin)
+*/
+
+// 4. Написание тестов
+/*
+Напиши unit тесты для следующего компонента:
+[вставьте компонент]
+Используй Jest и React Testing Library, 
+покрой основные сценарии использования и edge cases
+*/
+
+// 5. Оптимизация производительности
+/*
+Проанализируй следующий код и предложи оптимизации 
+для улучшения производительности:
+- Использование React.memo, useMemo, useCallback
+- Код-сплиттинг
+- Оптимизация рендеров
+[вставьте код]
+*/
+─────────────────────────────────────────────────────────────────────────────
+
+17.3 ИНТЕГРАЦИЯ AI В ПРОЦЕСС РАЗРАБОТКИ
+
+Пример использования AI для генерации документации:
+─────────────────────────────────────────────────────────────────────────────
+// Запрос к AI:
+// Сгенерируй JSDoc комментарии для следующего API клиента
+
+const api = {
+    getUsers: (params = {}) => {
+        const query = new URLSearchParams(params).toString();
+        return fetch(`/api/users?${query}`).then(r => r.json());
+    },
+    createUser: (userData) => {
+        return fetch('/api/users', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(userData)
+        }).then(r => r.json());
+    }
+};
+
+// Результат (сгенерировано AI):
+/**
+ * API клиент для работы с пользователями
+ * @namespace api
+ */
+
+/**
+ * Получить список пользователей с возможностью фильтрации
+ * @async
+ * @param {Object} params - Параметры запроса
+ * @param {number} [params.page=1] - Номер страницы
+ * @param {number} [params.limit=10] - Количество записей на странице
+ * @param {string} [params.search] - Поисковый запрос
+ * @returns {Promise<Array>} Массив объектов пользователей
+ * @throws {Error} В случае ошибки сети или API
+ * 
+ * @example
+ * const users = await api.getUsers({ page: 2, limit: 20 });
+ */
+─────────────────────────────────────────────────────────────────────────────
+
+17.4 КРИТИЧЕСКАЯ ОЦЕНКА AI-КОДА
+
+Всегда проверяйте код, сгенерированный AI:
+─────────────────────────────────────────────────────────────────────────────
+// AI может сгенерировать код с уязвимостями
+
+// ❌ Небезопасный код, сгенерированный AI
+app.get('/api/user', (req, res) => {
+    const userId = req.query.id;
+    // Прямая подстановка в запрос - SQL инъекция!
+    db.query(`SELECT * FROM users WHERE id = ${userId}`, (err, result) => {
+        res.json(result);
+    });
+});
+
+// ✅ Безопасная версия с валидацией
+app.get('/api/user', (req, res) => {
+    const userId = req.query.id;
+    
+    // Валидация
+    if (!userId || !/^\d+$/.test(userId)) {
+        return res.status(400).json({ error: 'Invalid user ID' });
+    }
+    
+    // Использование параметризованного запроса
+    db.query('SELECT * FROM users WHERE id = $1', [userId], (err, result) => {
+        if (err) {
+            console.error('Database error:', err);
+            return res.status(500).json({ error: 'Internal server error' });
+        }
+        res.json(result.rows[0] || null);
+    });
+});
+
+// AI может использовать устаревшие или неоптимальные подходы
+// ❌ Старый подход
+componentWillMount() {
+    this.fetchData();
+}
+
+// ✅ Современный подход
+useEffect(() => {
+    fetchData();
+}, []);
+─────────────────────────────────────────────────────────────────────────────
+
+17.5 ЛУЧШИЕ ПРАКТИКИ ИСПОЛЬЗОВАНИЯ AI
+
+1. Уточняйте запросы: AI лучше работает с конкретными, детальными описаниями
+2. Проверяйте код: Всегда проверяйте, тестируйте и ревьювьте сгенерированный код
+3. Комбинируйте с собственными знаниями: Не полагайтесь только на AI
+4. Используйте для повторяющихся задач: AI отлично подходит для:
+   - Генерации boilerplate кода
+   - Написания тестов
+   - Создания документации
+   - Рефакторинга
+5. Обучайтесь: Анализируйте код, сгенерированный AI, чтобы учиться новым подходам
+6. Безопасность: Никогда не вставляйте конфиденциальные данные в AI-запросы
+7. Версионирование: Всегда коммитьте код, даже если он сгенерирован AI
+
+Примеры использования AI в повседневной работе:
+─────────────────────────────────────────────────────────────────────────────
+// 1. Быстрая типизация
+// Введите: "Создай TypeScript интерфейсы для API ответа с пользователями"
+interface User {
+    id: string;
+    email: string;
+    name: string;
+    avatar?: string;
+    createdAt: string;
+    updatedAt: string;
+}
+
+interface ApiResponse<T> {
+    data: T;
+    status: number;
+    message?: string;
+    meta?: {
+        page: number;
+        total: number;
+        perPage: number;
+    };
+}
+
+type UsersResponse = ApiResponse<User[]>;
+
+// 2. Генерация миграций
+// "Создай Prisma схему для блога с пользователями, постами и комментариями"
+model User {
+    id        String   @id @default(cuid())
+    email     String   @unique
+    name      String
+    posts     Post[]
+    comments  Comment[]
+    createdAt DateTime @default(now())
+}
+
+model Post {
+    id        String   @id @default(cuid())
+    title     String
+    content   String   @db.Text
+    published Boolean  @default(false)
+    author    User     @relation(fields: [authorId], references: [id])
+    authorId  String
+    comments  Comment[]
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+}
+
+model Comment {
+    id        String   @id @default(cuid())
+    content   String   @db.Text
+    post      Post     @relation(fields: [postId], references: [id])
+    postId    String
+    author    User     @relation(fields: [authorId], references: [id])
+    authorId  String
+    createdAt DateTime @default(now())
+}
+─────────────────────────────────────────────────────────────────────────────
+
+═══════════════════════════════════════════════════════════════════════════════
+ЧАСТЬ 18: САМОСТОЯТЕЛЬНОЕ ОБУЧЕНИЕ И РЕСУРСЫ
+═══════════════════════════════════════════════════════════════════════════════
+
+18.1 ОФИЦИАЛЬНАЯ ДОКУМЕНТАЦИЯ
+
+Основные технологии:
+─────────────────────────────────────────────────────────────────────────────
+• React: https://react.dev
+• Next.js: https://nextjs.org/docs
+• TypeScript: https://www.typescriptlang.org/docs
+• Node.js: https://nodejs.org/en/docs
+• Express: https://expressjs.com
+• Tailwind CSS: https://tailwindcss.com/docs
+• Framer Motion: https://www.framer.com/motion
+• shadcn/ui: https://ui.shadcn.com
+• Prisma: https://www.prisma.io/docs
+• GraphQL: https://graphql.org/learn
+• Docker: https://docs.docker.com
+• Kubernetes: https://kubernetes.io/docs
+• PostgreSQL: https://www.postgresql.org/docs
+• MongoDB: https://docs.mongodb.com
+
+18.2 РЕКОМЕНДУЕМЫЕ КНИГИ
+
+─────────────────────────────────────────────────────────────────────────────
+• "React: The Complete Guide" - Maximilian Schwarzmüller
+• "Fullstack React" - Anthony Accomazzo
+• "Node.js Design Patterns" - Mario Casciaro
+• "You Don't Know JS" (серия) - Kyle Simpson
+• "CSS: The Definitive Guide" - Eric Meyer
+• "Eloquent JavaScript" - Marijn Haverbeke
+• "Designing Data-Intensive Applications" - Martin Kleppmann
+• "The Pragmatic Programmer" - David Thomas & Andrew Hunt
+• "Clean Code" - Robert C. Martin
+• "Refactoring" - Martin Fowler
+
+18.3 ОНЛАЙН-КУРСЫ
+
+─────────────────────────────────────────────────────────────────────────────
+Бесплатные:
+• freeCodeCamp - https://www.freecodecamp.org
+• The Odin Project - https://www.theodinproject.com
+• MDN Web Docs - https://developer.mozilla.org
+• JavaScript.info - https://javascript.info
+• React Tutorial - https://react.dev/learn
+
+Платные:
+• Udemy - https://www.udemy.com
+• Coursera - https://www.coursera.org
+• Pluralsight - https://www.pluralsight.com
+• Frontend Masters - https://frontendmasters.com
+• Egghead.io - https://egghead.io
+• Scrimba - https://scrimba.com
+
+18.4 YOUTUBE-КАНАЛЫ
+
+─────────────────────────────────────────────────────────────────────────────
+• The Net Ninja - https://youtube.com/@NetNinja
+• Fireship - https://youtube.com/@Fireship
+• Web Dev Simplified - https://youtube.com/@WebDevSimplified
+• Academind - https://youtube.com/@academind
+• Tech With Tim - https://youtube.com/@TechWithTim
+• Traversy Media - https://youtube.com/@TraversyMedia
+• Codevolution - https://youtube.com/@Codevolution
+• Dev Ed - https://youtube.com/@DevEd
+• Kevin Powell - https://youtube.com/@KevinPowell
+• The Codeholic - https://youtube.com/@TheCodeholic
+
+18.5 СООБЩЕСТВА
+
+─────────────────────────────────────────────────────────────────────────────
+• GitHub Discussions - https://github.com/discussions
+• Stack Overflow - https://stackoverflow.com
+• Reddit: r/reactjs, r/webdev, r/javascript, r/node
+• Dev.to - https://dev.to
+• Hashnode - https://hashnode.com
+• Discord сервера разработчиков
+• Telegram-каналы:
+  - GitHub Radar (@github_radar)
+  - React Russia (@react_ru)
+  - JavaScript Russia (@javascript_ru)
+  - Dev Community (@dev_community)
+
+18.6 ИНСТРУМЕНТЫ И РЕСУРСЫ
+
+─────────────────────────────────────────────────────────────────────────────
+Инструменты для разработки:
+• VS Code - https://code.visualstudio.com
+• Postman - https://www.postman.com
+• Insomnia - https://insomnia.rest
+• Figma - https://www.figma.com
+• Git - https://git-scm.com
+• Docker - https://www.docker.com
+• TablePlus - https://tableplus.com
+• DBeaver - https://dbeaver.io
+
+Полезные сервисы:
+• Vercel - https://vercel.com
+• Netlify - https://www.netlify.com
+• Heroku - https://www.heroku.com
+• AWS - https://aws.amazon.com
+• Google Cloud - https://cloud.google.com
+• Cloudflare - https://www.cloudflare.com
+• Sentry - https://sentry.io
+• LogRocket - https://logrocket.com
+• GitHub - https://github.com
+• GitLab - https://gitlab.com
+• CodeSandbox - https://codesandbox.io
+• StackBlitz - https://stackblitz.com
+
+Дизайн и UI:
+• Figma - https://figma.com
+• Adobe XD - https://adobe.com/products/xd
+• Tailwind UI - https://tailwindui.com
+• Radix UI - https://radix-ui.com
+• Heroicons - https://heroicons.com
+• Font Awesome - https://fontawesome.com
+• Material Icons - https://material.io/icons
+• Unsplash - https://unsplash.com
+• Undraw - https://undraw.co
+
+═══════════════════════════════════════════════════════════════════════════════
+ЧАСТЬ 19: ЧЕК-ЛИСТ СОВРЕМЕННОГО РАЗРАБОТЧИКА
+═══════════════════════════════════════════════════════════════════════════════
+
+19.1 ФРОНТЕНД
+
+□ JavaScript/TypeScript
+  □ ES6+ синтаксис (стрелки, деструктуризация, spread/rest)
+  □ Асинхронность (промисы, async/await)
+  □ Функциональное программирование (map, filter, reduce)
+  □ ООП и прототипное наследование
+  □ Модули (import/export)
+
+□ React
+  □ Функциональные компоненты и хуки
+  □ Управление состоянием (useState, useReducer)
+  □ Побочные эффекты (useEffect)
+  □ Контекст (useContext)
+  □ Мемоизация (useMemo, useCallback, React.memo)
+  □ Рефы (useRef)
+  □ Код-сплиттинг и ленивая загрузка
+  □ React Router
+  □ Формы и валидация
+
+□ Стилизация
+  □ Tailwind CSS
+  □ CSS-модули
+  □ Styled Components / Emotion
+  □ Адаптивность (медиа-запросы)
+  □ Темизация
+
+□ Анимации
+  □ Framer Motion / Motion
+  □ CSS-анимации (transitions, keyframes)
+  □ React Spring
+
+□ Инструменты
+  □ Vite / Webpack
+  □ ESLint + Prettier
+  □ TypeScript
+
+□ Тестирование
+  □ Jest
+  □ React Testing Library
+  □ Cypress
+  □ Code coverage
+
+□ Доступность (a11y)
+  □ Семантический HTML
+  □ ARIA-атрибуты
+  □ Клавиатурная навигация
+  □ Цветовой контраст
+
+19.2 БЭКЕНД
+
+□ Node.js
+  □ Event Loop
+  □ Модули (CommonJS, ES Modules)
+  □ Streams и Buffers
+  □ Cluster и Child Processes
+  □ Package management (npm/yarn/pnpm)
+
+□ Express.js / Fastify
+  □ Маршрутизация
+  □ Middleware
+  □ Обработка ошибок
+  □ Аутентификация (JWT, OAuth2, сессии)
+  □ Валидация данных
+
+□ Базы данных
+  □ SQL (PostgreSQL, MySQL)
+    □ Схемы и миграции
+    □ Индексы и оптимизация запросов
+    □ Транзакции
+  □ NoSQL (MongoDB)
+    □ Схемы и модели
+    □ Агрегации
+  □ ORM/ODM (Prisma, Mongoose, TypeORM)
+
+□ API
+  □ REST
+    □ CRUD операции
+    □ Пагинация и сортировка
+    □ Фильтрация
+  □ GraphQL
+    □ Схемы и резолверы
+    □ Apollo Server/Client
+  □ WebSockets (Socket.IO)
+
+□ Безопасность
+  □ XSS защита
+  □ CSRF защита
+  □ SQL/NoSQL инъекции
+  □ Helmet.js
+  □ Rate limiting
+  □ CORS
+  □ Шифрование
+  □ Валидация входных данных
+
+19.3 ДЕВОПС И ИНФРАСТРУКТУРА
+
+□ Контроль версий
+  □ Git
+  □ Git Flow / GitHub Flow
+  □ Pull Requests и Code Review
+
+□ Контейнеризация
+  □ Docker
+  □ Docker Compose
+
+□ Оркестрация
+  □ Kubernetes (основы)
+  □ Мониторинг (Prometheus/Grafana)
+
+□ CI/CD
+  □ GitHub Actions
+  □ GitLab CI
+  □ Деплой (Vercel, Netlify, AWS)
+
+□ Мониторинг и логирование
+  □ Логирование (Winston, Pino)
+  □ Ошибки (Sentry)
+  □ Метрики (Prometheus)
+
+□ Cloud
+  □ AWS / Google Cloud / Azure
+  □ Serverless (AWS Lambda, Cloud Functions)
+
+19.4 ОБЩИЕ НАВЫКИ
+
+□ Архитектура
+  □ SOLID принципы
+  □ Design Patterns
+  □ Clean Architecture
+  □ Microservices / Monolith
+  □ Event-driven architecture
+
+□ Алгоритмы и структуры данных
+  □ Основные структуры (массивы, списки, деревья, графы)
+  □ Алгоритмы сортировки и поиска
+  □ Big O нотация
+
+□ Безопасность
+  □ HTTPS / TLS
+  □ OWASP Top 10
+  □ Безопасное хранение данных
+
+□ Управление проектом
+  □ Agile / Scrum
+  □ JIRA / Trello / Linear
+  □ Оценка задач
+
+□ Софт скиллы
+  □ Коммуникация
+  □ Критическое мышление
+  □ Решение проблем
+  □ Работа в команде
+  □ Самообучение
+
+19.5 ПРОДВИНУТЫЕ ТЕХНОЛОГИИ
+
+□ WebAssembly
+□ WebRTC
+□ PWA (Progressive Web Apps)
+□ Micro Frontends
+□ Server Components (React)
+□ Edge Computing
+□ Web3 и blockchain
+□ Machine Learning в браузере (TensorFlow.js)
+
+═══════════════════════════════════════════════════════════════════════════════
+ЗАКЛЮЧЕНИЕ
+═══════════════════════════════════════════════════════════════════════════════
+
+Мы рассмотрели шесть современных проектов, каждый из которых использует 
+передовые технологии: React, Tailwind, Framer Motion, TypeScript, shadcn/ui 
+и другие. Эти инструменты позволяют создавать интерфейсы с высоким уровнем 
+интерактивности, плавными анимациями, доступностью и гибкой кастомизацией. 
+Понимание этого стека делает вас востребованным специалистом.
+
+Представленный учебный материал охватывает все ключевые области 
+веб-разработки — от основ HTML/CSS/JS до продвинутых техник в React и Node.js, 
+включая AI-ассистентов, деплой, безопасность и оптимизацию. Используйте этот 
+документ как шпаргалку и путеводитель в мире современного веба.
+
+Современный разработчик должен постоянно учиться, следить за трендами и 
+экспериментировать. Предложенные ресурсы, книги и сообщества помогут вам 
+оставаться в курсе последних новинок и развиваться профессионально.
+
+Помните: код должен быть не только работающим, но и понятным, безопасным и 
+поддерживаемым. Используйте лучшие практики, пишите тесты, документируйте 
+свой код и не забывайте о пользователях.
+
+Удачи в разработке!
+
+═══════════════════════════════════════════════════════════════════════════════
+КОНЕЦ ДОКУМЕНТА
+═══════════════════════════════════════════════════════════════════════════════

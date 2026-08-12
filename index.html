@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hellpak — pixel bio</title>
+    <meta name="description" content="Hellpak — pixel bio site">
+    <link rel="icon" type="image/png" href="assets/images/atom32.png">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Фон -->
+    <div class="bg" aria-hidden="true">
+        <img src="assets/images/mainmenu/background.png" alt="">
+    </div>
+    <div class="bg-overlay" aria-hidden="true"></div>
+
+    <!-- Toast уведомление -->
+    <div class="toast" id="toast" role="status" aria-live="polite">
+        <img src="assets/images/notification/info.png" alt="" class="toast-icon">
+        <span id="toast-text">Скопировано!</span>
+    </div>
+
+    <main class="screen">
+
+        <!-- ══ БИО-КАРТОЧКА ══ -->
+        <section class="bio-card" aria-label="Профиль">
+            <!-- угловые декораторы -->
+            <span class="corner tl" aria-hidden="true"></span>
+            <span class="corner br" aria-hidden="true"></span>
+            <!-- сетка как у OS -->
+            <div class="grid-overlay" aria-hidden="true"></div>
+
+            <div class="avatar-wrap">
+                <img
+                    src="assets/avatars/avatar.png"
+                    alt="Hellpak avatar"
+                    class="avatar"
+                    id="avatar-img"
+                    onerror="this.onerror=null;this.src='assets/ui/mainmenu/logo.png'">
+                <span class="avatar-status" title="Online" aria-label="Online"></span>
+            </div>
+
+            <h1 class="name">Hellpak</h1>
+            <p class="tagline">just a pixel soul in a pixel world</p>
+
+            <div class="divider" aria-hidden="true"></div>
+
+            <!-- Discord строка -->
+            <div class="discord-row">
+                <img src="assets/images/social/discord.png" alt="Discord" class="discord-icon">
+                <span class="discord-text" id="discord-val">.hellpaq</span>
+                <button class="copy-btn" id="copy-btn" aria-label="Скопировать Discord тег">
+                    copy
+                </button>
+            </div>
+        </section>
+
+        <!-- ══ СКИЛЛЫ ══ -->
+        <section class="skills-card" aria-label="Навыки">
+            <div class="grid-overlay" aria-hidden="true"></div>
+            <span class="corner tl" aria-hidden="true"></span>
+            <span class="corner br" aria-hidden="true"></span>
+
+            <div class="skills-header">
+                <img src="assets/images/gear.png" alt="" class="skills-icon" aria-hidden="true">
+                <span class="skills-title">skills.exe</span>
+            </div>
+
+            <div class="skills-list" role="list">
+                <div class="skill-item" role="listitem">
+                    <span class="skill-dot"></span>
+                    <span class="skill-name">Python</span>
+                    <div class="skill-bar" aria-label="Python — продвинутый">
+                        <div class="skill-fill" style="--pct: 80%"></div>
+                    </div>
+                    <span class="skill-level">ADV</span>
+                </div>
+                <div class="skill-item" role="listitem">
+                    <span class="skill-dot"></span>
+                    <span class="skill-name">HTML / CSS</span>
+                    <div class="skill-bar" aria-label="HTML/CSS — продвинутый">
+                        <div class="skill-fill" style="--pct: 85%"></div>
+                    </div>
+                    <span class="skill-level">ADV</span>
+                </div>
+                <div class="skill-item" role="listitem">
+                    <span class="skill-dot"></span>
+                    <span class="skill-name">JavaScript</span>
+                    <div class="skill-bar" aria-label="JavaScript — средний">
+                        <div class="skill-fill" style="--pct: 65%"></div>
+                    </div>
+                    <span class="skill-level">MID</span>
+                </div>
+                <div class="skill-item" role="listitem">
+                    <span class="skill-dot"></span>
+                    <span class="skill-name">Web Dev</span>
+                    <div class="skill-bar" aria-label="Web Dev — продвинутый">
+                        <div class="skill-fill" style="--pct: 75%"></div>
+                    </div>
+                    <span class="skill-level">ADV</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- ══ MUSIC BAR ══ -->
+        <section class="musicbar" aria-label="Музыкальный плеер">
+            <div class="musicbar-glare" aria-hidden="true"></div>
+            <div class="grid-overlay" aria-hidden="true"></div>
+            <span class="corner tl" aria-hidden="true"></span>
+            <span class="corner br" aria-hidden="true"></span>
+
+            <!-- Обложка -->
+            <div class="music-top">
+                <div class="cover-wrap">
+                    <img
+                        src="https://i.ytimg.com/vi/8nhLPwilFSQ/maxresdefault.jpg"
+                        alt="Обложка трека"
+                        class="cover"
+                        id="cover">
+                    <div class="cover-veil" aria-hidden="true"></div>
+                    <div class="cover-spin" id="cover-spin" aria-hidden="true"></div>
+                </div>
+
+                <div class="track-info">
+                    <div class="track-badge">▶ NOW PLAYING</div>
+                    <div class="track-title" id="track-title">PHARAOH — Caramel</div>
+                    <div class="track-artist" id="track-artist">PHARAOH</div>
+                </div>
+            </div>
+
+            <!-- Прогресс-бар -->
+            <div class="bar-row">
+                <span class="time" id="time-current">0:00</span>
+                <div
+                    class="trackbar"
+                    id="trackbar"
+                    role="slider"
+                    aria-label="Перемотка трека"
+                    aria-valuemin="0"
+                    aria-valuemax="100"
+                    aria-valuenow="0"
+                    tabindex="0">
+                    <div class="trackbar-fill" id="trackbar-fill"></div>
+                    <div class="trackbar-thumb" id="trackbar-thumb"></div>
+                </div>
+                <span class="time" id="time-total">0:00</span>
+            </div>
+
+            <!-- Управление -->
+            <div class="controls">
+                <button class="ctl-btn ctl-mini" id="btn-mute" aria-label="Звук вкл/выкл">
+                    <svg viewBox="0 0 24 24" class="icon-sound" aria-hidden="true"><polygon points="4,9 8,9 13,4 13,20 8,15 4,15" fill="currentColor"/><path d="M16 8a5 5 0 0 1 0 8M18.5 5.5a9 9 0 0 1 0 13" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"/></svg>
+                    <svg viewBox="0 0 24 24" class="icon-muted" aria-hidden="true"><polygon points="4,9 8,9 13,4 13,20 8,15 4,15" fill="currentColor"/><path d="M16 9l5 6M21 9l-5 6" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"/></svg>
+                </button>
+
+                <button class="ctl-btn ctl-play" id="btn-play" aria-label="Играть / Пауза">
+                    <svg viewBox="0 0 24 24" class="icon-play" aria-hidden="true"><polygon points="6,4 20,12 6,20" fill="currentColor"/></svg>
+                    <svg viewBox="0 0 24 24" class="icon-pause" aria-hidden="true"><rect x="5" y="4" width="5" height="16" fill="currentColor"/><rect x="14" y="4" width="5" height="16" fill="currentColor"/></svg>
+                </button>
+
+                <div class="vol-wrap" aria-label="Громкость">
+                    <input
+                        type="range"
+                        class="vol-slider"
+                        id="vol-slider"
+                        min="0"
+                        max="100"
+                        value="70"
+                        aria-label="Громкость">
+                </div>
+            </div>
+        </section>
+
+        <p class="hint" aria-label="Подсказка">нажми play, чтобы включить caramel</p>
+    </main>
+
+    <!-- Скрытый YouTube iframe -->
+    <div id="yt-host" hidden aria-hidden="true"></div>
+
+    <script src="main.js"></script>
+</body>
+</html>
