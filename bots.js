@@ -310,9 +310,15 @@ class BotSystem {
               user.reputation = Math.max(0, Math.min(100, 50 + user.stats.rating * 5));
 
               // ✅ УДАЛЯЕМ из витрины (ВАЖНО!)
-              user.shopWindow = user.shopWindow.filter(l => l.id !== botVisit.listing_id);
+              user.shopWindow = user.shopWindow.filter(l => l.id !== botVisit.listing.id);
+              
+              // Звук выигрыша денег
+              if (typeof audioManager !== 'undefined') {
+                audioManager.playMoneyGain();
+              }
               
               console.log(`✅ Бот ${botVisit.bot.name} купил ${botVisit.listing.phoneName} за ${salePrice} (рынок: ${marketPrice})`);
+              console.log(`📊 Осталось на витрине: ${user.shopWindow.length} телефонов`);
             }
           }
         }
@@ -325,4 +331,10 @@ class BotSystem {
 }
 
 // Запускать симуляцию ботов каждые 5 секунд
-setInterval(() => BotSystem.runBotSimulation(), 5000);
+setInterval(() => {
+  BotSystem.runBotSimulation();
+  // Обновляем UI если игрок смотрит продажи или инвентарь
+  if (window.app && typeof window.app.refreshUI === 'function') {
+    window.app.refreshUI();
+  }
+}, 5000);

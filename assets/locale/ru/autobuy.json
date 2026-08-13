@@ -1,0 +1,18 @@
+{
+  "autobuy.category.armor": "Броня",
+  "autobuy.category.tools": "Инструменты",
+  "autobuy.category.spheres": "Сферы",
+  "autobuy.category.talismans": "Талисманы",
+  "autobuy.category.potions": "Зелья",
+  "autobuy.category.arrows": "Стрелы",
+  "autobuy.category.blocks": "Блоки",
+  "autobuy.category.consumables": "Расходники",
+  "autobuy.category.other": "Другое",
+  "autobuy.item.auto-parser-include": "Включить в авто-парсер",
+  "autobuy.item.max-price": "Максимальная цена за предмет",
+  "autobuy.item.max-price.place-holder": "Число",
+  "autobuy.item.min-count": "Минимальное кол-во предметов",
+  "autobuy.item.min-durability-percentage": "Минимальная прочность в процентах",
+  "autobuy.item.ignore-thorns": "Исключить предметы с шипами",
+  "autobuy.button.reset": "Сбросить все"
+}

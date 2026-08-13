@@ -1,0 +1,6 @@
+{
+  "item-almost-break": "Элемент брони почти сломан",
+  "shield-broken": "Щит игрока «%s» сломан",
+  "module-disabled": "Модуль «%s» выключен",
+  "module-enabled": "Модуль «%s» включен"
+}

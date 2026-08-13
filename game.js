@@ -168,6 +168,7 @@ class PhoneTycoonGame {
           </nav>
 
           <div class="auth-buttons">
+            <button class="btn-secondary" onclick="app.toggleSounds()" id="soundToggle">🔊 Звуки ВКЛ</button>
             <button class="btn-secondary" onclick="app.logout()">🚪 Выход</button>
             <button class="btn-secondary" onclick="storage.exportSave()">💾 Сохранить</button>
           </div>
@@ -242,6 +243,7 @@ class PhoneTycoonGame {
     // Навигация
     document.querySelectorAll('.nav-btn').forEach(btn => {
       btn.addEventListener('click', (e) => {
+        audioManager.playTabSwitch();
         document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
         document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
         
@@ -250,11 +252,26 @@ class PhoneTycoonGame {
         document.getElementById(tabId).classList.add('active');
 
         // Заполнить содержимое вкладки
-        if (tabId === 'inventory') this.showInventory();
-        if (tabId === 'shop') this.showShop();
-        if (tabId === 'sales') this.showSales();
-        if (tabId === 'profile') this.showProfile();
-        if (tabId === 'stats') this.showStats();
+        if (tabId === 'inventory') {
+          audioManager.playPanelOpen();
+          this.showInventory();
+        }
+        if (tabId === 'shop') {
+          audioManager.playPanelOpen();
+          this.showShop();
+        }
+        if (tabId === 'sales') {
+          audioManager.playPanelOpen();
+          this.showSales();
+        }
+        if (tabId === 'profile') {
+          audioManager.playPanelOpen();
+          this.showProfile();
+        }
+        if (tabId === 'stats') {
+          audioManager.playPanelOpen();
+          this.showStats();
+        }
       });
     });
 
@@ -266,6 +283,7 @@ class PhoneTycoonGame {
    * Обновить рынок объявлений
    */
   refreshMarket() {
+    audioManager.playButtonClick();
     this.currentPage = 0;
     const allListings = [];
     const brandNames = Object.keys(PHONES_DATABASE);
@@ -302,7 +320,8 @@ class PhoneTycoonGame {
     grid.innerHTML = pageListings.map(listing => `
       <div class="listing-card" onclick="app.openListing('${listing.id}')">
         <div class="listing-image">
-          <img src="${getPhoneImage(listing.phoneId)}" alt="${listing.phoneName}" onerror="this.src='https://via.placeholder.com/200x250/0f0f1e/00d4ff?text=${encodeURIComponent(listing.phoneName)}'">
+          <img src="${getPhoneImage(listing.phoneId)}" alt="${listing.phoneName}" 
+               onerror="this.src='${generatePhonePlaceholder(listing.phoneName)}'">
           <span class="condition-badge condition-${listing.condition}">${this.getConditionLabel(listing.condition)}</span>
         </div>
         <div class="listing-info">
@@ -320,6 +339,7 @@ class PhoneTycoonGame {
    * Открыть объявление
    */
   openListing(listingId) {
+    audioManager.playSelectItem();
     const gameData = storage.getGameData();
     this.currentListing = gameData.market.currentOffers.find(l => l.id === listingId);
     
@@ -360,7 +380,7 @@ class PhoneTycoonGame {
     const phoneImage = getPhoneImage(this.currentListing.phoneId);
 
     const content = `
-      <img src="${phoneImage}" class="listing-image-modal" alt="${this.currentListing.phoneName}" onerror="this.src='https://via.placeholder.com/300x400/0f0f1e/00d4ff?text=${encodeURIComponent(this.currentListing.phoneName)}'">
+      <img src="${phoneImage}" class="listing-image-modal" alt="${this.currentListing.phoneName}" onerror="this.src='${generatePhonePlaceholder(this.currentListing.phoneName)}'">
       <h2>${this.currentListing.phoneName}</h2>
       <p class="listing-seller">Продавец: ${this.currentListing.seller}</p>
       <p class="listing-condition">Состояние: ${this.getConditionLabel(this.currentListing.condition)}</p>
@@ -412,6 +432,7 @@ class PhoneTycoonGame {
     // Если цена равна цене продавца - можно купить сразу
     if (offerPrice === sellerPrice) {
       if (this.currentUser.balance < offerPrice) {
+        audioManager.playError();
         this.showNotification('❌ Недостаточно средств!', 'error');
         return;
       }
@@ -421,12 +442,14 @@ class PhoneTycoonGame {
 
     // Если цена ниже - должен быть торг, не прямая покупка
     if (offerPrice < sellerPrice) {
+      audioManager.playDeny();
       this.showNotification('❌ Используй кнопку "🤝 Торговаться" для предложения более низкой цены!', 'error');
       return;
     }
 
     // Если цена выше цены продавца - нельзя
     if (offerPrice > sellerPrice) {
+      audioManager.playError();
       this.showNotification(`❌ Цена не может быть выше чем просит продавец (${this.formatCurrency(sellerPrice)})!`, 'error');
       return;
     }
@@ -468,6 +491,8 @@ class PhoneTycoonGame {
     gameData.market.currentOffers = gameData.market.currentOffers.filter(l => l.id !== this.currentListing.id);
     storage.saveGameData(gameData);
 
+    audioManager.playPurchase();
+    audioManager.playSuccess();
     this.showNotification(`✅ Куплено: ${this.currentListing.phoneName} за ${this.formatCurrency(offerPrice)}`, 'success');
     document.getElementById('balanceDisplay').textContent = this.formatCurrency(this.currentUser.balance);
     this.closeListing();
@@ -482,11 +507,13 @@ class PhoneTycoonGame {
     
     // Проверка: нельзя торговаться по цене продавца
     if (offerPrice >= this.currentListing.price) {
+      audioManager.playError();
       this.showNotification('❌ Это уже цена продавца! Просто купи сразу.', 'error');
       return;
     }
 
     if (!offerPrice) {
+      audioManager.playError();
       this.showNotification('❌ Введите предложенную цену!', 'error');
       return;
     }
@@ -494,12 +521,15 @@ class PhoneTycoonGame {
     const result = negotiatePrice(this.currentListing.price, offerPrice);
 
     if (result.accepted) {
+      audioManager.playSuccess();
       this.showNotification('✅ Продавец согласился!', 'success');
       setTimeout(() => this._completePurchase(offerPrice), 500);
     } else if (result.counterOffer) {
+      audioManager.playNotification();
       this.showNotification(`Продавец предлагает ${this.formatCurrency(result.counterOffer)}`, 'info');
       document.getElementById('offerPrice').value = result.counterOffer;
     } else {
+      audioManager.playDeny();
       this.showNotification('❌ ' + result.reason, 'error');
     }
   }
@@ -508,6 +538,7 @@ class PhoneTycoonGame {
    * Закрыть объявление
    */
   closeListing() {
+    audioManager.playPanelClose();
     document.getElementById('listingModal').style.display = 'none';
   }
 
@@ -666,7 +697,10 @@ class PhoneTycoonGame {
    */
   sellPhone(phoneId) {
     const price = prompt('Введи цену для продажи:');
-    if (!price) return;
+    if (!price) {
+      audioManager.playDeny();
+      return;
+    }
 
     const user = storage.getCurrentUser();
     const phone = user.inventory.phones.find(p => p.id === phoneId);
@@ -681,6 +715,7 @@ class PhoneTycoonGame {
         // Сохраняем изменения в storage
         storage.saveGameData(storage.getGameData());
         
+        audioManager.playSuccess();
         this.showNotification(`✅ Телефон выставлен на продажу за ${this.formatCurrency(parseInt(price))}`, 'success');
         this.showInventory();
       }
@@ -692,6 +727,7 @@ class PhoneTycoonGame {
    */
   unlistPhone(listingId) {
     storage.unlistPhone(this.currentUser.id, listingId);
+    audioManager.playButtonClick();
     this.showNotification('✅ Телефон снят с продажи', 'success');
     this.showSales();
   }
@@ -708,6 +744,7 @@ class PhoneTycoonGame {
    */
   buyPart(brand, partId, price) {
     if (this.currentUser.balance < price) {
+      audioManager.playError();
       this.showNotification('❌ Недостаточно средств!', 'error');
       return;
     }
@@ -716,6 +753,8 @@ class PhoneTycoonGame {
     storage.updateBalance(this.currentUser.id, -price);
     storage.addPartToInventory(this.currentUser.id, partId, partId, brand, 1);
 
+    audioManager.playMoneyLoss();
+    audioManager.playSuccess();
     this.showNotification(`✅ Запчасть куплена за ${this.formatCurrency(price)}`, 'success');
   }
 
@@ -745,8 +784,23 @@ class PhoneTycoonGame {
    * Выйти из игры
    */
   logout() {
+    audioManager.playError();
     storage.logout();
     location.reload();
+  }
+
+  /**
+   * Переключить звуки
+   */
+  toggleSounds() {
+    const enabled = audioManager.toggleSounds();
+    const btn = document.getElementById('soundToggle');
+    if (btn) {
+      btn.textContent = enabled ? '🔊 Звуки ВКЛ' : '🔇 Звуки ВЫКЛ';
+      if (enabled) {
+        audioManager.playSuccess();
+      }
+    }
   }
 
   /**
@@ -783,6 +837,34 @@ class PhoneTycoonGame {
       'critical': '⚫ Критическое'
     };
     return labels[condition] || condition;
+  }
+
+  /**
+   * Обновить UI - вызывается когда боты покупают телефоны
+   * Обновляет текущий активный раздел если это "Мои продажи" или "Инвентарь"
+   */
+  refreshUI() {
+    // Ищем активную кнопку в навигации
+    const activeButton = document.querySelector('.nav-btn.active');
+    if (!activeButton) return;
+
+    const tabName = activeButton.getAttribute('data-tab');
+    
+    // Обновляем текущий пользователя из хранилища (для актуальных данных)
+    this.currentUser = storage.getCurrentUser();
+
+    // Обновляем соответствующий раздел если он активный
+    if (tabName === 'sales') {
+      this.showSales();
+    } else if (tabName === 'inventory') {
+      this.showInventory();
+    } else if (tabName === 'shop') {
+      this.showShop();
+    } else if (tabName === 'stats') {
+      this.showStats();
+    } else if (tabName === 'market') {
+      this.displayMarket();
+    }
   }
 
   /**
@@ -923,465 +1005,8 @@ class PhoneTycoonGame {
    * Инжектить главные стили
    */
   injectMainStyles() {
-    const style = `
-      <style>
-        * { box-sizing: border-box; }
-        body {
-          background: #0f0f1e;
-          color: #fff;
-          font-family: 'Segoe UI', Arial, sans-serif;
-          margin: 0;
-          padding: 0;
-        }
-        .app-container {
-          display: flex;
-          height: 100vh;
-        }
-        .sidebar {
-          width: 280px;
-          background: linear-gradient(180deg, #1a1a2e 0%, #16213e 100%);
-          border-right: 2px solid #00d4ff;
-          padding: 20px;
-          overflow-y: auto;
-        }
-        .sidebar-header {
-          text-align: center;
-          margin-bottom: 20px;
-          border-bottom: 2px solid #00d4ff;
-          padding-bottom: 15px;
-        }
-        .sidebar-header h1 {
-          margin: 0;
-          color: #00d4ff;
-          font-size: 24px;
-        }
-        .user-info {
-          color: #00d4ff;
-          font-size: 12px;
-          margin: 5px 0 0 0;
-        }
-        .balance-card {
-          background: rgba(0, 212, 255, 0.1);
-          border: 2px solid #00d4ff;
-          border-radius: 10px;
-          padding: 15px;
-          margin-bottom: 15px;
-          text-align: center;
-        }
-        .balance-label {
-          font-size: 12px;
-          color: #00d4ff;
-          opacity: 0.7;
-        }
-        .balance-amount {
-          font-size: 24px;
-          font-weight: bold;
-          color: #00ff00;
-          margin-top: 5px;
-        }
-        .rank-card {
-          background: rgba(0, 212, 255, 0.1);
-          border: 2px solid #00d4ff;
-          border-radius: 10px;
-          padding: 15px;
-          margin-bottom: 15px;
-        }
-        .rank-value {
-          font-size: 16px;
-          font-weight: bold;
-          color: #ffaa00;
-          margin: 10px 0;
-        }
-        .reputation-bar {
-          width: 100%;
-          height: 8px;
-          background: rgba(255, 255, 255, 0.2);
-          border-radius: 4px;
-          overflow: hidden;
-        }
-        .reputation-fill {
-          height: 100%;
-          background: linear-gradient(90deg, #ff4444, #ffaa00, #00ff00);
-          transition: width 0.3s;
-        }
-        .nav-menu {
-          display: flex;
-          flex-direction: column;
-          gap: 8px;
-          margin-bottom: 20px;
-        }
-        .nav-btn {
-          padding: 12px;
-          background: rgba(255, 255, 255, 0.05);
-          border: 2px solid transparent;
-          color: #00d4ff;
-          cursor: pointer;
-          border-radius: 5px;
-          transition: all 0.3s;
-          text-align: left;
-        }
-        .nav-btn:hover {
-          background: rgba(0, 212, 255, 0.1);
-        }
-        .nav-btn.active {
-          border-color: #00d4ff;
-          background: rgba(0, 212, 255, 0.2);
-          font-weight: bold;
-        }
-        .main-content {
-          flex: 1;
-          overflow-y: auto;
-          padding: 30px;
-        }
-        .section-header {
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-          margin-bottom: 20px;
-        }
-        .section-header h2 {
-          margin: 0;
-          color: #00d4ff;
-        }
-        .tab-content {
-          display: none;
-        }
-        .tab-content.active {
-          display: block;
-        }
-        .market-grid {
-          display: grid;
-          grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-          gap: 15px;
-          margin-bottom: 20px;
-        }
-        .listing-card {
-          background: rgba(0, 212, 255, 0.05);
-          border: 2px solid #00d4ff;
-          border-radius: 10px;
-          overflow: hidden;
-          cursor: pointer;
-          transition: all 0.3s;
-        }
-        .listing-card:hover {
-          transform: translateY(-5px);
-          box-shadow: 0 10px 25px rgba(0, 212, 255, 0.2);
-        }
-        .listing-image {
-          position: relative;
-          width: 100%;
-          height: 200px;
-          background: #1a1a2e;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          overflow: hidden;
-        }
-        .listing-image img {
-          max-width: 100%;
-          max-height: 100%;
-        }
-        .listing-image-modal {
-          width: 100%;
-          height: 400px;
-          object-fit: cover;
-          border-radius: 10px;
-          margin-bottom: 20px;
-          border: 2px solid #00d4ff;
-        }
-        .condition-badge {
-          position: absolute;
-          top: 10px;
-          right: 10px;
-          padding: 5px 10px;
-          background: rgba(0, 0, 0, 0.8);
-          border-radius: 5px;
-          font-size: 12px;
-          font-weight: bold;
-        }
-        .condition-perfect { background: rgba(0, 255, 0, 0.8); }
-        .condition-good { background: rgba(255, 200, 0, 0.8); }
-        .condition-fair { background: rgba(255, 150, 0, 0.8); }
-        .condition-poor { background: rgba(255, 50, 0, 0.8); }
-        .condition-critical { background: rgba(0, 0, 0, 0.9); }
-        .listing-info {
-          padding: 15px;
-        }
-        .listing-info h4 {
-          margin: 0 0 5px 0;
-          color: #00d4ff;
-        }
-        .listing-info p {
-          margin: 3px 0;
-          color: #aaa;
-          font-size: 12px;
-        }
-        .listing-price {
-          margin-top: 10px;
-          font-size: 18px;
-          font-weight: bold;
-          color: #00ff00;
-        }
-        .pagination {
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          gap: 10px;
-          margin-top: 20px;
-        }
-        .btn-pagination {
-          padding: 10px 20px;
-          background: rgba(0, 212, 255, 0.1);
-          border: 2px solid #00d4ff;
-          color: #00d4ff;
-          cursor: pointer;
-          border-radius: 5px;
-          transition: all 0.3s;
-        }
-        .btn-pagination:hover {
-          background: rgba(0, 212, 255, 0.2);
-        }
-        .page-info {
-          color: #00d4ff;
-          min-width: 150px;
-          text-align: center;
-        }
-        .modal {
-          display: none;
-          position: fixed;
-          top: 0;
-          left: 0;
-          width: 100%;
-          height: 100%;
-          background: rgba(0, 0, 0, 0.8);
-          justify-content: center;
-          align-items: center;
-          z-index: 1000;
-        }
-        .modal-content {
-          background: #1a1a2e;
-          border: 2px solid #00d4ff;
-          border-radius: 15px;
-          padding: 30px;
-          max-width: 500px;
-          max-height: 80vh;
-          overflow-y: auto;
-          position: relative;
-        }
-        .modal-close {
-          position: absolute;
-          top: 15px;
-          right: 15px;
-          background: none;
-          border: none;
-          color: #00d4ff;
-          font-size: 28px;
-          cursor: pointer;
-        }
-        .btn-primary {
-          padding: 12px 20px;
-          background: linear-gradient(135deg, #00d4ff, #0099cc);
-          border: none;
-          color: #1a1a2e;
-          font-weight: bold;
-          border-radius: 5px;
-          cursor: pointer;
-          transition: all 0.3s;
-          width: 100%;
-          margin-top: 10px;
-        }
-        .btn-primary:hover {
-          transform: translateY(-2px);
-          box-shadow: 0 5px 15px rgba(0, 212, 255, 0.4);
-        }
-        .btn-secondary {
-          padding: 12px 20px;
-          background: rgba(255, 255, 255, 0.1);
-          border: 2px solid #00d4ff;
-          color: #00d4ff;
-          cursor: pointer;
-          border-radius: 5px;
-          transition: all 0.3s;
-          width: 100%;
-          margin-top: 10px;
-        }
-        .btn-secondary:hover {
-          background: rgba(0, 212, 255, 0.2);
-        }
-        .btn-small {
-          padding: 8px 12px;
-          background: rgba(0, 212, 255, 0.1);
-          border: 1px solid #00d4ff;
-          color: #00d4ff;
-          cursor: pointer;
-          border-radius: 3px;
-          font-size: 12px;
-          transition: all 0.3s;
-        }
-        .btn-small:hover {
-          background: rgba(0, 212, 255, 0.2);
-        }
-        .btn-danger {
-          border-color: #ff4444 !important;
-          color: #ff4444 !important;
-          background: rgba(255, 68, 68, 0.1) !important;
-        }
-        .btn-danger:hover {
-          background: rgba(255, 68, 68, 0.2) !important;
-        }
-        .inventory-container {
-          display: flex;
-          flex-direction: column;
-          gap: 20px;
-        }
-        .inventory-grid {
-          display: grid;
-          grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-          gap: 15px;
-        }
-        .inventory-item {
-          background: rgba(0, 212, 255, 0.05);
-          border: 2px solid #00d4ff;
-          border-radius: 10px;
-          padding: 15px;
-        }
-        .inventory-item h4 {
-          margin: 0 0 10px 0;
-          color: #00d4ff;
-        }
-        .inventory-item p {
-          margin: 5px 0;
-          color: #aaa;
-          font-size: 13px;
-        }
-        .stat-card {
-          background: rgba(0, 212, 255, 0.05);
-          border: 2px solid #00d4ff;
-          border-radius: 10px;
-          padding: 20px;
-          text-align: center;
-        }
-        .stat-card h4 {
-          margin: 0;
-          color: #00d4ff;
-          font-size: 14px;
-        }
-        .stat-big {
-          font-size: 28px;
-          font-weight: bold;
-          color: #00ff00;
-          margin-top: 10px;
-        }
-        .stat-big.profit {
-          color: #00ff00;
-        }
-        .stats-grid {
-          display: grid;
-          grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-          gap: 15px;
-        }
-        .auth-buttons {
-          display: flex;
-          flex-direction: column;
-          gap: 10px;
-          margin-top: 20px;
-          padding-top: 20px;
-          border-top: 2px solid #00d4ff;
-        }
-        .notification-container {
-          position: fixed;
-          bottom: 20px;
-          right: 20px;
-          z-index: 2000;
-          display: flex;
-          flex-direction: column;
-          gap: 10px;
-        }
-        .notification {
-          padding: 15px 20px;
-          border-radius: 5px;
-          animation: slideIn 0.3s ease-out;
-        }
-        .notification-success {
-          background: linear-gradient(135deg, #00ff00, #00cc00);
-          color: #000;
-          font-weight: bold;
-        }
-        .notification-error {
-          background: linear-gradient(135deg, #ff4444, #cc0000);
-          color: #fff;
-          font-weight: bold;
-        }
-        .notification-info {
-          background: linear-gradient(135deg, #00d4ff, #0099cc);
-          color: #fff;
-          font-weight: bold;
-        }
-        @keyframes slideIn {
-          from {
-            transform: translateX(400px);
-            opacity: 0;
-          }
-          to {
-            transform: translateX(0);
-            opacity: 1;
-          }
-        }
-        .damage-tag {
-          display: inline-block;
-          background: rgba(255, 68, 68, 0.2);
-          border: 1px solid #ff4444;
-          color: #ff4444;
-          padding: 5px 10px;
-          border-radius: 3px;
-          margin-right: 5px;
-          margin-bottom: 5px;
-          font-size: 12px;
-        }
-        .accessory-tag {
-          display: inline-block;
-          background: rgba(0, 255, 0, 0.2);
-          border: 1px solid #00ff00;
-          color: #00ff00;
-          padding: 5px 10px;
-          border-radius: 3px;
-          margin-right: 5px;
-          margin-bottom: 5px;
-          font-size: 12px;
-        }
-        .price-input {
-          width: 100%;
-          padding: 10px;
-          border: 2px solid #00d4ff;
-          background: rgba(0, 212, 255, 0.1);
-          color: #fff;
-          border-radius: 5px;
-          margin-bottom: 10px;
-          font-size: 14px;
-        }
-        .profile-card {
-          background: rgba(0, 212, 255, 0.05);
-          border: 2px solid #00d4ff;
-          border-radius: 10px;
-          padding: 20px;
-        }
-        .reviews-list {
-          margin-top: 15px;
-        }
-        .review-item {
-          background: rgba(255, 255, 255, 0.05);
-          border-left: 3px solid #00d4ff;
-          padding: 10px;
-          margin-bottom: 10px;
-          border-radius: 3px;
-        }
-        .review-stars {
-          color: #ffaa00;
-          font-weight: bold;
-        }
-      </style>
-    `;
-    document.head.insertAdjacentHTML('beforeend', style);
+    // Стили загружаются из styles-modern.css
+    // Этот метод оставлен для совместимости
   }
 }
 

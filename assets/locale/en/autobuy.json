@@ -1,0 +1,18 @@
+{
+  "autobuy.category.armor": "Armor",
+  "autobuy.category.tools": "Tools",
+  "autobuy.category.spheres": "Spheres",
+  "autobuy.category.talismans": "Talismans",
+  "autobuy.category.potions": "Potions",
+  "autobuy.category.arrows": "Arrows",
+  "autobuy.category.blocks": "Blocks",
+  "autobuy.category.consumables": "Consumables",
+  "autobuy.category.other": "Other",
+  "autobuy.item.auto-parser-include": "Include in Auto Parser",
+  "autobuy.item.max-price": "Max Price for Item",
+  "autobuy.item.max-price.place-holder": "Number",
+  "autobuy.item.min-count": "Min Count",
+  "autobuy.item.min-durability-percentage": "Min Durability Percentage",
+  "autobuy.item.ignore-thorns": "Ignore Thorns",
+  "autobuy.button.reset": "Reset all"
+}
