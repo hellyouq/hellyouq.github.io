@@ -1,181 +1,260 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hellpak</title>
-    <meta name="description" content="Hellpak — bio">
-    <link rel="icon" type="image/png" href="assets/images/atom32.png">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&family=Google+Sans+Display:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Телефонный Барон - Перекупщик смартфонов</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+  <div class="app-container">
+    <!-- БОКОВАЯ ПАНЕЛЬ -->
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <h1>📱 Phone Tycoon</h1>
+        <p class="tagline">Перекупщик смартфонов</p>
+      </div>
 
-    <!-- Фоновый gradient blob -->
-    <!-- Blur вынесен на wrapper, блобы двигаются только translate -->
-    <div class="wallpaper" aria-hidden="true">
-        <div class="blob-wrap bw-1"><div class="blob blob-1"></div></div>
-        <div class="blob-wrap bw-2"><div class="blob blob-2"></div></div>
-        <div class="blob-wrap bw-3"><div class="blob blob-3"></div></div>
-    </div>
+      <div class="balance-card">
+        <div class="balance-label">Баланс</div>
+        <div class="balance-amount" id="balanceDisplay">5,000 ₽</div>
+      </div>
 
-    <!-- Снэкбар (Material You toast) -->
-    <div class="snackbar" id="snackbar" role="status" aria-live="polite">
-        <svg class="snack-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-            <path d="M9 12l2 2 4-4" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
-            <circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="2"/>
-        </svg>
-        <span id="snack-text">Скопировано</span>
-    </div>
+      <div class="rank-card">
+        <div class="rank-label">Ранг</div>
+        <div class="rank-name" id="rankDisplay">🟢 Новичок</div>
+        <div class="rank-progress">
+          <div class="rank-bar" id="rankBar"></div>
+        </div>
+      </div>
 
-    <main class="page">
+      <nav class="nav-menu">
+        <button class="nav-btn active" data-tab="market">
+          📊 Рынок
+        </button>
+        <button class="nav-btn" data-tab="inventory">
+          📦 Инвентарь
+        </button>
+        <button class="nav-btn" data-tab="shop">
+          🔧 Магазин запчастей
+        </button>
+        <button class="nav-btn" data-tab="sales">
+          💰 Мои продажи
+        </button>
+        <button class="nav-btn" data-tab="stats">
+          📈 Статистика
+        </button>
+      </nav>
 
-        <!-- ══ PROFILE CARD ══ -->
-        <section class="m3-card profile-card" aria-label="Профиль">
+      <div class="stats-mini">
+        <div class="stat-item">
+          <span class="stat-label">Сделок</span>
+          <span class="stat-value" id="dealsCount">0</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-label">Прибыль</span>
+          <span class="stat-value" id="profitCount">0 ₽</span>
+        </div>
+      </div>
 
-            <!-- Аватар -->
-            <div class="avatar-container">
-                <canvas class="avatar-ring-canvas" id="avatar-ring-canvas" width="120" height="120" aria-hidden="true"></canvas>
-                <img
-                    src="assets/avatars/avatar.png"
-                    alt="Hellpak"
-                    class="avatar"
-                    id="avatar-img"
-                    onerror="this.onerror=null;this.src='assets/ui/mainmenu/logo.png'">
-                <div class="status-badge" aria-label="Online"></div>
+      <button class="btn-refresh" onclick="app.refreshMarket()">🔄 Обновить рынок</button>
+    </aside>
+
+    <!-- ГЛАВНОЕ СОДЕРЖИМОЕ -->
+    <main class="main-content">
+      <!-- РЫНОК ОБЪЯВЛЕНИЙ -->
+      <section id="market" class="tab-content active">
+        <div class="section-header">
+          <h2>📊 Доска объявлений</h2>
+          <p>Найди выгодное предложение телефона</p>
+        </div>
+
+        <div class="market-grid" id="marketGrid">
+          <!-- Объявления генерируются здесь -->
+        </div>
+
+        <div class="pagination">
+          <button class="btn-pagination" onclick="app.prevPage()">← Назад</button>
+          <span class="page-info" id="pageInfo">Страница 1</span>
+          <button class="btn-pagination" onclick="app.nextPage()">Далее →</button>
+        </div>
+      </section>
+
+      <!-- ИНВЕНТАРЬ -->
+      <section id="inventory" class="tab-content">
+        <div class="section-header">
+          <h2>📦 Мой инвентарь</h2>
+          <p>Телефоны и запчасти в наличии</p>
+        </div>
+
+        <div class="inventory-container">
+          <div class="inventory-section">
+            <h3>📱 Телефоны</h3>
+            <div class="inventory-grid" id="phonesInventory">
+              <div class="empty-state">Нет телефонов</div>
             </div>
+          </div>
 
-            <!-- Имя -->
-            <h1 class="display-name">Hellpak</h1>
-            <p class="handle">@hellpaq</p>
-            <p class="bio-text">just a pixel soul in a pixel world</p>
-
-            <!-- Chips -->
-            <div class="chips-row" role="list" aria-label="Теги">
-                <span class="chip" role="listitem">
-                    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14H9V8h2v8zm4 0h-2V8h2v8z"/></svg>
-                    Developer
-                </span>
-                <span class="chip" role="listitem">
-                    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/></svg>
-                    Music
-                </span>
-
+          <div class="inventory-section">
+            <h3>🔧 Запчасти</h3>
+            <div class="inventory-grid" id="partsInventory">
+              <div class="empty-state">Нет запчастей</div>
             </div>
+          </div>
+        </div>
+      </section>
 
-            <div class="divider-line" aria-hidden="true"></div>
+      <!-- МАГАЗИН ЗАПЧАСТЕЙ -->
+      <section id="shop" class="tab-content">
+        <div class="section-header">
+          <h2>🔧 Магазин запчастей</h2>
+          <p>Покупайте запчасти для ремонта телефонов</p>
+        </div>
 
-            <!-- Discord -->
-            <div class="info-row" aria-label="Discord">
-                <div class="info-icon-wrap" aria-hidden="true">
-                    <img src="assets/images/social/discord.png" alt="" class="info-icon-img">
-                </div>
-                <div class="info-content">
-                    <span class="info-label">Discord</span>
-                    <span class="info-value" id="discord-val">.hellpaq</span>
-                </div>
-                <button class="icon-btn" id="copy-btn" aria-label="Скопировать Discord">
-                    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                        <path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/>
-                    </svg>
-                </button>
-            </div>
+        <div class="shop-filter">
+          <input type="text" id="brandFilter" placeholder="Искать бренд..." class="search-input">
+          <select id="partFilter" class="filter-select">
+            <option value="">Все запчасти</option>
+            <option value="screen">Экран</option>
+            <option value="battery">Батарея</option>
+            <option value="button">Кнопки</option>
+            <option value="backGlass">Корпус</option>
+            <option value="chargePort">Разъём</option>
+            <option value="camera">Камера</option>
+            <option value="motherboard">Материнская плата</option>
+            <option value="speaker">Динамик</option>
+          </select>
+        </div>
 
-        </section>
+        <div class="shop-grid" id="shopGrid">
+          <!-- Запчасти генерируются здесь -->
+        </div>
+      </section>
 
-        <!-- ══ MUSIC CARD ══ -->
-        <section class="m3-card music-card" aria-label="Плеер">
-            <div class="card-header">
-                <div class="card-icon" aria-hidden="true">
-                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/></svg>
-                </div>
-                <h2 class="card-title">Now Playing</h2>
-            </div>
+      <!-- МОИ ПРОДАЖИ -->
+      <section id="sales" class="tab-content">
+        <div class="section-header">
+          <h2>💰 Мои продажи</h2>
+          <p>Телефоны на продажу</p>
+        </div>
 
-            <!-- Обложка + инфо -->
-            <div class="player-hero">
-                <div class="cover-wrap">
-                    <img
-                        src="https://i.ytimg.com/vi/8nhLPwilFSQ/maxresdefault.jpg"
-                        alt="PHARAOH — Caramel"
-                        class="cover"
-                        id="cover">
-                    <div class="cover-overlay" aria-hidden="true"></div>
-                    <div class="vinyl-ring" id="vinyl-ring" aria-hidden="true"></div>
-                </div>
+        <div class="sales-list" id="salesList">
+          <div class="empty-state">Нет телефонов на продажу</div>
+        </div>
+      </section>
 
-                <div class="player-meta">
-                    <p class="now-label">▶ PHARAOH</p>
-                    <h3 class="now-title" id="track-title">Caramel</h3>
-                    <p class="now-album">ГОРГОРОД (2016)</p>
-                </div>
-            </div>
+      <!-- СТАТИСТИКА -->
+      <section id="stats" class="tab-content">
+        <div class="section-header">
+          <h2>📈 Статистика</h2>
+          <p>Твоя игровая статистика</p>
+        </div>
 
-            <!-- Прогресс -->
-            <div class="progress-row">
-                <span class="ptime" id="time-cur">0:00</span>
-                <div
-                    class="progress-bar"
-                    id="trackbar"
-                    role="slider"
-                    aria-label="Перемотка"
-                    aria-valuemin="0"
-                    aria-valuemax="100"
-                    aria-valuenow="0"
-                    tabindex="0">
-                    <div class="progress-track">
-                        <div class="progress-fill" id="prog-fill"></div>
-                        <div class="progress-thumb" id="prog-thumb"></div>
-                    </div>
-                </div>
-                <span class="ptime" id="time-total">0:00</span>
-            </div>
-
-            <!-- Контролы -->
-            <div class="player-controls">
-
-                <!-- Mute -->
-                <button class="fab fab-sm" id="btn-mute" aria-label="Звук">
-                    <svg class="ico-sound" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                        <path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/>
-                    </svg>
-                    <svg class="ico-muted" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                        <path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51C20.63 14.91 21 13.5 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3L3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06c1.38-.31 2.63-.95 3.69-1.81L19.73 21 21 19.73l-9-9L4.27 3zM12 4L9.91 6.09 12 8.18V4z"/>
-                    </svg>
-                </button>
-
-                <!-- Play/Pause -->
-                <button class="fab fab-lg" id="btn-play" aria-label="Играть / Пауза">
-                    <svg class="ico-play" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                        <path d="M8 5v14l11-7z"/>
-                    </svg>
-                    <svg class="ico-pause" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                        <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>
-                    </svg>
-                </button>
-
-                <!-- Volume -->
-                <div class="vol-wrap">
-                    <input
-                        type="range"
-                        class="vol-slider"
-                        id="vol-slider"
-                        min="0"
-                        max="100"
-                        value="70"
-                        aria-label="Громкость">
-                </div>
-
-            </div>
-        </section>
-
+        <div class="stats-grid">
+          <div class="stat-card">
+            <h4>Всего сделок</h4>
+            <div class="stat-big" id="statDeals">0</div>
+          </div>
+          <div class="stat-card">
+            <h4>Обще прибыль</h4>
+            <div class="stat-big profit" id="statProfit">0 ₽</div>
+          </div>
+          <div class="stat-card">
+            <h4>Среднее прибыль на сделку</h4>
+            <div class="stat-big" id="statAvgProfit">0 ₽</div>
+          </div>
+          <div class="stat-card">
+            <h4>Успешных ремонтов</h4>
+            <div class="stat-big" id="statRepairs">0</div>
+          </div>
+        </div>
+      </section>
     </main>
+  </div>
 
-    <!-- Скрытый YouTube -->
-    <div id="yt-host" hidden aria-hidden="true"></div>
+  <!-- МОДАЛЬНОЕ ОКНО ОБЪЯВЛЕНИЯ -->
+  <div id="listingModal" class="modal">
+    <div class="modal-content listing-modal">
+      <button class="modal-close" onclick="app.closeListing()">&times;</button>
 
-    <script src="main.js"></script>
+      <div class="listing-image-container">
+        <img id="listingImage" class="listing-image" src="" alt="Телефон">
+        <span id="conditionBadge" class="condition-badge"></span>
+      </div>
+
+      <div class="listing-info">
+        <h2 id="listingPhone"></h2>
+        <p id="listingDetails" class="listing-details"></p>
+
+        <div class="damages-section">
+          <h4>Состояние:</h4>
+          <div id="damagesList" class="damages-list"></div>
+        </div>
+
+        <div class="accessories-section">
+          <h4>Комплектация:</h4>
+          <div id="accessoriesList" class="accessories-list"></div>
+        </div>
+
+        <div class="price-section">
+          <div class="price-display">
+            <span class="price-label">Цена продавца</span>
+            <span id="listingPrice" class="price-value"></span>
+          </div>
+
+          <div class="buyer-section">
+            <div class="input-group">
+              <label>Твоё предложение</label>
+              <input type="number" id="offerPrice" class="price-input" placeholder="Введи цену">
+              <span class="offer-help">За каждые 2000₽ ниже — 50/50 вероятность</span>
+            </div>
+
+            <button class="btn-primary" onclick="app.buyPhone()">💳 Купить по цене</button>
+            <button class="btn-secondary" onclick="app.negotiatePrice()">🤝 Торговаться</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- МОДАЛЬНОЕ ОКНО РАЗБОРКИ -->
+  <div id="disassemblyModal" class="modal">
+    <div class="modal-content disassembly-modal">
+      <button class="modal-close" onclick="app.closeDisassembly()">&times;</button>
+
+      <div class="disassembly-header">
+        <h2>🔧 Разборка и ремонт</h2>
+        <p id="phoneNameDisassembly"></p>
+      </div>
+
+      <div class="disassembly-container">
+        <div class="phone-visual" id="phoneVisual">
+          <!-- SVG модель телефона -->
+        </div>
+
+        <div class="disassembly-steps">
+          <h4>Шаги разборки:</h4>
+          <div id="stepsList" class="steps-list"></div>
+
+          <div class="repairs-section">
+            <h4>Требуемые ремонты:</h4>
+            <div id="requiredRepairs" class="repairs-list"></div>
+          </div>
+
+          <button class="btn-primary" onclick="app.completeDisassembly()">✅ Завершить ремонт</button>
+          <button class="btn-danger" onclick="app.closeDisassembly()">❌ Отмена</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- УВЕДОМЛЕНИЯ -->
+  <div id="notificationContainer" class="notification-container"></div>
+
+  <script src="data.js"></script>
+  <script src="phone-images.js"></script>
+  <script src="storage.js"></script>
+  <script src="bots.js"></script>
+  <script src="game.js"></script>
 </body>
 </html>
