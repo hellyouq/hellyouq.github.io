@@ -1,0 +1,357 @@
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Юкино Ханари — Сакура</title>
+<meta name="description" content="Сакура — сад кейсов с аниме-девочками. 12 кейсов, 91 героиня, легендарные сакуры, коллекция и гарант на легенду.">
+<meta name="theme-color" content="#fff7fa">
+<link rel="icon" href="/sakura/static/art/logo.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://thisanimedoesnotexist.ai">
+<link rel="stylesheet" href="/sakura/static/css/sakura.css">
+<script>
+  // applied before first paint so there is no light flash on a dark reload
+  (function () {
+    try {
+      var t = localStorage.getItem("sakura-theme");
+      if (t) document.documentElement.dataset.theme = t;
+    } catch (e) {}
+  })();
+</script>
+
+</head>
+<body>
+
+<div class="petal-field" id="petalField" aria-hidden="true"></div>
+<div class="blob blob-1" aria-hidden="true"></div>
+<div class="blob blob-2" aria-hidden="true"></div>
+<div class="blob blob-3" aria-hidden="true"></div>
+
+<header class="nav">
+  <div class="wrap nav-in">
+    <a class="brand" href="/sakura/">
+      <span class="brand-mark"><img src="/sakura/static/art/logo.svg" alt="" width="30" height="30"></span>
+      <span>
+        <span class="brand-name">Сакура</span>
+        <span class="brand-sub">sakura gacha</span>
+      </span>
+    </a>
+
+    <nav class="nav-links" id="navLinks">
+      <a href="/sakura/cases/" class="">Кейсы</a>
+      <a href="/sakura/collection/" class="">Коллекция</a>
+      <a href="/sakura/market/" class="">Биржа</a>
+      <a href="/sakura/hall/" class="">Зал славы</a>
+      <a href="/sakura/profile/" class="">Профиль</a>
+    </nav>
+
+    <div class="nav-right">
+      <button class="theme-btn" id="themeBtn" type="button" title="Сменить тему" aria-label="Сменить тему">
+        <svg class="ico-sun" viewBox="0 0 24 24" fill="none" stroke="#f0a53c" stroke-width="2" stroke-linecap="round">
+          <circle cx="12" cy="12" r="4.5"/sakura/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M19.1 4.9l-1.4 1.4M6.3 17.7l-1.4 1.4"/sakura/>
+        </svg>
+        <svg class="ico-moon" viewBox="0 0 24 24" fill="none" stroke="#c4b5fd" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M20 14.5A8.5 8.5 0 1 1 9.5 4a7 7 0 0 0 10.5 10.5z"/sakura/>
+        </svg>
+      </button>
+
+      <button class="purse" id="purse" type="button" title="Ежедневный подарок: +500 🌸" data-ready="1">
+        <span class="purse-ico">🌸</span>
+        <span id="purseVal">2500</span>
+      </button>
+
+      
+        <button class="btn btn-ghost btn-sm" id="renameBtn" type="button">Имя</button>
+      
+
+      <button class="burger" id="burger" type="button" aria-label="Меню">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="#7c5a6a" stroke-width="2" stroke-linecap="round">
+          <path d="M3 6h14M3 10h14M3 14h14"/sakura/>
+        </svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main class="page">
+  <div class="wrap">
+    
+    
+<a class="chip mt-l" href="/sakura/collection/">← коллекция</a>
+
+<div class="card mt-m" style="padding:0;overflow:hidden">
+  <div class="row wrapf" style="align-items:stretch">
+    <div style="flex:0 0 clamp(240px,32vw,380px);position:relative;background:linear-gradient(160deg,#ff8fb833,#fff)">
+      <img src="https://thisanimedoesnotexist.ai/results/psi-1.0/seed01000.png" data-fallback="/sakura/static/art/avatar/1000.svg"
+           alt="Юкино Ханари" width="380" height="440"
+           style="width:100%;height:100%;min-height:320px;object-fit:cover">
+      <div style="position:absolute;inset:auto 0 0 0;padding:18px;background:var(--hero-fade)">
+        <span class="rar rar-sakura">🌸 Р›РµРіРµРЅРґР° СЃР°РєСѓСЂС‹</span>
+      </div>
+    </div>
+
+    <div style="flex:1;min-width:300px;padding:28px">
+      <span class="eyebrow">Р¦РІРµС‚РµРЅРёРµ РҐР°РЅР° · РЎР°РєСѓСЂР°</span>
+      <h1 class="mt-s">Юкино Ханари</h1>
+      <p class="lead mt-s" style="font-family:var(--font-d)">Цвету, даже не глядя</p>
+
+      <blockquote class="serif mt-m" style="padding:16px 20px;border-left:3px solid #ff8fb8;
+              background:var(--s50);border-radius:0 16px 16px 0;font-size:1.06rem">
+        «Цвету, даже если на меня не смотрят.»
+      </blockquote>
+
+      <p class="muted mt-m">Её нашли в цветущем саду, где дождь звучал как музыка. Её появление совпало с цветением, которое не помнит ни один садовник.</p>
+      <p class="dim tiny mt-s">Происхождение: Граница · Острова · в саду с 30 Sep 2026</p>
+
+      <div class="row wrapf gap-s mt-m">
+        
+          <a class="chip" href="/sakura/case/neon-tokio/">🌸 Неоновый Токио</a><a class="chip" href="/sakura/case/fukaimu/">🌸 Бездна</a>
+        
+      </div>
+
+      <div class="panel mt-m" style="padding:18px" data-girl="92">
+        
+          <div class="between">
+            <span class="muted tiny" id="ownLbl">Проверяем твою коллекцию…</span>
+            <b class="c-price" style="font-size:1.2rem" data-static="own">—</b>
+          </div>
+          <a class="btn btn-block mt-s" href="/sakura/case/neon-tokio/">Выбить в кейсе</a>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="card mt-l reveal-in">
+  <h3>Характер</h3>
+  <div class="mt-m" style="display:grid;gap:14px">
+    
+    <div>
+      <div class="between tiny" style="margin-bottom:5px">
+        <span class="muted">Сила</span><b>99</b>
+      </div>
+      <div class="pill-progress"><i style="width:99%;background:linear-gradient(90deg,#ff5fa2,#ff5fa2bb)"></i></div>
+    </div>
+    
+    <div>
+      <div class="between tiny" style="margin-bottom:5px">
+        <span class="muted">Милота</span><b>92</b>
+      </div>
+      <div class="pill-progress"><i style="width:92%;background:linear-gradient(90deg,#ff8fb8,#ff8fb8bb)"></i></div>
+    </div>
+    
+    <div>
+      <div class="between tiny" style="margin-bottom:5px">
+        <span class="muted">Элегантность</span><b>95</b>
+      </div>
+      <div class="pill-progress"><i style="width:95%;background:linear-gradient(90deg,#ff8fb8,#ff8fb8bb)"></i></div>
+    </div>
+    
+    <div>
+      <div class="between tiny" style="margin-bottom:5px">
+        <span class="muted">Дух</span><b>95</b>
+      </div>
+      <div class="pill-progress"><i style="width:95%;background:linear-gradient(90deg,#ff5fa2,#ff5fa2bb)"></i></div>
+    </div>
+    
+  </div>
+  <p class="dim tiny mt-m">Сумма характера: <b>381</b> · <span data-static="owners">всего в саду 1 копий у игроков</span></p>
+</div>
+
+<h2 class="mt-xl mb-m">Такой же редкости</h2>
+<div class="g-grid">
+  
+<a href="/sakura/girl/1/" class="g-card tier-0 reveal-in">
+  <div class="g-face">
+    <img src="https://thisanimedoesnotexist.ai/results/psi-1.0/seed01037.png" data-fallback="/sakura/static/art/avatar/1037.svg"
+         alt="Ария Куросаки" width="320" height="320" loading="lazy" decoding="async">
+    <span class="rar g-rar rar-sakura">🌸 Р›РµРіРµРЅРґР° СЃР°РєСѓСЂС‹</span>
+    
+    
+  </div>
+  <div class="g-info">
+    <div class="g-name">Ария Куросаки</div>
+    <div class="g-title">Лунный лепесток</div>
+    <div class="g-meta">
+      <span class="g-elem"><i style="background:#a5b4fc"></i>Р›СѓРЅР°</span>
+      
+        <span class="locked-note">не найдена</span>
+      
+    </div>
+  </div>
+</a>
+
+<a href="/sakura/girl/3/" class="g-card tier-0 reveal-in">
+  <div class="g-face">
+    <img src="https://thisanimedoesnotexist.ai/results/psi-1.0/seed01111.png" data-fallback="/sakura/static/art/avatar/1111.svg"
+         alt="Кирин Цукинами" width="320" height="320" loading="lazy" decoding="async">
+    <span class="rar g-rar rar-sakura">🌸 Р›РµРіРµРЅРґР° СЃР°РєСѓСЂС‹</span>
+    
+    
+  </div>
+  <div class="g-info">
+    <div class="g-name">Кирин Цукинами</div>
+    <div class="g-title">Нимб из лепестков</div>
+    <div class="g-meta">
+      <span class="g-elem"><i style="background:#fcd34d"></i>Р—РІС‘Р·РґС‹</span>
+      
+        <span class="locked-note">не найдена</span>
+      
+    </div>
+  </div>
+</a>
+
+<a href="/sakura/girl/5/" class="g-card tier-0 reveal-in">
+  <div class="g-face">
+    <img src="https://thisanimedoesnotexist.ai/results/psi-1.0/seed01185.png" data-fallback="/sakura/static/art/avatar/1185.svg"
+         alt="Сильвия Хакусэ" width="320" height="320" loading="lazy" decoding="async">
+    <span class="rar g-rar rar-sakura">🌸 Р›РµРіРµРЅРґР° СЃР°РєСѓСЂС‹</span>
+    
+    
+  </div>
+  <div class="g-info">
+    <div class="g-name">Сильвия Хакусэ</div>
+    <div class="g-title">Душа цветения</div>
+    <div class="g-meta">
+      <span class="g-elem"><i style="background:#94a3b8"></i>РўРµРЅСЊ</span>
+      
+        <span class="locked-note">не найдена</span>
+      
+    </div>
+  </div>
+</a>
+
+<a href="/sakura/girl/2/" class="g-card tier-0 reveal-in">
+  <div class="g-face">
+    <img src="https://thisanimedoesnotexist.ai/results/psi-1.0/seed01074.png" data-fallback="/sakura/static/art/avatar/1074.svg"
+         alt="Рэн Акаи" width="320" height="320" loading="lazy" decoding="async">
+    <span class="rar g-rar rar-sakura">🌸 Р›РµРіРµРЅРґР° СЃР°РєСѓСЂС‹</span>
+    
+    
+  </div>
+  <div class="g-info">
+    <div class="g-name">Рэн Акаи</div>
+    <div class="g-title">Алый веер судьбы</div>
+    <div class="g-meta">
+      <span class="g-elem"><i style="background:#fb923c"></i>РџР»Р°РјСЏ</span>
+      
+        <span class="locked-note">не найдена</span>
+      
+    </div>
+  </div>
+</a>
+
+<a href="/sakura/girl/4/" class="g-card tier-0 reveal-in">
+  <div class="g-face">
+    <img src="https://thisanimedoesnotexist.ai/results/psi-1.0/seed01148.png" data-fallback="/sakura/static/art/avatar/1148.svg"
+         alt="Момоно Сакурай" width="320" height="320" loading="lazy" decoding="async">
+    <span class="rar g-rar rar-sakura">🌸 Р›РµРіРµРЅРґР° СЃР°РєСѓСЂС‹</span>
+    
+    
+  </div>
+  <div class="g-info">
+    <div class="g-name">Момоно Сакурай</div>
+    <div class="g-title">Королева весеннего сада</div>
+    <div class="g-meta">
+      <span class="g-elem"><i style="background:#ff8fb8"></i>РЎР°РєСѓСЂР°</span>
+      
+        <span class="locked-note">не найдена</span>
+      
+    </div>
+  </div>
+</a>
+
+</div>
+
+  </div>
+</main>
+
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer-cols">
+      <div>
+        <div class="brand" style="margin-bottom:12px">
+          <span class="brand-mark"><img src="/sakura/static/art/logo.svg" alt="" width="30" height="30"></span>
+          <span><span class="brand-name">Сакура</span></span>
+        </div>
+        <p class="muted" style="font-size:.9rem;max-width:38ch">
+          Сад кейсов с аниме-девочками. Нежный, белый и с гарантией:
+          легендарная сакура выпадает не позже чем через 60 открытий.
+        </p>
+        <p class="dim tiny mt-s">Все персонажи и истории вымышлены. Изображения — свободно используемые
+          работы генеративной модели, а при недоступности подставляется нарисованный SVG.</p>
+      </div>
+      <div>
+        <h4>Игра</h4>
+        <a href="/sakura/cases/">Все кейсы</a>
+        <a href="/sakura/collection/">Коллекция</a>
+        <a href="/sakura/profile/">Профиль и статистика</a>
+        <a href="/sakura/hall/">Зал славы</a>
+      </div>
+      <div>
+        <h4>Редкости</h4>
+        <a href="/sakura/collection/?rarity=sakura">🌸 Р›РµРіРµРЅРґР° СЃР°РєСѓСЂС‹</a><a href="/sakura/collection/?rarity=mythic">💞 РњРёС„РёС‡РµСЃРєР°СЏ</a><a href="/sakura/collection/?rarity=epic">💎 Р­РїРёС‡РµСЃРєР°СЏ</a><a href="/sakura/collection/?rarity=rare">💙 Р РµРґРєР°СЏ</a><a href="/sakura/collection/?rarity=common">🍃 РћР±С‹С‡РЅР°СЏ</a>
+      </div>
+      <div>
+        <h4>Аккаунт</h4>
+        
+          <a href="/sakura/profile/">Моя коллекция</a>
+          <a href="/sakura/collection/">Мои героини</a>
+        
+        
+      </div>
+    </div>
+    <div class="divider" style="margin:32px 0 20px"></div>
+    <div class="between wrapf tiny dim">
+      <span>© 2026 Сакура · сделано с нежностью</span>
+      <span class="jp">桜 の 庭</span>
+    </div>
+  </div>
+</footer>
+
+<canvas id="confetti"></canvas>
+<div class="notice" id="notice"></div>
+
+<div class="open-shell" id="openShell">
+  <div id="roulBox" style="display:flex;flex-direction:column;align-items:center">
+    <div class="roul-tick" id="roulTick">открываем…</div>
+    <div class="roul-wrap">
+      <div class="roul-strip" id="roulStrip"></div>
+      <div class="roul-fade"></div>
+      <div class="roul-pointer"></div>
+    </div>
+  </div>
+
+  <div class="reveal" id="revealBox">
+    <div class="reveal-card" id="revealCard">
+      <div class="reveal-sheen"></div>
+      <img id="revealImg" alt="" src="">
+      <div class="rar" id="revealRar" style="position:absolute;top:14px;left:14px;z-index:4"></div>
+      <div style="position:absolute;bottom:20px;left:20px;right:20px;z-index:4;text-align:left">
+        <div id="revealName" class="reveal-name" style="color:#fff;font-size:1.4rem"></div>
+        <div id="revealTitle" style="color:rgba(255,255,255,.85);font-size:.86rem"></div>
+      </div>
+    </div>
+    <div class="reveal-acts" id="revealActs"></div>
+  </div>
+
+  <div class="grid10" id="grid10"></div>
+</div>
+
+<script>
+  window.SAKURA = {
+    csrf: "eSTKQzlAmFUDjuXfUtZ4saSWG8Vh4ERHEm7WNMb4uqOzp756MwASG4g1kIJjLYX6",
+    openUrl: "/sakura/case/x/open/",
+    dailyUrl: "/sakura/daily/",
+    girlUrl: "/sakura/girl/x/",
+    static: true
+  };
+</script>
+<script src="/sakura/static/js/sakura.js"></script>
+<script src="/sakura/static/js/static-mode.js" defer></script>
+
+</body>
+</html>

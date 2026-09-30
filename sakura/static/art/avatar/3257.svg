@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 320" width="320" height="320" role="img" aria-label="Аниме-девочка">
+<defs>
+<radialGradient id="bg3257" cx="50%" cy="34%" r="78%">
+<stop offset="0%" stop-color="#d6ddfe"/><stop offset="100%" stop-color="#ffffff"/>
+</radialGradient>
+<linearGradient id="hair3257" x1="0" y1="0" x2="0" y2="1">
+<stop offset="0%" stop-color="#f9bed3"/><stop offset="60%" stop-color="#f7a8c4"/><stop offset="100%" stop-color="#ca89a3"/>
+</linearGradient>
+<linearGradient id="cloth3257" x1="0" y1="0" x2="0" y2="1">
+<stop offset="0%" stop-color="#ffffff"/><stop offset="100%" stop-color="#fdeef4"/>
+</linearGradient>
+</defs>
+<rect width="320" height="320" fill="url(#bg3257)"/>
+<path d="M0 0 C7.7 -7.0 16.0 -1.4 12.5 4.9 C9.0 11.1 2.1 8.3 0 0 Z transform="translate(287.2 255.9) rotate(111)"" fill="#ffffff" opacity="0.48"/><path d="M0 0 C4.9 -4.5 10.3 -0.9 8.0 3.1 C5.8 7.1 1.3 5.4 0 0 Z transform="translate(176.8 267.1) rotate(3)"" fill="#ffffff" opacity="0.38"/><path d="M0 0 C7.4 -6.7 15.5 -1.3 12.1 4.7 C8.7 10.8 2.0 8.1 0 0 Z transform="translate(55.7 16.8) rotate(14)"" fill="#ffffff" opacity="0.41"/><path d="M0 0 C5.2 -4.8 11.0 -1.0 8.6 3.3 C6.2 7.6 1.4 5.7 0 0 Z transform="translate(87.2 286.6) rotate(184)"" fill="#ffffff" opacity="0.22"/><path d="M0 0 C7.1 -6.4 14.8 -1.3 11.6 4.5 C8.3 10.3 1.9 7.7 0 0 Z transform="translate(20.3 245.1) rotate(44)"" fill="#ffffff" opacity="0.32"/><path d="M0 0 C7.5 -6.8 15.6 -1.4 12.2 4.8 C8.8 10.9 2.0 8.1 0 0 Z transform="translate(92.1 49.2) rotate(359)"" fill="#ffffff" opacity="0.26"/><path d="M0 0 C8.0 -7.2 16.7 -1.4 13.0 5.1 C9.4 11.6 2.2 8.7 0 0 Z transform="translate(73.1 287.3) rotate(342)"" fill="#ffffff" opacity="0.45"/><path d="M0 0 C4.2 -3.8 8.7 -0.8 6.8 2.6 C4.9 6.1 1.1 4.5 0 0 Z transform="translate(257.6 256.3) rotate(67)"" fill="#ffffff" opacity="0.34"/><path d="M0 0 C6.8 -6.1 14.1 -1.2 11.1 4.3 C8.0 9.8 1.8 7.4 0 0 Z transform="translate(145.4 97.1) rotate(353)"" fill="#ffffff" opacity="0.46"/><path d="M0 0 C4.4 -4.0 9.3 -0.8 7.2 2.8 C5.2 6.4 1.2 4.8 0 0 Z transform="translate(289.3 51.8) rotate(266)"" fill="#ffffff" opacity="0.48"/><path d="M0 0 C7.4 -6.7 15.4 -1.3 12.0 4.7 C8.7 10.7 2.0 8.0 0 0 Z transform="translate(199.1 232.5) rotate(11)"" fill="#ffffff" opacity="0.24"/>
+<circle cx="160" cy="152" r="126" fill="#ffffff" opacity=".45"/>
+
+<path d="M56 320 C64 244, 256 244, 264 320 Z" fill="url(#cloth3257)"/>
+<path d="M134 239 L160 190 L186 239 Z" fill="#f0d3c4"/>
+<ellipse cx="160" cy="158" rx="77" ry="94" fill="#f0d3c4"/>
+<g>
+<path d="M91 128 C79 92, 241 92, 229 128 L237 144 L83 144 Z" fill="url(#hair3257)"/>
+</g>
+<path d="M82.81265884933731 142.0 C76.81265884933731 64.12456760270928, 243.1873411506627 64.12456760270928, 237.1873411506627 142.0 C206.3124046903976 114.0, 175.43746823013254 128.0, 164.0 124.0 C136.8437976548012 120.0, 105.96886119453612 128.0, 82.81265884933731 142.0 Z" fill="#f7a8c4"/><path d="M90.53139296440358 140.0 C121.40632942466866 118.0, 152.28126588493373 126.0, 156.14063294246688 150.0 C129.12506353973492 142.0, 105.96886119453612 136.0, 90.53139296440358 140.0 Z" fill="#f9bed3" opacity=".55"/>
+<ellipse cx="130" cy="170" rx="15.3" ry="11.2" fill="#d97706"/><ellipse cx="130" cy="173" rx="9.5" ry="7.6" fill="#2b1c33"/><circle cx="125" cy="164" r="4.6" fill="#ffffff"/><circle cx="135" cy="176" r="2.4" fill="#ffffff" opacity=".9"/><path d="M112 143 Q130 134 148 142" stroke="#3b2a45" stroke-width="3.4" fill="none" stroke-linecap="round"/><ellipse cx="190" cy="170" rx="15.3" ry="11.2" fill="#d97706"/><ellipse cx="190" cy="173" rx="9.5" ry="7.6" fill="#2b1c33"/><circle cx="185" cy="164" r="4.6" fill="#ffffff"/><circle cx="195" cy="176" r="2.4" fill="#ffffff" opacity=".9"/><path d="M172 143 Q190 134 208 142" stroke="#3b2a45" stroke-width="3.4" fill="none" stroke-linecap="round"/>
+<ellipse cx="116" cy="188" rx="11" ry="6.5" fill="#ff9db4" opacity=".5"/>
+<ellipse cx="204" cy="188" rx="11" ry="6.5" fill="#ff9db4" opacity=".5"/>
+<path d="M151 194 Q160 202 169 194" stroke="#c76b7f" stroke-width="3" fill="none" stroke-linecap="round"/>
+<g transform="translate(204 112)"><path d="M0 0 L-24 -13 L-24 13 Z" fill="#c4b5fd"/><path d="M0 0 L24 -13 L24 13 Z" fill="#c4b5fd"/><circle r="6" fill="#a899d8"/><path d="M0 6 L-9 24 L-2 20 L0 27 L4 20 L11 24 Z" fill="#c4b5fd" opacity=".9"/></g>
+<g opacity=".85"><path d="M0 0 C5.0 -4.5 10.3 -0.9 8.1 3.1 C5.9 7.2 1.3 5.4 0 0 Z transform="translate(264.9 243.5) rotate(308)"" fill="#a5b4fc" opacity=".5"/><path d="M0 0 C5.0 -4.5 10.3 -0.9 8.1 3.1 C5.9 7.2 1.3 5.4 0 0 Z transform="translate(191.3 268.3) rotate(170)"" fill="#a5b4fc" opacity=".5"/><path d="M0 0 C5.0 -4.5 10.3 -0.9 8.1 3.1 C5.9 7.2 1.3 5.4 0 0 Z transform="translate(232.0 240.5) rotate(135)"" fill="#a5b4fc" opacity=".5"/><path d="M0 0 C5.0 -4.5 10.3 -0.9 8.1 3.1 C5.9 7.2 1.3 5.4 0 0 Z transform="translate(261.3 262.7) rotate(125)"" fill="#a5b4fc" opacity=".5"/><path d="M0 0 C5.0 -4.5 10.3 -0.9 8.1 3.1 C5.9 7.2 1.3 5.4 0 0 Z transform="translate(29.5 243.0) rotate(335)"" fill="#a5b4fc" opacity=".5"/><path d="M0 0 C5.0 -4.5 10.3 -0.9 8.1 3.1 C5.9 7.2 1.3 5.4 0 0 Z transform="translate(260.5 287.3) rotate(258)"" fill="#a5b4fc" opacity=".5"/></g>
+</svg>
