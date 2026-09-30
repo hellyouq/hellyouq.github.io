@@ -540,16 +540,36 @@
   }
 
   // ------------------------------------------------------------------- boot
+  /** Fetch + cache the catalogue. Resolves once, so callers can await it. */
+  let inflight = null;
+  function catalogue() {
+    if (D) return Promise.resolve(D);
+    if (!inflight) {
+      inflight = fetch("/sakura/data.json", { cache: "no-cache" })
+        .then((r) => r.json())
+        .then((d) => {
+          D = d;
+          D.girls.forEach((g) => byId.set(g.id, g));
+          return D;
+        })
+        .catch((e) => {
+          inflight = null;
+          throw e;
+        });
+    }
+    return inflight;
+  }
+
+  window.SAKURA.load = catalogue;
+
   async function boot() {
     if (!window.SAKURA?.static) return;
     try {
-      const r = await fetch("/sakura/data.json", { cache: "no-cache" });
-      D = await r.json();
+      await catalogue();
     } catch {
       flash("Не удалось загрузить каталог. Обнови страницу.", true);
       return;
     }
-    D.girls.forEach((g) => byId.set(g.id, g));
     load();
 
     renderPurse();
