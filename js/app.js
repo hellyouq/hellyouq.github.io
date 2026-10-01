@@ -527,6 +527,62 @@
   }
 
   // ===== RENDER PLATE =====
+  // Номера свёрстаны в фиксированном размере (520×112 и т.д.), поэтому на узких
+  // экранах номер уменьшается целиком: пропорции и читаемость сохраняются,
+  // в отличие от перевёрстки символов по клеткам.
+  const PLATE_MIN_SCALE = 0.3;
+
+  function fitPlate() {
+    const frame = $('#plateFrame');
+    if (!frame) return;
+    const plate = frame.querySelector('.plate:not(.hidden)');
+    if (!plate) return;
+    const stage = frame.parentElement;
+    if (!stage) return;
+
+    const naturalW = plate.offsetWidth;
+    const naturalH = plate.offsetHeight;
+    if (!naturalW || !naturalH) return;
+
+    // Небольшой запас, чтобы номер не упирался в края экрана.
+    // clientWidth включает padding сцены (он есть в светлой теме) — вычитаем его.
+    const cs = getComputedStyle(stage);
+    const padX = parseFloat(cs.paddingLeft) + parseFloat(cs.paddingRight);
+    const available = stage.clientWidth - padX - 2;
+    if (available <= 0) return;
+
+    const scale = Math.max(PLATE_MIN_SCALE, Math.min(1, available / naturalW));
+
+    // Рамка всегда натурального размера, а место в потоке сокращаем
+    // отрицательными отступами — тогда уменьшенный номер занимает ровно
+    // свою видимую область и остаётся по центру сцены.
+    const mx = Math.round(naturalW * (1 - scale) / 2);
+    const my = Math.round(naturalH * (1 - scale) / 2);
+
+    frame.style.width = naturalW + 'px';
+    frame.style.height = naturalH + 'px';
+    frame.style.marginLeft = -mx + 'px';
+    frame.style.marginRight = -mx + 'px';
+    frame.style.marginTop = -my + 'px';
+    frame.style.marginBottom = -my + 'px';
+    frame.style.transformOrigin = (naturalW / 2) + 'px ' + (naturalH / 2) + 'px';
+    frame.style.transform = scale < 1 ? 'scale(' + scale + ')' : 'none';
+  }
+
+  let plateObserver = null;
+  function watchPlateLayout() {
+    if (plateObserver) return;
+    const stage = $('.plate-stage');
+    if (stage && typeof ResizeObserver !== 'undefined') {
+      plateObserver = new ResizeObserver(() => fitPlate());
+      plateObserver.observe(stage);
+    }
+    window.addEventListener('resize', fitPlate);
+    window.addEventListener('orientationchange', () => {
+      setTimeout(fitPlate, 250);
+    });
+  }
+
   function showPlateType() {
     const isRu = state.country === 'ru';
     const isCar = state.type === 'car';
@@ -543,6 +599,8 @@
     } else {
       regionSelect.style.display = 'none';
     }
+
+    fitPlate();
   }
 
   function setChars(plateEl, chars) {
@@ -1245,6 +1303,9 @@
     if (tabId === 'inventory') renderInventory();
     if (tabId === 'shop') renderShop();
     if (tabId === 'settings') syncSettingsUI();
+
+    // Вкладка только что показалась — ширину сцены надо перемерить
+    if (tabId === 'generator') fitPlate();
   }
 
   // ===== INIT =====
@@ -1253,6 +1314,8 @@
     updateUI();
     showPlateType();
     updateRegionDisplay(state.region);
+    watchPlateLayout();
+    fitPlate();
 
     // initial empty-looking plate
     if (state.country === 'ru' && state.type === 'car') {
