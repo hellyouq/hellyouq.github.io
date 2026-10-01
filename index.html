@@ -1,0 +1,347 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NumberGen Pro | Развлекательный генератор</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Oswald:wght@500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="bg-grid"></div>
+  
+  <header class="header">
+    <div class="logo">
+      <div class="logo-emblem">
+        <svg viewBox="0 0 64 64" width="48" height="48">
+          <defs>
+            <linearGradient id="logoGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" style="stop-color:#3b82f6;stop-opacity:1" />
+              <stop offset="100%" style="stop-color:#8b5cf6;stop-opacity:1" />
+            </linearGradient>
+          </defs>
+          <rect width="64" height="64" rx="16" fill="url(#logoGrad)"/>
+          <path d="M20 44h24M20 20h24M32 20v24" stroke="#fff" stroke-width="4" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <div class="logo-text">
+        <span class="logo-title">PLATE GEN</span>
+        <span class="logo-sub">Генератор номерных знаков</span>
+      </div>
+    </div>
+    <nav class="nav">
+      <button class="nav-btn active" data-tab="generator">Генератор</button>
+      <button class="nav-btn" data-tab="inventory">Коллекция</button>
+      <button class="nav-btn" data-tab="shop">Магазин</button>
+      <button class="nav-btn" data-tab="settings">Настройки</button>
+    </nav>
+    <div class="balance-panel">
+      <div class="balance-icon">₽</div>
+      <div class="balance-info">
+        <span class="balance-label">Баланс</span>
+        <span class="balance-value" id="balance">0</span>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- GENERATOR TAB -->
+    <section id="tab-generator" class="tab active">
+      <div class="controls-bar">
+        <div class="control-group">
+          <label>Страна</label>
+          <div class="toggle-group">
+            <button class="toggle-btn active" data-country="ru">🇷🇺 Россия</button>
+            <button class="toggle-btn" data-country="by">🇧🇾 Беларусь</button>
+          </div>
+        </div>
+        <div class="control-group">
+          <label>Тип ТС</label>
+          <div class="toggle-group">
+            <button class="toggle-btn active" data-type="car">Автомобиль</button>
+            <button class="toggle-btn" data-type="moto">Мотоцикл</button>
+          </div>
+        </div>
+        <div class="control-group">
+          <label>Регион</label>
+            <select id="regionSelect" class="select">
+              <option value="77">77 — Москва</option>
+              <option value="78">78 — СПб</option>
+              <option value="50">50 — МО</option>
+              <option value="52">52 — Нижегородская обл.</option>
+              <option value="152">152 — Нижегородская обл.</option>
+              <option value="252">252 — Нижегородская обл.</option>
+              <option value="99">99 — Москва</option>
+              <option value="97">97 — Москва</option>
+              <option value="199">199 — Москва</option>
+              <option value="777">777 — Москва</option>
+              <option value="23">23 — Краснодар</option>
+              <option value="61">61 — Ростов</option>
+              <option value="66">66 — Свердловск</option>
+              <option value="54">54 — Новосибирск</option>
+              <option value="16">16 — Татарстан</option>
+              <option value="02">02 — Башкортостан</option>
+              <option value="116">116 — Татарстан</option>
+              <option value="716">716 — Татарстан</option>
+            </select>
+        </div>
+      </div>
+
+      <div class="plate-stage">
+        <div class="plate-frame" id="plateFrame">
+          <!-- RU CAR PLATE -->
+          <div class="plate plate-ru-car" id="plateRuCar">
+            <div class="plate-main">
+              <div class="char-slot" data-pos="0"><span class="char">А</span></div>
+              <div class="char-slot" data-pos="1"><span class="char">0</span></div>
+              <div class="char-slot" data-pos="2"><span class="char">0</span></div>
+              <div class="char-slot" data-pos="3"><span class="char">0</span></div>
+              <div class="char-slot" data-pos="4"><span class="char">А</span></div>
+              <div class="char-slot" data-pos="5"><span class="char">А</span></div>
+            </div>
+            <div class="plate-region">
+              <div class="region-code" id="regionCode">77</div>
+              <div class="region-flag">
+                <div class="flag-ru">
+                  <div class="stripe white"></div>
+                  <div class="stripe blue"></div>
+                  <div class="stripe red"></div>
+                </div>
+                <span class="rus-text">RUS</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- RU MOTO PLATE -->
+          <div class="plate plate-ru-moto hidden" id="plateRuMoto">
+            <div class="moto-top">
+              <div class="char-slot" data-pos="0"><span class="char">0</span></div>
+              <div class="char-slot" data-pos="1"><span class="char">0</span></div>
+              <div class="char-slot" data-pos="2"><span class="char">0</span></div>
+              <div class="char-slot" data-pos="3"><span class="char">0</span></div>
+            </div>
+            <div class="moto-bottom">
+              <div class="moto-letters">
+                <div class="char-slot" data-pos="4"><span class="char">А</span></div>
+                <div class="char-slot" data-pos="5"><span class="char">А</span></div>
+              </div>
+              <div class="moto-region">
+                <div class="region-code" id="regionCodeMoto">77</div>
+                <div class="region-flag">
+                  <div class="flag-ru small">
+                    <div class="stripe white"></div>
+                    <div class="stripe blue"></div>
+                    <div class="stripe red"></div>
+                  </div>
+                  <span class="rus-text">RUS</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- BY CAR PLATE -->
+          <div class="plate plate-by-car hidden" id="plateByCar">
+            <div class="by-left">
+              <div class="by-flag">
+                <div class="by-stripe red"></div>
+                <div class="by-stripe green"></div>
+              </div>
+              <span class="by-code">BY</span>
+            </div>
+            <div class="plate-main by-main">
+              <div class="char-slot" data-pos="0"><span class="char">1</span></div>
+              <div class="char-slot" data-pos="1"><span class="char">2</span></div>
+              <div class="char-slot" data-pos="2"><span class="char">3</span></div>
+              <div class="char-slot" data-pos="3"><span class="char">4</span></div>
+              <div class="char-slot letter" data-pos="4"><span class="char">A</span></div>
+              <div class="char-slot letter" data-pos="5"><span class="char">B</span></div>
+            </div>
+            <div class="by-region">
+              <span class="by-dash">-</span>
+              <div class="char-slot region-slot" data-pos="6"><span class="char">7</span></div>
+            </div>
+          </div>
+
+          <!-- BY MOTO (similar to car but smaller visual) -->
+          <div class="plate plate-by-moto hidden" id="plateByMoto">
+            <div class="by-left">
+              <div class="by-flag">
+                <div class="by-stripe red"></div>
+                <div class="by-stripe green"></div>
+              </div>
+              <span class="by-code">BY</span>
+            </div>
+            <div class="plate-main by-main">
+              <div class="char-slot" data-pos="0"><span class="char">1</span></div>
+              <div class="char-slot" data-pos="1"><span class="char">2</span></div>
+              <div class="char-slot" data-pos="2"><span class="char">3</span></div>
+              <div class="char-slot" data-pos="3"><span class="char">4</span></div>
+              <div class="char-slot letter" data-pos="4"><span class="char">A</span></div>
+              <div class="char-slot letter" data-pos="5"><span class="char">B</span></div>
+            </div>
+            <div class="by-region">
+              <span class="by-dash">-</span>
+              <div class="char-slot region-slot" data-pos="6"><span class="char">7</span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="plate-value-badge" id="valueBadge">
+          <span class="value-label">Ценность</span>
+          <span class="value-amount" id="plateValue">0 ₽</span>
+          <span class="value-rarity" id="plateRarity">Обычный</span>
+        </div>
+
+        <div class="plate-meta-row">
+          <div class="chip" id="chipLuck"><span>Удача</span><b>+0%</b></div>
+          <div class="chip" id="chipFrame"><span>Рамка</span><b>Стандарт</b></div>
+          <button class="btn btn-mini" id="copyBtn">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+            Скопировать
+          </button>
+        </div>
+
+        <div class="bonus-badges" id="activeBonuses"></div>
+      </div>
+
+      <div class="action-bar">
+        <button class="btn btn-spin" id="spinBtn">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 2v20"/><path d="M2 12h20"/><path d="M12 12l8 8"/><path d="M12 12l-8-8"/></svg>
+          КРУТИТЬ
+          <span class="btn-cost" id="costFull">−50 ₽</span>
+        </button>
+        <button class="btn btn-spin" id="spinLettersBtn" style="background:linear-gradient(135deg,#8b5cf6,#6d28d9)">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7V4h16v3"/><path d="M9 20h6"/><path d="M12 4v16"/></svg>
+          БУКВЫ
+          <span class="btn-cost" id="costLetters">−25 ₽</span>
+        </button>
+        <button class="btn btn-spin" id="spinDigitsBtn" style="background:linear-gradient(135deg,#f59e0b,#d97706)">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><path d="M12 8v8"/><path d="M9 11h6"/></svg>
+          ЦИФРЫ
+          <span class="btn-cost" id="costDigits">−25 ₽</span>
+        </button>
+        <button class="btn btn-sell" id="sellBtn" disabled>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+          ПРОДАТЬ
+        </button>
+        <button class="btn btn-keep" id="keepBtn" disabled>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.29 7 12 12 20.71 7"/><line x1="12" y1="22" x2="12" y2="12"/></svg>
+          В КОЛЛЕКЦИЮ
+        </button>
+      </div>
+
+      <div class="stats-bar">
+        <div class="stat">
+          <span class="stat-label">Всего круток</span>
+          <span class="stat-value" id="statSpins">0</span>
+        </div>
+        <div class="stat">
+          <span class="stat-label">Редких</span>
+          <span class="stat-value" id="statRare">0</span>
+        </div>
+        <div class="stat">
+          <span class="stat-label">Заработано</span>
+          <span class="stat-value" id="statEarned">0 ₽</span>
+        </div>
+      </div>
+
+      <div class="history-panel glass">
+        <h3>Последние попытки</h3>
+        <div id="historyList" class="history-list"></div>
+      </div>
+    </section>
+
+    <!-- INVENTORY TAB -->
+    <section id="tab-inventory" class="tab">
+      <h2 class="section-title">Моя коллекция</h2>
+      <div class="inventory-filters">
+        <button class="filter-btn active" data-filter="all">Все</button>
+        <button class="filter-btn" data-filter="ru">🇷🇺 РФ</button>
+        <button class="filter-btn" data-filter="by">🇧🇾 РБ</button>
+        <button class="filter-btn" data-filter="rare">⭐ Редкие</button>
+      </div>
+      <div class="inventory-grid" id="inventoryGrid">
+        <div class="empty-state">Коллекция пуста. Крутите номера!</div>
+      </div>
+    </section>
+
+    <!-- SHOP TAB -->
+    <section id="tab-shop" class="tab">
+      <h2 class="section-title">Магазин рамок</h2>
+      <p class="section-desc">Покупайте уникальные рамки для номеров. Деньги зарабатываются продажей выбитых номеров.</p>
+      <div class="shop-filters">
+        <button class="filter-btn active" data-shop-filter="all">Все</button>
+        <button class="filter-btn" data-shop-filter="owned">Купленные</button>
+        <button class="filter-btn" data-shop-filter="available">Доступные</button>
+      </div>
+      <div class="shop-grid" id="shopGrid"></div>
+    </section>
+
+    <!-- SETTINGS TAB -->
+    <section id="tab-settings" class="tab">
+      <h2 class="section-title">Настройки</h2>
+      <div class="settings-grid">
+
+        <div class="setting-item glass">
+          <div class="setting-text">
+            <span class="setting-name">Звуковые эффекты</span>
+            <span class="setting-hint">Клики, прокрутка, покупки</span>
+          </div>
+          <button id="soundToggle" class="switch" aria-label="Звук"><span class="knob"></span></button>
+        </div>
+
+        <div class="setting-item glass">
+          <div class="setting-text">
+            <span class="setting-name">Ежедневный бонус</span>
+            <span class="setting-hint" id="dailyHint">Заберите награду за сегодня</span>
+          </div>
+          <button id="dailyRewardBtn" class="btn btn-mini">Получить</button>
+        </div>
+
+        <div class="setting-item glass">
+          <div class="setting-text">
+            <span class="setting-name">Скорость прокрутки</span>
+            <span class="setting-hint">Насколько быстро крутятся символы</span>
+          </div>
+          <input type="range" id="speedRange" min="0" max="2" step="1" value="1" class="range">
+        </div>
+
+        <div class="setting-item glass">
+          <div class="setting-text">
+            <span class="setting-name">Тема оформления</span>
+            <span class="setting-hint">Светлая или тёмная</span>
+          </div>
+          <button id="themeToggle" class="switch" aria-label="Тема"><span class="knob"></span></button>
+        </div>
+
+        <div class="setting-item glass">
+          <div class="setting-text">
+            <span class="setting-name">Автосохранение номера</span>
+            <span class="setting-hint">Не сбрасывать номер при смене вкладок</span>
+          </div>
+          <button id="persistToggle" class="switch" aria-label="Автосохранение"><span class="knob"></span></button>
+        </div>
+
+        <div class="setting-item glass danger">
+          <div class="setting-text">
+            <span class="setting-name">Сброс данных</span>
+            <span class="setting-hint">Удалит баланс, коллекцию и рамки</span>
+          </div>
+          <button id="resetDataBtn" class="btn btn-mini btn-danger">Сбросить</button>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <div class="toast-container" id="toastContainer"></div>
+
+  <footer class="footer">
+    <span>© 2026 Plate Gen Pro. Проект создан исключительно для развлекательных и юмористических целей. Не имеет отношения к реальным организациям или государственной деятельности.</span>
+  </footer>
+
+  <script src="js/app.js"></script>
+</body>
+</html>
