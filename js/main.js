@@ -139,6 +139,10 @@
     controller = new AbortController();
     boot.show();
     bootEl.classList.remove('is-error');
+    if ((!APP.CONFIG.API_KEY || APP.CONFIG.API_KEY === 'DEMO_KEY') && !APP.CONFIG.PROXY_URL) {
+      boot.error('Ключ Gemini API не указан', 'Нажми на 🎲 и укажи свой ключ Google AI Studio или используй кнопку ниже.');
+      return;
+    }
     const seed = String(Date.now()).slice(-8) + Math.random().toString(36).slice(2, 6);
     try {
       const res = await APP.GEMINI.generate({
@@ -201,6 +205,19 @@
         list.append(row);
       });
     }
+    const storedApiKey = (function () {
+      try { return localStorage.getItem('liquidglass.key') || ''; } catch (e) { return ''; }
+    })();
+    const keyInput = el('input', {
+      class: 'lg-input', type: 'password', placeholder: 'Ключ Gemini API (AIzaSy...)',
+      value: storedApiKey || (APP.CONFIG.API_KEY && APP.CONFIG.API_KEY !== 'DEMO_KEY' ? APP.CONFIG.API_KEY : ''),
+      maxlength: '120', autocomplete: 'off'
+    });
+    const keyHint = el('p', {
+      class: 'lg-modal-sub',
+      style: 'font-size:12px;opacity:0.75;margin-top:-6px',
+      text: 'Ключ сохраняется в твоём браузере и не передаётся в репозиторий.'
+    });
     const sw = (label, key, onChange) => {
       const btn = el('button', { class: 'lg-switch' + (APP.PREFS[key] ? ' is-on' : ''), type: 'button' }, [
         el('span', { text: label }), el('i')
@@ -220,11 +237,22 @@
       el('p', { class: 'lg-modal-sub', text: 'Напиши тему или оставь поле пустым — тогда движок выберет направление сам. Следующий сайт будет совсем другим.' }),
       vibeInput,
       chipRow,
+      el('h3', { style: 'font-size:15px;margin-top:12px;margin-bottom:4px', text: 'Ключ Gemini (Google AI Studio)' }),
+      keyInput,
+      keyHint,
       el('div', { class: 'lg-modal-actions' }, [
         el('button', {
           class: 'lg-btn primary', type: 'button', text: 'Собрать сайт', onclick: () => {
             APP.PREFS.vibe = vibeInput.value.trim();
             APP.savePrefs();
+            const kv = keyInput.value.trim();
+            if (kv) {
+              try { localStorage.setItem('liquidglass.key', kv); } catch (e) {}
+              APP.CONFIG.API_KEY = kv;
+            } else if (storedApiKey) {
+              try { localStorage.removeItem('liquidglass.key'); } catch (e) {}
+              APP.CONFIG.API_KEY = 'DEMO_KEY';
+            }
             closePanel();
             generate(APP.PREFS.vibe);
           }
@@ -297,6 +325,10 @@
       const spec = await APP.SPEC.decodeShare(hash.slice(3));
       if (spec) { mountSpec(spec, { toast: 'Открыт присланный сайт' }); return; }
       APP.KIT.toast('Ссылка повреждена — соберу новый сайт', 'err');
+    }
+    if ((!APP.CONFIG.API_KEY || APP.CONFIG.API_KEY === 'DEMO_KEY') && !APP.CONFIG.PROXY_URL) {
+      generateLocal('Собрано локально (укажи ключ Gemini API в 🎲 для ИИ)');
+      return;
     }
     generate(params.get('vibe') || prefs.vibe || '');
   }
