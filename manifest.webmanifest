@@ -1,0 +1,14 @@
+{
+  "name": "Liquid Glass — генератор стеклянных сайтов",
+  "short_name": "Liquid Glass",
+  "description": "Сайт-безделушка, который собирается заново на каждом заходе: тема, тексты и мини-игры придумываются на месте.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#07070f",
+  "theme_color": "#07070f",
+  "lang": "ru",
+  "icons": [
+    { "src": "assets/icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" }
+  ]
+}

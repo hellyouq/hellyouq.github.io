@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="ru" data-mode="dark" data-font="sf">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Liquid Glass — сайт, который собирается на ходу</title>
+  <meta name="description" content="Каждый заход — новый сайт-безделушка: тема, тексты и мини-игры придумываются на месте, в эстетике iOS Liquid Glass.">
+  <meta name="theme-color" content="#07070f">
+  <meta name="color-scheme" content="dark light">
+  <link rel="icon" href="assets/icon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="assets/icon.svg">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="stylesheet" href="css/app.css">
+
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Liquid Glass — сайт, который собирается на ходу">
+  <meta property="og:description" content="Мини-игры, рисование, задания и стеклянные пузыри. Каждая перезагрузка — другой сайт.">
+  <meta property="og:image" content="assets/icon.svg">
+</head>
+<body>
+
+  <!-- Сюда рендерится сайт, собранный ИИ -->
+  <div class="lg-app"></div>
+
+  <!-- Загрузочный экран: показывается, пока идёт запрос -->
+  <div class="lg-boot" id="lg-boot" role="status" aria-live="polite">
+    <div class="lg-boot-card">
+      <div class="lg-orb" aria-hidden="true"></div>
+      <h1 class="lg-boot-title">Собираю сайт…</h1>
+      <p class="lg-boot-stage">Соединяюсь с генератором</p>
+      <div class="lg-boot-chip" hidden></div>
+      <div class="lg-boot-bar" aria-hidden="true"><i></i></div>
+      <p class="lg-boot-tip"></p>
+      <div class="lg-boot-actions">
+        <button class="lg-btn" id="lg-cancel" type="button">Отменить</button>
+        <button class="lg-btn primary" id="lg-retry" type="button" hidden>Попробовать снова</button>
+        <button class="lg-btn" id="lg-local" type="button" hidden>Собрать локально, без ИИ</button>
+      </div>
+    </div>
+  </div>
+
+  <noscript>
+    <div style="position:fixed;inset:0;display:grid;place-items:center;padding:24px;text-align:center;font-family:system-ui;background:#08080f;color:#eef">
+      Для этого сайта нужен JavaScript: он собирает страницу на лету прямо в браузере.
+    </div>
+  </noscript>
+
+  <script src="js/config.js"></script>
+  <script src="js/extras.js"></script>
+  <script src="js/spec.js"></script>
+  <script src="js/prompt.js"></script>
+  <script src="js/gemini.js"></script>
+  <script src="js/games.js"></script>
+  <script src="js/widgets.js"></script>
+  <script src="js/render.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
