@@ -45,11 +45,21 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Inject Gemini API Key if secret is provided
-        if: ${{ env.GEMINI_KEY != '' }}
         env:
           GEMINI_KEY: ${{ secrets.GEMINI_API_KEY }}
         run: |
-          sed -i "s/'DEMO_KEY'/'$GEMINI_KEY'/g" js/config.js
+          node -e '
+            const fs = require("fs");
+            const key = process.env.GEMINI_KEY;
+            if (key && key.trim()) {
+              let cfg = fs.readFileSync("js/config.js", "utf8");
+              cfg = cfg.replace(/\x27DEMO_KEY\x27/, JSON.stringify(key.trim()));
+              fs.writeFileSync("js/config.js", cfg);
+              console.log("Gemini API key injected successfully into js/config.js");
+            } else {
+              console.log("No GEMINI_API_KEY secret provided");
+            }
+          '
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
