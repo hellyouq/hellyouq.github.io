@@ -44,20 +44,25 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Inject Gemini API Key if secret is provided
+      - name: Inject Gemini API Key if secret or var is provided
         env:
-          GEMINI_KEY: ${{ secrets.GEMINI_API_KEY }}
+          K1: ${{ secrets.GEMINI_API_KEY }}
+          K2: ${{ secrets.GEMINI_KEY }}
+          K3: ${{ secrets.API_KEY }}
+          K4: ${{ vars.GEMINI_API_KEY }}
+          K5: ${{ vars.GEMINI_KEY }}
+          K6: ${{ vars.API_KEY }}
         run: |
           node -e '
             const fs = require("fs");
-            const key = process.env.GEMINI_KEY;
+            const key = process.env.K1 || process.env.K2 || process.env.K3 || process.env.K4 || process.env.K5 || process.env.K6 || "";
             if (key && key.trim()) {
               let cfg = fs.readFileSync("js/config.js", "utf8");
               cfg = cfg.replace(/\x27DEMO_KEY\x27/, JSON.stringify(key.trim()));
               fs.writeFileSync("js/config.js", cfg);
               console.log("Gemini API key injected successfully into js/config.js");
             } else {
-              console.log("No GEMINI_API_KEY secret provided");
+              console.log("No GEMINI_API_KEY secret or variable provided");
             }
           '
 

@@ -11,6 +11,16 @@
     if (typeof localStorage !== 'undefined') {
       storedKey = localStorage.getItem('liquidglass.key') || '';
     }
+    if (!storedKey && typeof location !== 'undefined' && location.search) {
+      const q = new URLSearchParams(location.search);
+      const urlKey = q.get('key') || q.get('gemini_key');
+      if (urlKey) {
+        storedKey = urlKey.trim();
+        if (typeof localStorage !== 'undefined') {
+          localStorage.setItem('liquidglass.key', storedKey);
+        }
+      }
+    }
   } catch (e) {}
 
   APP.CONFIG = {

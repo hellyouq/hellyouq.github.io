@@ -321,6 +321,13 @@
     const params = new URLSearchParams(location.search);
     const hash = location.hash || '';
 
+    if (params.has('key') || params.has('gemini_key')) {
+      params.delete('key');
+      params.delete('gemini_key');
+      const cleanSearch = params.toString() ? '?' + params.toString() : '';
+      try { history.replaceState(null, '', location.pathname + cleanSearch + location.hash); } catch (e) {}
+    }
+
     if (hash.indexOf('#s=') === 0) {
       const spec = await APP.SPEC.decodeShare(hash.slice(3));
       if (spec) { mountSpec(spec, { toast: 'Открыт присланный сайт' }); return; }
